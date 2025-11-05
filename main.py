@@ -8,7 +8,7 @@ from flask import Flask, jsonify, request, send_file, send_from_directory
 # Get your Gemini API key by:
 # - Selecting "Add Gemini API" in the "Firebase Studio" panel in the sidebar
 # - Or by visiting https://g.co/ai/idxGetGeminiKey
-API_KEY = 'TODO'
+API_KEY = 'AIzaSyAzCQhDWJiwv2_wRT__Ki3nK0gFcfGv4Z8'
 
 ai = genai.Client(api_key=API_KEY)
 app = Flask(__name__)
@@ -31,6 +31,7 @@ def generate_api():
         try:
             req_body = request.get_json()
             contents = req_body.get("contents")
+            print(contents)
             response = ai.models.generate_content_stream(model=req_body.get("model"), contents=contents)
             def stream():
                 for chunk in response:
