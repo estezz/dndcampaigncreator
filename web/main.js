@@ -1,7 +1,7 @@
 import { streamGemini } from './gemini-api.js';
 
 let form = document.querySelector('form');
-let promptInput = document.querySelector('input[name="prompt"]');
+let promptInput = document.querySelector('input[name="storyLine"]');
 let output = document.querySelector('.output');
 
 form.onsubmit = async (ev) => {
