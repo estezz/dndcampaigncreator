@@ -1,16 +1,14 @@
 import json
 import os
+from src.gemini_client import GeminiClient
 
-import google.genai as genai
 from flask import Flask, jsonify, request, send_file, send_from_directory
 
 # 🔥🔥 FILL THIS OUT FIRST! 🔥🔥
 # Get your Gemini API key by:
 # - Selecting "Add Gemini API" in the "Firebase Studio" panel in the sidebar
 # - Or by visiting https://g.co/ai/idxGetGeminiKey
-API_KEY = 'AIzaSyAzCQhDWJiwv2_wRT__Ki3nK0gFcfGv4Z8'
 
-ai = genai.Client(api_key=API_KEY)
 app = Flask(__name__)
 
 
@@ -21,27 +19,11 @@ def index():
 
 @app.route("/api/generate", methods=["POST"])
 def generate_api():
-    if request.method == "POST":
-        if API_KEY == 'TODO':
-            return jsonify({ "error": '''
-                To get started, get an API key at
-                https://g.co/ai/idxGetGeminiKey and enter it in
-                main.py
-                '''.replace('\n', '') })
-        try:
-            req_body = request.get_json()
-            contents = req_body.get("contents")
-            print(contents)
-            response = ai.models.generate_content_stream(model=req_body.get("model"), contents=contents)
-            def stream():
-                for chunk in response:
-                    yield 'data: %s\n\n' % json.dumps({ "text": chunk.text })
+    request_json = request.json["request_json"]
+    print(request_json)
+    gemini_client = GeminiClient();
 
-            return stream(), {'Content-Type': 'text/event-stream'}
-
-        except Exception as e:
-            return jsonify({ "error": str(e) })
-
+    return "test"
 
 @app.route('/<path:path>')
 def serve_static(path):
