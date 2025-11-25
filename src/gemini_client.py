@@ -16,7 +16,8 @@ class GeminiClient:
         
     def generate_text(self, prompt, model_name="gemini-2.0-flash-lite"):
         """Generates text using the specified model."""
-        model = genai.GenerativeModel(model_name)
+
+        model = genai.GenerativeModel(str(model_name))
         response = model.generate_content(prompt)
         return response.text
 

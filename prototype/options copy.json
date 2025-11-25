@@ -1,0 +1,272 @@
+{
+    "prompt": [
+        {
+            
+            "goal": "Please generate a D&D module with the following parameters:",
+            "campaignSettion": "Forgotten Realms",
+            "partySize": "4",
+            "characterLevels": "3-5",
+            "numberOfSessions" : 5,
+            "numberOfHoursPerSession" : 3,
+            "creativity" : "high",
+            "ageOfPlayers" : ["50","40"],
+            "storyLine": "The isolated village of Mire’s End is slowly being consumed by a creeping, silent terror: every few nights, a villager vanishes without a cry, leaving behind only an unnerving trail of cold, black mud leading toward the surrounding brackish marshland. While the locals blame the encroaching bog-hags, the disappearances are the work of a far more sophisticated and sinister force—a subterranean cult of Kuo-Toa who have been driven mad by an abyssal artifact resting at the heart of their flooded grotto. The players must brave the treacherous, mist-choked wetlands, follow the disturbing, almost ritualistic signs of the abductions, and descend into the lightless, dripping caverns beneath the swamp to rescue the remaining captives before they are ritually sacrificed to summon a dreadful, tentacled horror from the depths.\\n    - Other Things to Include: Include a rival adventuring party and a moral dilemma.\\n    - Rewards to Include: A magical moon-touched weapon and a hefty sum of gold. (in addition to the 'generatedMagicItems')\\n    - Target Length (Hours): 4\\n\\n    **Creativity Interpretation**: The creativity level is set to 5 out of 10. This means the interpretation should be: A good mix of classic tropes and original ideas. Interpret prompts creatively.\\n    \\n    **Complexity**: You MUST scale the module's complexity (plot steps, encounters) based on the target length. A 4-hour module should have an appropriate number of steps.\\n    \\n    \\n\\n    **Formatting**: Ensure all descriptions ('setup', 'description', 'statBlock') are formatted as clean, readable HTML (e.g., using <p>, <ul>, <li>, <strong>).\\n    \\n    **Balancing (CRITICAL)**: All monsters, NPC statblocks, and rewards (both quantity and quality in 'rewardsList' and 'generatedMagicItems') MUST be balanced for a party of 4 players at level 3.\\n\\n    **Setting (CRITICAL)**: All content (locations, themes, monsters, characters, items) MUST be appropriate for the **Forgotten Realms** D&D campaign setting.\\n\\n    **Integrated Content**: As part of this single response, you must ALSO generate 3 unique magic items and 3 plot twists relevant to the module, using the 'generatedMagicItems' and 'generatedPlotTwists' properties.\\n  "
+              
+        }
+    ],
+    "sources" :[
+        {
+            "name": "forgottenrealms.fandom.com",
+            "url" : "https://forgottenrealms.fandom.com/wiki/Main_Page"
+        },{
+            
+            "name": "candlekeep",
+            "url" : "http://candlekeep.com/"
+        }
+    ],
+    "systemInstruction": {
+        "parts": [
+            {
+                "text": "You are a creative and detailed Dungeons & Dragons module architect. Your task is to generate a complete, structured module based on the user's inputs. Respond ONLY with the valid JSON object defined by the schema."
+            },
+            {
+                "text": "Do some Quality Assurance"
+            },
+            {
+                "text": "Check that images match the text"
+            },
+            {
+                "text": "Do some Quality Assurancemakke it awesome"
+            }
+            
+        ]
+    },
+    "generationConfig": {
+        "responseMimeType": "application/json",
+        "responseSchema": {
+            "type": "OBJECT",
+            "properties": {
+                "title": {
+                    "type": "STRING"
+                },
+                "campaignSettion": {
+                    "type": "STRING"
+                },"partySize": {
+                    "type": "STRING"
+                },"characterLevels": {
+                    "type": "STRING"
+                },"numberOfSessions": {
+                    "type": "NUMBER"
+                },"numberOfHoursPerSession": {
+                    "type": "NUMBER"
+                },
+                
+                "location": {
+                    "type": "STRING"
+                },
+                "setup": {
+                    "type": "STRING",
+                    "description": "HTML formatted setup and background story for the module."
+                },
+                "plotHooks": {
+                    "type": "ARRAY",
+                    "items": {
+                        "type": "OBJECT",
+                        "properties": {
+                            "title": {
+                                "type": "STRING"
+                            },
+                            "description": {
+                                "type": "STRING",
+                                "description": "HTML formatted description of the plot hook."
+                            }
+                        },
+                        "required": [
+                            "title",
+                            "description"
+                        ]
+                    }
+                },
+                "mainPlotSteps": {
+                    "type": "ARRAY",
+                    "items": {
+                        "type": "OBJECT",
+                        "properties": {
+                            "title": {
+                                "type": "STRING"
+                            },
+                            "description": {
+                                "type": "STRING",
+                                "description": "HTML formatted description of this plot step.",
+                                "words" : "200"
+                            },
+                            "imagePrompt": {
+                                "type": "STRING",
+                                "description": "A prompt for generating an atmospheric image (16:9) representing this plot step."
+                            }
+                        },
+                        "required": [
+                            "title",
+                            "description",
+                            "imagePrompt"
+                        ]
+                    }
+                },
+                "mainCharacters": {
+                    "type": "ARRAY",
+                    "items": {
+                        "type": "OBJECT",
+                        "properties": {
+                            "name": {
+                                "type": "STRING"
+                            },
+                            "description": {
+                                "type": "STRING",
+                                "description": "HTML formatted description of the character."
+                            },
+                            "imagePrompt": {
+                                "type": "STRING",
+                                "description": "A prompt for generating a portrait (1:1) of this character."
+                            },
+                            "statBlock": {
+                                "type": "STRING",
+                                "description": "HTML formatted stat block. Can be an empty string if not applicable."
+                            }
+                        },
+                        "required": [
+                            "name",
+                            "description",
+                            "imagePrompt",
+                            "statBlock"
+                        ]
+                    }
+                },
+                "monsterStatBlocks": {
+                    "type": "ARRAY",
+                    "items": {
+                        "type": "OBJECT",
+                        "properties": {
+                            "name": {
+                                "type": "STRING"
+                            },
+                            "statBlock": {
+                                "type": "STRING",
+                                "description": "HTML formatted stat block for the monster."
+                            },
+                            "imagePrompt": {
+                                "type": "STRING",
+                                "description": "A prompt for generating an image (1:1) of this monster."
+                            }
+                        },
+                        "required": [
+                            "name",
+                            "statBlock",
+                            "imagePrompt"
+                        ]
+                    }
+                },
+                "mapPrompt": {
+                    "type": "STRING",
+                    "description": "A prompt for a top-down, 16:9 battle map."
+                },
+                "regionMapPrompt": {
+                    "type": "STRING",
+                    "description": "A prompt for a top-down, 16:9 region map of the greater area."
+                },
+                "startPointPrompt": {
+                    "type": "STRING",
+                    "description": "A prompt for an atmospheric, 16:9 scene of the starting point."
+                },
+                "rewardsImagePrompt": {
+                    "type": "STRING",
+                    "description": "A prompt for a 16:9 image representing the main rewards."
+                },
+                "rewardsList": {
+                    "type": "ARRAY",
+                    "items": {
+                        "type": "OBJECT",
+                        "properties": {
+                            "name": {
+                                "type": "STRING"
+                            },
+                            "description": {
+                                "type": "STRING",
+                                "description": "HTML formatted description of the reward."
+                            },
+                            "value": {
+                                "type": "STRING",
+                                "description": "The value of the reward, e.g., '500 gp' or 'Rare'."
+                            }
+                        },
+                        "required": [
+                            "name",
+                            "description",
+                            "value"
+                        ]
+                    }
+                },
+                "generatedMagicItems": {
+                    "type": "ARRAY",
+                    "description": "Generate 3 unique magic items relevant to the module.",
+                    "items": {
+                        "type": "OBJECT",
+                        "properties": {
+                            "name": {
+                                "type": "STRING"
+                            },
+                            "description": {
+                                "type": "STRING",
+                                "description": "HTML formatted description of the magic item."
+                            },
+                            "value": {
+                                "type": "STRING",
+                                "description": "The value of the item, e.g., '500 gp' or 'Rare'."
+                            }
+                        },
+                        "required": [
+                            "name",
+                            "description",
+                            "value"
+                        ]
+                    }
+                },
+                "generatedPlotTwists": {
+                    "type": "ARRAY",
+                    "description": "Generate 3 unexpected plot twists relevant to the module.",
+                    "items": {
+                        "type": "OBJECT",
+                        "properties": {
+                            "title": {
+                                "type": "STRING"
+                            },
+                            "description": {
+                                "type": "STRING",
+                                "description": "HTML formatted description of the plot twist."
+                            }
+                        },
+                        "required": [
+                            "title",
+                            "description"
+                        ]
+                    }
+                }
+            },
+            "required": [
+                "title",
+                "location",
+                "setup",
+                "plotHooks",
+                "mainPlotSteps",
+                "mainCharacters",
+                "monsterStatBlocks",
+                "mapPrompt",
+                "regionMapPrompt",
+                "startPointPrompt",
+                "rewardsImagePrompt",
+                "rewardsList",
+                "generatedMagicItems",
+                "generatedPlotTwists"
+            ]
+        }
+    }
+}

@@ -1,7 +1,8 @@
 
 import pytest
 from unittest.mock import patch, MagicMock
-from src.replicate_client import ReplicateClient
+from replicate_client import ReplicateClient
+
 class TestReplicateClient:
 
     def test_initialization(self):
@@ -10,7 +11,7 @@ class TestReplicateClient:
         client = ReplicateClient(api_token=api_token)
         assert client.api_token == api_token
 
-    @patch('src.replicate_client.replicate.run')
+    @patch('web.prototype.replicate_client.replicate.run')
     @patch('builtins.open', new_callable=MagicMock)
     @patch('builtins.print')
     def test_generate_image(self, mock_print, mock_open, mock_replicate_run):
