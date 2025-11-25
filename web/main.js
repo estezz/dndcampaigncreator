@@ -1,45 +1,32 @@
-import { streamGemini } from './gemini-api.js';
+const form = document.getElementById('adventure-form'); // Get your form element
 
-let form = document.querySelector('form');
-let promptInput = document.querySelector('input[name="storyLine"]');
-let output = document.querySelector('.output');
+form.addEventListener('submit', async function (event) {
+    event.preventDefault(); // Prevent default form submission
 
-form.onsubmit = async (ev) => {
-  ev.preventDefault();
-  output.textContent = 'Generating...';
+    const formData = new FormData(form); // Collect form data
+    const jsonData = Object.fromEntries(formData); // Convert to plain object
+    const jsonString = JSON.stringify(jsonData); // Convert to JSON string
 
-  try {
-    // Load the image as a base64 string
-    let imageUrl = form.elements.namedItem('chosen-image').value;
-    let imageBase64 = await fetch(imageUrl)
-      .then(r => r.arrayBuffer())
-      .then(a => base64js.fromByteArray(new Uint8Array(a)));
+    try {
+        const response = await fetch('/api/generate', { // Replace with your API endpoint
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json' // Optional: Request JSON response
+            },
+            body: jsonString
+        });
 
-    // Assemble the prompt by combining the text with the chosen image
-    let contents = [
-      {
-        role: 'user',
-        parts: [
-          { inline_data: { mime_type: 'image/jpeg', data: imageBase64, } },
-          { text: promptInput.value }
-        ]
-      }
-    ];
+        if (!response.ok) {
+            const errorMessage = await response.text();
+            throw new Error(errorMessage);
+        }
 
-    // Call the multimodal model, and get a stream of results
-    let stream = streamGemini({
-      model: 'gemini-2.0-flash',
-      contents,
-    });
+        const responseData = await response.json(); // Parse JSON response
+        console.log('Success:', responseData);
+        form.reset(); // Optional: Reset the form after successful submission
 
-    // Read from the stream and interpret the output as markdown
-    let buffer = [];
-    let md = new markdownit();
-    for await (let chunk of stream) {
-      buffer.push(chunk);
-      output.innerHTML = md.render(buffer.join(''));
+    } catch (error) {
+        console.error('Error submitting form:', error);
     }
-  } catch (e) {
-    output.innerHTML += '<hr>' + e;
-  }
-};
+});
