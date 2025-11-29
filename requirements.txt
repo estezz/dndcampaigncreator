@@ -10,3 +10,4 @@ flask
 google.generativeai
 Jinja2
 replicate_client
+pydantic

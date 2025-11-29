@@ -1,26 +1,39 @@
 
-import google.generativeai as genai
+from google import genai
 import os
 
 class GeminiClient:
     def __init__(self):
-        try:
-            api_key = os.environ['GEMINI_API_KEY']
-            self.api_key = api_key
-            genai.configure(api_key=self.api_key)
-
-        except KeyError:
-            print("GEMINI_API_KEY environment variable not set.")
-            raise("GEMINI_API_KEY environment variable not set.")
+        """Initializes the GeminiClient with API credentials."""
+        
 
         
-    def generate_text(self, prompt, model_name="gemini-2.0-flash-lite"):
+    def generate_text(self, prompt, schema, model_name="gemini-2.0-flash-lite"):
         """Generates text using the specified model."""
 
-        model = genai.GenerativeModel(str(model_name))
-        response = model.generate_content(prompt)
+        # model = genai.GenerativeModel(str(model_name))
+        # response = model.generate_content(prompt)
+        client = genai.Client()
+
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt,
+            config={
+                "response_mime_type": "application/json",
+                "response_json_schema": schema
+            })
         return response.text
 
+    def generate_html(self, prompt, model_name="gemini-2.0-flash-lite"):
+        """Generates HTML using the specified model."""
+        client = genai.Client()
+
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt,
+        )
+        return response.text
+    
     def generate_image(self, prompt, model_name="imagen-3.0-generate-002"):
         """Generates an image based on the prompt."""
         print(prompt)
