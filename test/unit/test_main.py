@@ -10,7 +10,6 @@ def client():
     with app.test_client() as client:
         yield client
 
-@pytest.mark.unit
 def test_index(client):
     response = client.get("/")
     assert response.status_code == 200
@@ -64,3 +63,20 @@ def test_find_key_recursive(client):
     main.find_key_recursive(mydict, "imagePrompt", return_dict=return_dict)
     print(return_dict)
     assert return_dict["plotStepPrompt"] == mydict["imagePrompt"]
+
+def test_clean_json(client):
+    file_path = 'test/resources/string.what.txt'
+    json = {}
+    try:
+        with open(file_path, 'r') as file:
+            content = file.read()
+            print(content)
+            json = main.string_to_json(content)
+    except FileNotFoundError:
+        print(f"Error: The file '{file_path}' was not found.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    
+    print(json)
+    assert json, "JSON data should not be empty!"
+

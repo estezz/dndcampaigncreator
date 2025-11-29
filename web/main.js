@@ -8,7 +8,7 @@ form.addEventListener('submit', async function (event) {
     const jsonString = JSON.stringify(jsonData); // Convert to JSON string
 
     try {
-        const response = await fetch('/api/generate', { // Replace with your API endpoint
+        const response = await fetch('/api/generate/campaign', { // Replace with your API endpoint
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -22,9 +22,9 @@ form.addEventListener('submit', async function (event) {
             throw new Error(errorMessage);
         }
 
-        const responseData = await response.json(); // Parse JSON response
+        const responseData = await response.text(); // Parse JSON response
         console.log('Success:', responseData);
-        form.reset(); // Optional: Reset the form after successful submission
+        document.documentElement.innerHTML = responseData;
 
     } catch (error) {
         console.error('Error submitting form:', error);

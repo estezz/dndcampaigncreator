@@ -1,6 +1,7 @@
 # Dev environment
 pip
 autopep8
+pytest
 
 # App
 google-genai # Client library for the Gemini API
@@ -8,3 +9,4 @@ Pillow # PIL image-loading library
 flask
 google.generativeai
 Jinja2
+replicate_client

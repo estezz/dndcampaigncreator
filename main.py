@@ -1,19 +1,27 @@
 import json
 import os
+import re
 from src.gemini_client import GeminiClient
 from jinja2 import Environment, FileSystemLoader    
 
 from flask import Flask, jsonify, request, send_file, send_from_directory
 
 app = Flask(__name__)
+campaign_dict = {}
 
 @app.route("/")
 def index():
     return send_file('web/index.html')
 
+"""
+    This api method generates a campaign from the initial user input. 
+    This is the main method that is called from the frontend. 
+    It creates a dictionary of the state of the campaign.
 
-@app.route("/api/generate", methods=["POST"])
-def generate_api():
+    It then creates HTML from the campaign state that is returned to the frontend.
+"""
+@app.route("/api/generate/campaign", methods=["POST"])
+def generate_campaign_api():
     request_json = request.json
     print(request_json)
     
@@ -28,20 +36,39 @@ def generate_api():
     clean_prompt = prompt.replace("\n", " ")  
 
     gemini_client = GeminiClient();
-    campaign_json = gemini_client.generate_text(prompt=clean_prompt)
-    clean_campaign_json = campaign_json.replace("\n", " ")  
+    campaign_json_string = gemini_client.generate_text(prompt=clean_prompt)
 
+    clean_campaign_json = string_to_json(campaign_json_string)
+    prompt = template.render(json=clean_campaign_json)
 
     ## Create HTML from the campaign JSON
     template = env.get_template('./resources/turn_json_to_html.j2')
     prompt = template.render(json=clean_campaign_json)
     html = gemini_client.generate_text(prompt=prompt)
-    clean_html = html.replace("\n", " ")  
+    clean_html = html.replace("```html", "")
+    clean_html = clean_html.replace("```", "")
 
     with open("clean.html", "w") as file:
         file.write(clean_html)
 
     return clean_html
+
+def string_to_json(input_string):
+    match = re.search(r'json\s*([\s\S]*?)\s*', input_string, re.DOTALL) 
+    
+    json_string = input_string
+
+    clean_string = json_string
+    clean_string = clean_string.replace("\n", " ") 
+    clean_string = clean_string.replace("```json", "")
+    clean_string = clean_string.replace("```", "")
+    clean_json = {}
+    try:
+        clean_json = json.loads(clean_string)
+    except Exception as e:
+        print(f"Error: {e}")
+    return clean_json
+
 
 def find_key_recursive(obj, target_key, return_dict):
 
