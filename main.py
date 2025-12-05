@@ -1,5 +1,6 @@
 import src.campaign_generator as campaign_generator
 from flask import Flask, jsonify, request, send_file, send_from_directory
+import os
 
 app = Flask(__name__)
 campaign_dict = {}

@@ -3,3 +3,4 @@ __pycache__
 .env
 pytestdebug.log
 my-image.png
+dnd.tar.gz

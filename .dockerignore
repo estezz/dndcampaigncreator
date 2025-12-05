@@ -1,0 +1,17 @@
+.venv
+.vscode
+.idx
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+include
+lib
+lib64
+Scripts
+share
+.git
+.gitignore
+README.md
+firebase-debug.log

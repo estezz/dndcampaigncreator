@@ -8,6 +8,8 @@
     pkgs.python3
     pkgs.python311Packages.pip
     pkgs.python311Packages.pytest
+    pkgs.docker
+    pkgs.sudo
   ];
   # Sets environment variables in the workspace
   env = {};
@@ -43,5 +45,7 @@
         };
       };
     };
+    
   };
+  services.docker.enable = true;
 }

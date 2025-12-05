@@ -9,5 +9,6 @@ Pillow # PIL image-loading library
 flask
 google.generativeai
 Jinja2
-replicate_client
+replicate
 pydantic
+
