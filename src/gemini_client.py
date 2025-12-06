@@ -9,7 +9,7 @@ class GeminiClient:
         """Initializes the GeminiClient with API credentials."""
         os.environ["GEMINI_API_KEY"] = self.get_secret()
 
-    def get_secret():
+    def get_secret(self):
 
         secret_name = "GEMINI_API_KEY"
         region_name = "us-east-2"
