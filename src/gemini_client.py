@@ -7,7 +7,7 @@ from botocore.exceptions import ClientError
 class GeminiClient:
     def __init__(self):
         """Initializes the GeminiClient with API credentials."""
-        os.environ["GEMINI_API_KEY"] = get_secret()
+        os.environ["GEMINI_API_KEY"] = self.get_secret()
 
     def get_secret():
 
