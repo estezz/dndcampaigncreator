@@ -50,6 +50,7 @@ class GeminiClient:
             # Depending on whether the secret was a string or binary, one of these fields will be populated.
             if 'SecretString' in get_secret_value_response:
                 secret = get_secret_value_response['SecretString']
+                print(secret)
                 # Secrets are often stored as JSON strings, so you might need to parse them
                 api_key = secret["GEMINI_API_KEY"]
         
