@@ -11,4 +11,5 @@ google.generativeai
 Jinja2
 replicate
 pydantic
+boto3
 

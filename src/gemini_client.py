@@ -1,12 +1,38 @@
 
 from google import genai
 import os
+import boto3
+from botocore.exceptions import ClientError
 
 class GeminiClient:
     def __init__(self):
         """Initializes the GeminiClient with API credentials."""
-        
+        os.environ["GEMINI_API_KEY"] = get_secret()
 
+    def get_secret():
+
+        secret_name = "GEMINI_API_KEY"
+        region_name = "us-east-2"
+
+        # Create a Secrets Manager client
+        session = boto3.session.Session()
+        client = session.client(
+            service_name='secretsmanager',
+            region_name=region_name
+        )
+
+        try:
+            get_secret_value_response = client.get_secret_value(
+                SecretId=secret_name
+            )
+        except ClientError as e:
+            # For a list of exceptions thrown, see
+            # https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
+            raise e
+
+        secret = get_secret_value_response['SecretString']
+
+        return secret
         
     def generate_text(self, prompt, schema, model_name="gemini-2.0-flash-lite"):
         """Generates text using the specified model."""
