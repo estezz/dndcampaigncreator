@@ -7,9 +7,9 @@ from botocore.exceptions import ClientError
 class GeminiClient:
     def __init__(self):
         """Initializes the GeminiClient with API credentials."""
-        os.environ["GEMINI_API_KEY"] = self.get_secret()
+        os.environ["GEMINI_API_KEY"] = self.get_gemini_api_key()
 
-    def get_secret(self):
+    def get_gemini_api_key(self):
 
         secret_name = "GEMINI_API_KEY"
         region_name = "us-east-2"
@@ -21,18 +21,41 @@ class GeminiClient:
             region_name=region_name
         )
 
+        api_key=""
+
         try:
             get_secret_value_response = client.get_secret_value(
                 SecretId=secret_name
             )
         except ClientError as e:
-            # For a list of exceptions thrown, see
-            # https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
-            raise e
+            # Handle exceptions as appropriate for your application
+            if e.response['Error']['Code'] == 'ResourceNotFoundException':
+                print(f"The requested secret {secret_name} was not found.")
+            elif e.response['Error']['Code'] == 'DecryptionFailureException':
+                # Secrets Manager can't decrypt the protected secret text using the provided KMS key
+                print("Secrets Manager can't decrypt the secret value.")
+            elif e.response['Error']['Code'] == 'InternalServiceErrorException':
+                # An error occurred on the server side
+                print("An internal service error occurred.")
+            elif e.response['Error']['Code'] == 'InvalidParameterException':
+                print("The request had invalid parameters.")
+            elif e.response['Error']['Code'] == 'InvalidRequestException':
+                print("The request was invalid, e.g., secret is scheduled for deletion.")
+            else:
+                print(f"An error occurred: {e.response['Error']['Code']}")
+            raise
+        else:
+            print(get_secret_value_response)
+            # Decrypts secret using the associated KMS key.
+            # Depending on whether the secret was a string or binary, one of these fields will be populated.
+            if 'SecretString' in get_secret_value_response:
+                secret = get_secret_value_response['SecretString']
+                # Secrets are often stored as JSON strings, so you might need to parse them
+                api_key = secret["GEMINI_API_KEY"]
+        
+        print(api_key)
+        return api_key
 
-        secret = get_secret_value_response['SecretString']
-
-        return secret
         
     def generate_text(self, prompt, schema, model_name="gemini-2.0-flash-lite"):
         """Generates text using the specified model."""
