@@ -53,7 +53,7 @@ class GeminiClient:
                 print(secret)
                 # Secrets are often stored as JSON strings, so you might need to parse them
                 json_secret = json.loads(secret)
-                api_key = secret["GEMINI_API_KEY"]
+                api_key = json_secret["GEMINI_API_KEY"]
         
         print(api_key)
         return api_key
