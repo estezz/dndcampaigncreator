@@ -15,17 +15,29 @@
             transform: translate(-50%, -50%);
             z-index: 1000;
         }
-        .spinner {
-            border: 16px solid #f3f3f3;
-            border-top: 16px solid #3498db;
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            animation: spin 2s linear infinite;
+
+        .d20-spinner {
+            width: 150px;
+            height: 150px;
+            animation: roll 1.5s linear infinite;
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+
+        @keyframes roll {
+            0% {
+                transform: rotate(0deg) translateX(0);
+            }
+            25% {
+                transform: rotate(90deg) translateX(20px);
+            }
+            50% {
+                transform: rotate(180deg) translateX(0);
+            }
+            75% {
+                transform: rotate(270deg) translateX(-20px);
+            }
+            100% {
+                transform: rotate(360deg) translateX(0);
+            }
         }
     </style>
 </head>
@@ -67,7 +79,16 @@
             </div>
         </form>
         <div class="spinner-container" id="spinner">
-            <div class="spinner"></div>
+            <svg class="d20-spinner" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <polygon points="50,1 85,25 85,75 50,99 15,75 15,25" fill="#f0f0f0" stroke="#000" stroke-width="2"/>
+                <polygon points="50,1 85,25 50,45" fill="#dcdcdc"/>
+                <polygon points="85,25 85,75 50,45" fill="#c0c0c0"/>
+                <polygon points="85,75 50,99 50,45" fill="#a9a9a9"/>
+                <polygon points="50,99 15,75 50,45" fill="#808080"/>
+                <polygon points="15,75 15,25 50,45" fill="#696969"/>
+                <polygon points="15,25 50,1 50,45" fill="#585858"/>
+                <text x="50" y="30" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" dy=".3em">20</text>
+            </svg>
         </div>
         <p class="output">(Results will appear here)</p>
     </main>
@@ -82,10 +103,7 @@
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             spinner.style.display = 'block';
-            output.innerHTML = ''; // Clear previous results
-
-            // The form submission logic is in main.js
-            // The spinner will be hidden in main.js after the results are displayed
+            output.innerHTML = '';
         });
     </script>
 </body>
