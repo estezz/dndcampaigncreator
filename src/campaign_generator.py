@@ -34,7 +34,7 @@ def generate_campaign(parameter_dict):
     clean_html = clean_html.replace("```", "")
 
     campaign.html = clean_html
-
+    print("returning html")
     return campaign
 
 def string_to_json(input_string):
