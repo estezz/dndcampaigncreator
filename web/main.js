@@ -1,18 +1,23 @@
-const form = document.getElementById('adventure-form'); // Get your form element
+const form = document.getElementById('adventure-form');
+const spinner = document.getElementById('spinner');
+const output = document.querySelector('.output');
 
 form.addEventListener('submit', async function (event) {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault();
 
-    const formData = new FormData(form); // Collect form data
-    const jsonData = Object.fromEntries(formData); // Convert to plain object
-    const jsonString = JSON.stringify(jsonData); // Convert to JSON string
+    spinner.style.display = 'block';
+    output.innerHTML = '';
+
+    const formData = new FormData(form);
+    const jsonData = Object.fromEntries(formData);
+    const jsonString = JSON.stringify(jsonData);
 
     try {
-        const response = await fetch('/api/generate/campaign', { // Replace with your API endpoint
+        const response = await fetch('/api/generate/campaign', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': 'application/json' // Optional: Request JSON response
+                'Accept': 'text/html'
             },
             body: jsonString
         });
@@ -22,11 +27,13 @@ form.addEventListener('submit', async function (event) {
             throw new Error(errorMessage);
         }
 
-        const responseData = await response.text(); // Parse JSON response
-        console.log('Success:', responseData);
-        document.documentElement.innerHTML = responseData;
+        const responseData = await response.text();
+        output.innerHTML = responseData;
 
     } catch (error) {
         console.error('Error submitting form:', error);
+        output.innerHTML = `An error occurred: ${error.message}`;
+    } finally {
+        spinner.style.display = 'none';
     }
 });
