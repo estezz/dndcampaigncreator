@@ -1,7 +1,7 @@
 
 from google import genai
 import os
-import boto3
+import boto3, json
 from botocore.exceptions import ClientError
 
 class GeminiClient:
@@ -52,6 +52,7 @@ class GeminiClient:
                 secret = get_secret_value_response['SecretString']
                 print(secret)
                 # Secrets are often stored as JSON strings, so you might need to parse them
+                json = json.loads(secret)
                 api_key = secret["GEMINI_API_KEY"]
         
         print(api_key)
