@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D Campaign Master File</title>
+    <style>
+        :root {
+            --bg-parchment: #fdf6e3;
+            --bg-dark: #1a1a1a;
+            --text-main: #333;
+            --header-red: #8b0000;
+            --accent-gold: #c5a059;
+            --stat-block-bg: #f2eecb;
+        }
+
+        body {
+            font-family: 'Book Antiqua', 'Palatino Linotype', serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: var(--bg-parchment);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 50px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.7);
+            border: 1px solid #d4c4a0;
+        }
+
+        /* Navigation / TOC */
+        .toc {
+            background: rgba(0,0,0,0.05);
+            padding: 20px;
+            border: 1px solid var(--accent-gold);
+            margin-bottom: 40px;
+        }
+        .toc h3 { margin-top: 0; border: none; }
+        .toc ul { column-count: 2; }
+        .toc a { text-decoration: none; color: var(--header-red); font-weight: bold; }
+        .toc a:hover { text-decoration: underline; }
+
+        /* Typography */
+        h1, h2, h3 {
+            color: var(--header-red);
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 5px;
+        }
+        h1 { text-align: center; text-transform: uppercase; letter-spacing: 2px; font-size: 2.5em; }
+        
+        /* Layout Utilities */
+        .section { margin-bottom: 50px; scroll-margin-top: 20px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        
+        /* Plot Twist Box */
+        .twist-box {
+            border: 2px dashed var(--header-red);
+            background-color: #fff0f0;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .twist-box strong { color: var(--header-red); text-transform: uppercase; }
+
+        /* Map Section */
+        .map-container {
+            width: 100%;
+            height: 400px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px double var(--accent-gold);
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+        }
+        .map-container img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        /* NPC Cards */
+        .npc-card {
+            border: 1px solid var(--accent-gold);
+            padding: 15px;
+            background: white;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+        .npc-role { font-size: 0.9em; color: #666; font-style: italic; }
+
+        /* Monster Stat Block */
+        .stat-block {
+            background-color: var(--stat-block-bg);
+            border: 2px solid #c9ad6a;
+            padding: 15px;
+            font-family: sans-serif;
+            margin-bottom: 20px;
+            box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
+        }
+        .stat-block h3 { border: none; margin: 0; font-family: serif; font-variant: small-caps; font-size: 1.5em; color: var(--header-red); }
+        .stat-block hr { border: 0; height: 2px; background: var(--header-red); margin: 10px 0; }
+        .stat-line { margin: 5px 0; }
+        
+        /* Loot Table */
+        table.loot-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table.loot-table th, table.loot-table td {
+            border: 1px solid var(--accent-gold);
+            padding: 8px;
+            text-align: left;
+        }
+        table.loot-table th { background: rgba(197, 160, 89, 0.2); }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>{{title}}</h1>
+        <p style="text-align: center;">Target Level: 1-5 | Setting: Forgotten Realms</p>
+    </header>
+
+    <div class="toc">
+        <h3>Campaign Contents</h3>
+        <ul>
+            <li><a href="#setup">1. Setup & Background</a></li>
+            <li><a href="#start">2. Starting Point</a></li>
+            <li><a href="#hooks">3. Plot Hooks</a></li>
+            <li><a href="#mainplot">4. Main Plot Steps</a></li>
+            <li><a href="#twists">5. Plot Twists</a></li>
+            <li><a href="#map">6. Regional Map</a></li>
+            <li><a href="#npcs">7. Main Characters</a></li>
+            <li><a href="#monsters">8. Monsters</a></li>
+            <li><a href="#rewards">9. Rewards</a></li>
+        </ul>
+    </div>
+
+    <div id="setup" class="section">
+        <h2>1. Setup & Background</h2>
+        <p><strong>History:</strong> [Describe the relevant history of the region. Why is the conflict happening now?]</p>
+        <p><strong>Atmosphere:</strong> [Describe the mood: Horror, High Fantasy, Political Intrigue, etc.]</p>
+        <p><strong>The Threat:</strong> [Who or what is the antagonist?]</p>
+    </div>
+
+    <div id="start" class="section">
+        <h2>2. Starting Point</h2>
+        <p>The characters begin their journey at <strong>[Location Name]</strong>.</p>
+        <blockquote>
+            "Read aloud text: You find yourselves gathered in the dusty common room of the Sleeping Giant Taphouse..."
+        </blockquote>
+    </div>
+
+    <div id="hooks" class="section">
+        <h2>3. Plot Hooks</h2>
+        <ul>
+            <li><strong>Hook A (Greed):</strong> The local merchant offers 500gp for the recovery of a lost artifact.</li>
+            <li><strong>Hook B (Heroism):</strong> Goblins have kidnapped the blacksmith's apprentice.</li>
+            <li><strong>Hook C (Personal):</strong> One PC recognizes a tattoo on a villain's arm.</li>
+        </ul>
+    </div>
+
+    <div id="mainplot" class="section">
+        <h2>4. Main Plot Steps</h2>
+        <ol>
+            <li><strong>The Inciting Incident:</strong> The party discovers the map.</li>
+            <li><strong>Rising Action:</strong> Travel through the Whispering Woods.</li>
+            <li><strong>Midpoint:</strong> Defeat the Lieutenant at the old tower.</li>
+            <li><strong>Climax:</strong> Confrontation in the villain's lair.</li>
+            <li><strong>Resolution:</strong> Return to town and celebration (or funeral).</li>
+        </ol>
+    </div>
+
+    <div id="twists" class="section">
+        <h2>5. Plot Twists</h2>
+        <div class="twist-box">
+            <strong>Secret 1:</strong> The Quest Giver is actually working for the BBEG (Big Bad Evil Guy).
+        </div>
+        <div class="twist-box">
+            <strong>Secret 2:</strong> The artifact is not a weapon, but a key to a prison.
+        </div>
+    </div>
+
+    <div id="map" class="section">
+        <h2>6. Regional Map</h2>
+        <div class="map-container">
+            <img src="placeholder_map_image.jpg" alt="Insert Map Image Here" onerror="this.style.display='none'; this.parentNode.innerText='[ INSERT MAP IMAGE HERE ]'">
+        </div>
+        <p><em>Key Locations: 1. The Capital, 2. The Ruins, 3. The Forbidden Forest.</em></p>
+    </div>
+
+    <div id="npcs" class="section">
+        <h2>7. Main Characters</h2>
+        <div class="grid-2">
+            <div class="npc-card">
+                <h3>Lord Aris</h3>
+                <div class="npc-role">The Patron</div>
+                <p><strong>Goal:</strong> Protect his city at all costs.</p>
+                <p><strong>Quirk:</strong> Constantly polishes a signet ring.</p>
+            </div>
+            <div class="npc-card">
+                <h3>Vex</h3>
+                <div class="npc-role">The Antagonist</div>
+                <p><strong>Goal:</strong> Summon the dark entity.</p>
+                <p><strong>Quirk:</strong> Speaks in whispers.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="monsters" class="section">
+        <h2>8. Monsters</h2>
+        
+        <div class="stat-block">
+            <h3>Goblin Boss</h3>
+            <p><em>Small humanoid (goblinoid), neutral evil</em></p>
+            <hr>
+            <div class="stat-line"><strong>Armor Class:</strong> 17 (chain shirt, shield)</div>
+            <div class="stat-line"><strong>Hit Points:</strong> 21 (6d6)</div>
+            <div class="stat-line"><strong>Speed:</strong> 30 ft.</div>
+            <hr>
+            <div class="stat-line">
+                <strong>STR</strong> 10 (+0) | 
+                <strong>DEX</strong> 14 (+2) | 
+                <strong>CON</strong> 10 (+0) | 
+                <strong>INT</strong> 10 (+0) | 
+                <strong>WIS</strong> 8 (-1) | 
+                <strong>CHA</strong> 10 (+0)
+            </div>
+            <hr>
+            <p><strong>Nimble Escape.</strong> The goblin can take the Disengage or Hide action as a bonus action on each of its turns.</p>
+            <p><strong>Multiattack.</strong> The goblin makes two attacks with its scimitar.</p>
+        </div>
+    </div>
+
+    <div id="rewards" class="section">
+        <h2>9. Rewards</h2>
+        <table class="loot-table">
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Type</th>
+                    <th>Value</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Potion of Healing</td>
+                    <td>Consumable</td>
+                    <td>50gp</td>
+                    <td>2d4+2 HP</td>
+                </tr>
+                <tr>
+                    <td>Sword of Warning</td>
+                    <td>Weapon (Magic)</td>
+                    <td>Uncommon</td>
+                    <td>Advantage on Initiative</td>
+                </tr>
+                <tr>
+                    <td>Gemstones</td>
+                    <td>Currency</td>
+                    <td>100gp</td>
+                    <td>Small rubies</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -7,7 +7,10 @@ from botocore.exceptions import ClientError
 class GeminiClient:
     def __init__(self):
         """Initializes the GeminiClient with API credentials."""
-        os.environ["GEMINI_API_KEY"] = self.get_gemini_api_key()
+
+        if(os.environ.get("GEMINI_API_KEY") == None):
+            print("Getting Gemini API Key")
+            os.environ["GEMINI_API_KEY"] = self.get_gemini_api_key()
 
     def get_gemini_api_key(self):
 
@@ -45,21 +48,20 @@ class GeminiClient:
                 print(f"An error occurred: {e.response['Error']['Code']}")
             raise
         else:
-            print(get_secret_value_response)
             # Decrypts secret using the associated KMS key.
             # Depending on whether the secret was a string or binary, one of these fields will be populated.
             if 'SecretString' in get_secret_value_response:
                 secret = get_secret_value_response['SecretString']
-                print(secret)
+                print("Found the secret {secret_name}")
+                
                 # Secrets are often stored as JSON strings, so you might need to parse them
                 json_secret = json.loads(secret)
                 api_key = json_secret["GEMINI_API_KEY"]
         
-        print(api_key)
         return api_key
 
         
-    def generate_text(self, prompt, schema, model_name="gemini-2.0-flash-lite"):
+    def generate_text(self, prompt, schema, model_name="gemini-3-pro-preview"):
         """Generates text using the specified model."""
 
         # model = genai.GenerativeModel(str(model_name))
@@ -67,7 +69,7 @@ class GeminiClient:
         client = genai.Client()
 
         response = client.models.generate_content(
-            model="gemini-2.5-flash",
+            model=model_name,
             contents=prompt,
             config={
                 "response_mime_type": "application/json",
@@ -75,12 +77,12 @@ class GeminiClient:
             })
         return response.text
 
-    def generate_html(self, prompt, model_name="gemini-2.0-flash-lite"):
+    def generate_html(self, prompt, model_name="gemini-3-pro-preview"):
         """Generates HTML using the specified model."""
         client = genai.Client()
 
         response = client.models.generate_content(
-            model="gemini-2.5-flash",
+            model= model_name,
             contents=prompt,
         )
         return response.text

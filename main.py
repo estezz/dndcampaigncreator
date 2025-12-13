@@ -1,4 +1,4 @@
-import src.campaign_generator as campaign_generator
+from src.campaign_generator import Campaign_Generator
 from flask import Flask, jsonify, request, send_file, send_from_directory
 import os
 
@@ -20,7 +20,7 @@ def index():
 def generate_campaign_api():
     campaign_dict = request.get_json()
     print(campaign_dict)
-    campaign = campaign_generator.generate_campaign(campaign_dict)
+    campaign = Campaign_Generator.generate_campaign(campaign_dict)
    
     return campaign.html
             

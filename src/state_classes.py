@@ -30,6 +30,10 @@ class PlotTwist(BaseModel):
     description: str = Field(description="HTML formatted description of the plot twist.")
 
 class Campaign_Schema(BaseModel):
+    title: str
+    setting: str
+    partySize: int
+    characterLevel: int
     setup: str = Field(description="HTML formatted setup and background story for the module.")
     plotHooks: List[PlotHook]
     mainPlotSteps: List[PlotStep]

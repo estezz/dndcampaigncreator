@@ -9,33 +9,32 @@ from jinja2 import Environment, FileSystemLoader
 
 campaign = Campaign()
 
-def generate_campaign(parameter_dict):
-    # Set up the Jinja2 environment to load templates from the current directory
-    env = Environment(loader=FileSystemLoader('.'))
+class Campaign_Generator:
 
-    # Load the template
-    template = env.get_template('./resources/campaign_prompt.j2')
+    def generate_campaign(self, parameter_dict):
+        # Set up the Jinja2 environment to load templates from the current directory
+        env = Environment(loader=FileSystemLoader('.'))
 
-    # Render the template with the provided data
-    prompt = template.render(parameter_dict)
-    clean_prompt = prompt.replace("\n", " ")  
+        # Load the template
+        template = env.get_template('./resources/campaign_prompt.j2')
 
-    gemini_client = GeminiClient();
-    campaign_json_string = gemini_client.generate_text(prompt=clean_prompt, schema=Campaign_Schema.model_json_schema())
-    clean_campaign_json = string_to_json(campaign_json_string)
-    campaign.json = clean_campaign_json
-    prompt = template.render(json=clean_campaign_json)
+        # Render the template with the provided data
+        prompt = template.render(parameter_dict)
+        clean_prompt = prompt.replace("\n", " ")  
 
-    ## Create HTML from the campaign JSON
-    template = env.get_template('./resources/turn_json_to_html.j2')
-    prompt = template.render(json=clean_campaign_json)
-    html = gemini_client.generate_html(prompt=prompt)
-    clean_html = html.replace("```html", "")
-    clean_html = clean_html.replace("```", "")
+        gemini_client = GeminiClient();
+        campaign_json_string = gemini_client.generate_text(prompt=clean_prompt, schema=Campaign_Schema.model_json_schema())
+        clean_campaign_json = string_to_json(campaign_json_string)
+        campaign.json = clean_campaign_json
+        prompt = template.render(json=clean_campaign_json)
 
-    campaign.html = clean_html
-    print("returning html")
-    return campaign
+        ## Create HTML from the campaign JSON
+
+        template = env.get_template('./resources/campaign_html_template.j2')
+        campaign.html = template.render( clean_campaign_json )     
+        print("returning campaign")
+        
+        return campaign
 
 def string_to_json(input_string):
     match = re.search(r'json\s*([\s\S]*?)\s*', input_string, re.DOTALL) 
