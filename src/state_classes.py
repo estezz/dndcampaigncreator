@@ -34,6 +34,8 @@ class Campaign_Schema(BaseModel):
     setting: str
     partySize: int
     characterLevel: int
+    history:str
+    atmosphere: str
     setup: str = Field(description="HTML formatted setup and background story for the module.")
     plotHooks: List[PlotHook]
     mainPlotSteps: List[PlotStep]
