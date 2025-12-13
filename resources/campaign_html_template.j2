@@ -152,19 +152,16 @@
 
     <div id="start" class="section">
         <h2>2. Starting Point</h2>
-        <p>The characters begin their journey at <strong>[Location Name]</strong>.</p>
-        <blockquote>
-            "Read aloud text: You find yourselves gathered in the dusty common room of the Sleeping Giant Taphouse..."
-        </blockquote>
+        <p>{{startingPoint}}</p>
     </div>
 
     <div id="hooks" class="section">
         <h2>3. Plot Hooks</h2>
-        <ul>
-            <li><strong>Hook A (Greed):</strong> The local merchant offers 500gp for the recovery of a lost artifact.</li>
-            <li><strong>Hook B (Heroism):</strong> Goblins have kidnapped the blacksmith's apprentice.</li>
-            <li><strong>Hook C (Personal):</strong> One PC recognizes a tattoo on a villain's arm.</li>
-        </ul>
+         <ol>
+            {% for plotHook in plotHooks %}
+                <li>{{ plotHook.title }} - {{ plotHook.description }}</li>
+            {% endfor %}
+        </ol>
     </div>
 
     <div id="mainplot" class="section">

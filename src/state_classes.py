@@ -37,6 +37,8 @@ class Campaign_Schema(BaseModel):
     history:str
     atmosphere: str
     setup: str = Field(description="HTML formatted setup and background story for the module.")
+    startingPoint: str
+    mapImagePrompt: str
     plotHooks: List[PlotHook]
     mainPlotSteps: List[PlotStep]
     mainCharacters: List[Character]
