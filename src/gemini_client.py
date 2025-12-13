@@ -61,7 +61,7 @@ class GeminiClient:
         return api_key
 
         
-    def generate_text(self, prompt, schema, model_name="gemini-3-pro-preview"):
+    def generate_text(self, prompt, schema, model_name="gemini-2.5-flash"):
         """Generates text using the specified model."""
 
         # model = genai.GenerativeModel(str(model_name))
