@@ -167,22 +167,20 @@
     <div id="mainplot" class="section">
         <h2>4. Main Plot Steps</h2>
         <ol>
-            <li><strong>The Inciting Incident:</strong> The party discovers the map.</li>
-            <li><strong>Rising Action:</strong> Travel through the Whispering Woods.</li>
-            <li><strong>Midpoint:</strong> Defeat the Lieutenant at the old tower.</li>
-            <li><strong>Climax:</strong> Confrontation in the villain's lair.</li>
-            <li><strong>Resolution:</strong> Return to town and celebration (or funeral).</li>
+            {% for plotStep in mainPlotSteps %}
+                <li>{{ plotStep.title }} - {{ plotStep.description }}</li>
+            {% endfor %}
         </ol>
     </div>
 
     <div id="twists" class="section">
         <h2>5. Plot Twists</h2>
-        <div class="twist-box">
-            <strong>Secret 1:</strong> The Quest Giver is actually working for the BBEG (Big Bad Evil Guy).
-        </div>
-        <div class="twist-box">
-            <strong>Secret 2:</strong> The artifact is not a weapon, but a key to a prison.
-        </div>
+            {% for plotTwist in generatedPlotTwists %}
+                <div class="twist-box">
+                    <strong>{{ plotTwist.title }}</strong>
+                    <p>{{ plotTwist.description }}</p>
+                </div>
+            {% endfor %}
     </div>
 
     <div id="map" class="section">
