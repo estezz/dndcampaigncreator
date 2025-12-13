@@ -4,6 +4,8 @@ import os
 
 app = Flask(__name__)
 campaign_dict = {}
+campaign_generator = Campaign_Generator()
+
 
 @app.route("/")
 def index():
@@ -20,7 +22,7 @@ def index():
 def generate_campaign_api():
     campaign_dict = request.get_json()
     print(campaign_dict)
-    campaign = Campaign_Generator.generate_campaign(campaign_dict)
+    campaign = campaign_generator.generate_campaign(campaign_dict)
    
     return campaign.html
             
