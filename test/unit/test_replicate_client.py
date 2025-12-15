@@ -40,7 +40,7 @@ class TestReplicateClient:
         }
 
         # Act
-        client.generate_image(prompt)
+        client.generate_image_url(prompt)
 
         # Assert
         # Check if replicate.run was called correctly

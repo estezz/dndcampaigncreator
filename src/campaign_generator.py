@@ -10,6 +10,7 @@ from jinja2 import Environment, FileSystemLoader
 import base64
 
 campaign = Campaign()
+replicate_client = ReplicateClient()
 
 class Campaign_Generator:
 
@@ -29,7 +30,7 @@ class Campaign_Generator:
         clean_campaign_json = string_to_json(campaign_json_string)
         campaign.json = clean_campaign_json
 
-        self.add_images_to_json()
+        self.add_images_to_json(campaign.json)
 
         ## Create HTML from the campaign JSON
         template = env.get_template('./resources/campaign_html_template.j2')
@@ -38,18 +39,27 @@ class Campaign_Generator:
         
         return campaign
 
-    def add_images_to_json(self):
-        #replicate_client = ReplicateClient()
-        
-        image = file_to_base64_string("my-image.png")
+    def add_images_to_json(self, dictionary):
+        """ use the promt in the json to create an image
+            then add the image to the json
+        """
+        for key, value in dictionary.items():
+            if isinstance(value, dict):
+                dictionary[key] = self.add_images_to_json(value, key, replace_value)
+            if "Image" in key:
+                image_url = replicate_client.generate_image_url(value)
+                dictionary["mapUrl"] = image_url
 
-        campaign.images.append(image)
-
-        replace_item(campaign.json, "rewardsImagePrompt", image)
-        replace_item(campaign.json, "mapImagePrompt", image)
+        return dictionary
 
 
+def generate_image():
+    #image = campaign_generator_utils.file_to_base64_string('my-image.png')
+    replicate_client = ReplicateClient()
+    image = replicate_client.generate_image_url("a dog in a park");
 
+    html = f"<img src=\"{image}\" class=\"img-fluid\" alt=\"Description of the image\">"
+    return html
 
 def string_to_json(input_string):
     match = re.search(r'json\s*([\s\S]*?)\s*', input_string, re.DOTALL) 

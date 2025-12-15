@@ -29,6 +29,11 @@ class PlotTwist(BaseModel):
     title: str
     description: str = Field(description="HTML formatted description of the plot twist.")
 
+class Image(BaseModel):
+    url: str
+    description: str 
+    prompt: str    
+
 class Campaign_Schema(BaseModel):
     title: str
     setting: str
@@ -38,7 +43,7 @@ class Campaign_Schema(BaseModel):
     atmosphere: str
     setup: str = Field(description="HTML formatted setup and background story for the module.")
     startingPoint: str
-    mapImagePrompt: str
+    mapImagePrompt: Image
     plotHooks: List[PlotHook]
     mainPlotSteps: List[PlotStep]
     mainCharacters: List[Character]

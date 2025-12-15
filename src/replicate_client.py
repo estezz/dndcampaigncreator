@@ -1,13 +1,16 @@
 import replicate
 import os, boto3, json
+from botocore.exceptions import ClientError
 
 class ReplicateClient:
     def __init__(self):
-        api_token = self.get_gemini_api_key()
-        self.client = replicate.Client(api_token=api_token)
+        if not os.environ["FLASK_DEBUG"]:
+            api_token = self.get_replicate_api_key()
+            self.client = replicate.Client(api_token=api_token)
 
-        self.api_token = api_token
-    def get_gemini_api_key(self):
+            self.api_token = api_token
+
+    def get_replicate_api_key(self):
 
         secret_name = "REPLICATE_API_KEY"
         region_name = "us-east-2"
@@ -55,8 +58,10 @@ class ReplicateClient:
         
         return api_key
 
-    def generate_image(self, prompt):
-        
+    def generate_image_url(self, prompt):
+        if os.environ["FLASK_DEBUG"]:
+            return "test.com"
+            
         output = self.client.run(
             "bytedance/seedream-4",
             input={
@@ -83,7 +88,7 @@ class ReplicateClient:
 def main():
     token = os.environ["REPLICATE_API_TOKEN"] 
     client = ReplicateClient(token)
-    client.generate_image("A top-down battle map of a subterranean grotto, with a large, dark pool of water in the center. A crude stone altar covered in black mud sits on a raised dais, glowing with a faint, purple light from a dark crystal. Tattered cages holding prisoners line one wall, and multiple dripping tunnels lead into the chamber.");
+    client.generate_image_url("A top-down battle map of a subterranean grotto, with a large, dark pool of water in the center. A crude stone altar covered in black mud sits on a raised dais, glowing with a faint, purple light from a dark crystal. Tattered cages holding prisoners line one wall, and multiple dripping tunnels lead into the chamber.");
 
 if __name__ == "__main__":
     main()

@@ -32,7 +32,7 @@ def generate_campaign_api():
 def generate_image():
     #image = campaign_generator_utils.file_to_base64_string('my-image.png')
     replicate_client = ReplicateClient()
-    image = replicate_client.generate_image("a dog in a park");
+    image = replicate_client.generate_image_url("a dog in a park");
 
     html = f"<img src=\"{image}\" class=\"img-fluid\" alt=\"Description of the image\">"
     return html
