@@ -7,6 +7,7 @@ from src.state_classes import Campaign
 from src.replicate_client import ReplicateClient
 
 from jinja2 import Environment, FileSystemLoader    
+import base64
 
 campaign = Campaign()
 
@@ -95,6 +96,7 @@ def file_to_base64_string(filename):
         base64_string = encoded_content_bytes.decode('ascii')
         
         return base64_string
+
     except FileNotFoundError:
         return f"Error: The file '{filename}' was not found."
     except Exception as e:

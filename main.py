@@ -1,4 +1,5 @@
 from src.campaign_generator import Campaign_Generator
+import src.campaign_generator as campaign_generator_utils
 from flask import Flask, jsonify, request, send_file, send_from_directory
 import os
 
@@ -25,7 +26,16 @@ def generate_campaign_api():
     campaign = campaign_generator.generate_campaign(campaign_dict)
    
     return campaign.html
-            
+
+@app.route('/api/image', methods=['GET'])
+def generate_image():
+    #image = campaign_generator_utils.file_to_base64_string('my-image.png')
+    replicate_client = ReplicateClient()
+    image = replicate_client.generate_image("a dog in a park");
+
+    html = f"<img src=\"data:image/[image_type];base64,{image}\" alt=\"Description of the image\">"
+    return html
+
 @app.route('/<path:path>')
 def serve_static(path):
     return send_from_directory('web', path)
