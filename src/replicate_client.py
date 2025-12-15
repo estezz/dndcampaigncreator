@@ -1,10 +1,11 @@
 import replicate
 import os, boto3, json
 
+
 class ReplicateClient:
     def __init__(self):
         api_token = self.get_gemini_api_key()
-        replicate.Client(api_token=api_token)
+        client = replicate.Client(api_token=api_token)
 
         self.api_token = api_token
     def get_gemini_api_key(self):
@@ -57,7 +58,7 @@ class ReplicateClient:
 
     def generate_image(self, prompt):
         
-        output = replicate.run(
+        output = client.run(
             "bytedance/seedream-4",
             input={
                 "size": "2K",
