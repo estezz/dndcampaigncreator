@@ -64,7 +64,7 @@ class GeminiClient:
     def generate_text(self, prompt, schema, model_name="gemini-2.5-flash"):
         """Generates text using the specified model."""
         
-        if  os.environ["FLASK_DEBUG"]:
+        if  ["FLASK_DEBUG"] in os.environ:
             return "test"
 
         # model = genai.GenerativeModel(str(model_name))
