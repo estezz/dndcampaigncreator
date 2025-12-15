@@ -1,5 +1,5 @@
 import replicate
-import os, boto3
+import os, boto3, json
 
 class ReplicateClient:
     def __init__(self):
