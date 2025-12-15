@@ -2,7 +2,8 @@ import replicate
 import os
 
 class ReplicateClient:
-    def __init__(self, api_token):
+    def __init__(self):
+        api_token = os.environ["REPLICATE_API_TOKEN"]
         self.api_token = api_token
 
     def generate_image(self, prompt):

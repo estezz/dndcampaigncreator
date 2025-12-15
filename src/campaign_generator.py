@@ -4,6 +4,7 @@ import re
 from src.gemini_client import GeminiClient
 from src.state_classes import Campaign_Schema
 from src.state_classes import Campaign
+from src.replicate_client import ReplicateClient
 
 from jinja2 import Environment, FileSystemLoader    
 
@@ -26,15 +27,28 @@ class Campaign_Generator:
         campaign_json_string = gemini_client.generate_text(prompt=clean_prompt, schema=Campaign_Schema.model_json_schema())
         clean_campaign_json = string_to_json(campaign_json_string)
         campaign.json = clean_campaign_json
-        prompt = template.render(json=clean_campaign_json)
+
+        self.add_images_to_json()
 
         ## Create HTML from the campaign JSON
-
         template = env.get_template('./resources/campaign_html_template.j2')
         campaign.html = template.render( clean_campaign_json )     
         print("returning campaign")
         
         return campaign
+
+    def add_images_to_json(self):
+        replicate_client = ReplicateClient()
+        
+        image = file_to_base64_string("my-image.png")
+
+        campaign.images.append(image)
+
+        replace_item(campaign.json, "rewardsImagePrompt", image)
+        replace_item(campaign.json, "mapImagePrompt", image)
+
+
+
 
 def string_to_json(input_string):
     match = re.search(r'json\s*([\s\S]*?)\s*', input_string, re.DOTALL) 
@@ -53,16 +67,35 @@ def string_to_json(input_string):
     return clean_json
 
 
-def find_key_recursive(obj, target_key, return_dict):
+# Source - https://stackoverflow.com/a/45335542
+# Posted by Farmer Joe, modified by community. See post 'Timeline' for change history
+# Retrieved 2025-12-13, License - CC BY-SA 3.0
 
-    if isinstance(obj, dict):
-        for key, value in obj.items():
-            if key == target_key:
-                print(f"Found '{target_key}' with value: {value} and name {value['name']}")
-                return_dict[value['name']] = value
-            else:
-                find_key_recursive(value, target_key, return_dict=return_dict)
-    elif isinstance(obj, list):
-        for item in obj:
-            find_key_recursive(item, target_key,return_dict=return_dict)
-            
+def replace_item(obj, key, replace_value):
+    for k, v in obj.items():
+        if isinstance(v, dict):
+            obj[k] = replace_item(v, key, replace_value)
+    if key in obj:
+        obj[key] = replace_value
+    return obj
+
+def file_to_base64_string(filename):
+    """
+    Reads a file into memory and returns its content as a Base64-encoded string.
+    """
+    try:
+        # Step 1 & 2: Open file in binary mode and read bytes
+        with open(filename, 'rb') as file_in:
+            file_content_bytes = file_in.read()
+        
+        # Step 3: Encode the bytes into Base64 format (results in bytes again)
+        encoded_content_bytes = base64.b64encode(file_content_bytes)
+        
+        # Step 4: Decode the Base64 bytes into a standard ASCII string
+        base64_string = encoded_content_bytes.decode('ascii')
+        
+        return base64_string
+    except FileNotFoundError:
+        return f"Error: The file '{filename}' was not found."
+    except Exception as e:
+        return f"An error occurred: {e}"
