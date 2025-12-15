@@ -76,9 +76,7 @@ class ReplicateClient:
         print(output[0].url)
         #=> "http://example.com"
 
-        # To write the file to disk:
-        with open("my-image.png", "wb") as file:
-            file.write(output[0].read())
+        return output[0].url
 
 
 

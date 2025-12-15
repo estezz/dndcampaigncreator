@@ -34,7 +34,7 @@ def generate_image():
     replicate_client = ReplicateClient()
     image = replicate_client.generate_image("a dog in a park");
 
-    html = f"<img src=\"data:image/[image_type];base64,{image}\" alt=\"Description of the image\">"
+    html = f"<img src=\"image\" class=\"img-fluid\" alt=\"Description of the image\">"
     return html
 
 @app.route('/<path:path>')
