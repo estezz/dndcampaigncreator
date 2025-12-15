@@ -38,7 +38,7 @@ class Campaign_Generator:
         return campaign
 
     def add_images_to_json(self):
-        replicate_client = ReplicateClient()
+        #replicate_client = ReplicateClient()
         
         image = file_to_base64_string("my-image.png")
 
