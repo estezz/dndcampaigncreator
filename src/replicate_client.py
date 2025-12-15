@@ -1,11 +1,10 @@
 import replicate
 import os, boto3, json
 
-
 class ReplicateClient:
     def __init__(self):
         api_token = self.get_gemini_api_key()
-        client = replicate.Client(api_token=api_token)
+        self.client = replicate.Client(api_token=api_token)
 
         self.api_token = api_token
     def get_gemini_api_key(self):
