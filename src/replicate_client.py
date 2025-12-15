@@ -58,7 +58,7 @@ class ReplicateClient:
 
     def generate_image(self, prompt):
         
-        output = client.run(
+        output = self.client.run(
             "bytedance/seedream-4",
             input={
                 "size": "2K",
