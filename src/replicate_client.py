@@ -51,7 +51,7 @@ class ReplicateClient:
                 
                 # Secrets are often stored as JSON strings, so you might need to parse them
                 json_secret = json.loads(secret)
-                api_key = json_secret["GEMINI_API_KEY"]
+                api_key = json_secret["REPLICATE_API_KEY"]
         
         return api_key
 
