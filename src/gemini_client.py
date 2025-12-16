@@ -11,61 +11,49 @@ class GeminiClient:
         """Initializes the Gemini client with an API key."""
         self.api_key = self._get_api_key()
         print(f"Using API key: {self.api_key}")
-        
+
         self.client = genai.Client(api_key=self.api_key)
 
     def _get_api_key(self):
+        secret_name = "GEMINI_API_KEY"
+        region_name = "us-east-2"
+
+        # Create a Secrets Manager client
+        session = boto3.session.Session()
+        client = session.client(
+            service_name='secretsmanager',
+            region_name=region_name
+        )
+
         api_key=""
-        """
-        Retrieves the Gemini API key from environment variables or a JSON file.
-
-        This function first checks for the "GEMINI_API_KEY" environment variable.
-        If not found, it looks for a "secrets.json" file in the parent directory,
-        expecting a "GEMINI_API_KEY" key within the JSON.
-
-        Returns:
-            The Gemini API key.
-
-        Raises:
-            SystemExit: If the API key is not found in either the environment
-                        variables or the "secrets.json" file.
-        """
-        if "GEMINI_API_KEY" in os.environ:
-            return os.environ["GEMINI_API_KEY"]
+        
+        try:
+            get_secret_value_response = client.get_secret_value(
+                SecretId=secret_name
+            )
+        except ClientError as e:
+            # Handle exceptions as appropriate for your application
+            if e.response['Error']['Code'] == 'ResourceNotFoundException':
+                print(f"The requested secret {secret_name} was not found.")
+            elif e.response['Error']['Code'] == 'DecryptionFailureException':
+                # Secrets Manager can't decrypt the protected secret text using the provided KMS key
+                print("Secrets Manager can't decrypt the secret value.")
+            elif e.response['Error']['Code'] == 'InternalServiceErrorException':
+                # An error occurred on the server side
+                print("An internal service error occurred.")
+            elif e.response['Error']['Code'] == 'InvalidParameterException':
+                print("The request had invalid parameters.")
+            elif e.response['Error']['Code'] == 'InvalidRequestException':
+                print("The request was invalid, e.g., secret is scheduled for deletion.")
+            else:
+                print(f"An error occurred: {e.response['Error']['Code']}")
+            raise
         else:
-            # Look for secrets.json in the parent directory
-            # This is not a robust way to handle secrets in a production application
-            # but is used for this sample.
-            # See https://cloud.google.com/secret-manager/docs/best-practices
-            # for more information on how to handle secrets.
-            current_dir = os.path.dirname(os.path.abspath(__file__))
-            parent_dir = os.path.dirname(current_dir)
-            secrets_path = os.path.join(parent_dir, "secrets.json")
-
-            if os.path.exists(secrets_path):
-                with open(secrets_path) as f:
-                    secrets = json.load(f)
-                    if "GEMINI_API_KEY" in secrets:
-                        return secrets["GEMINI_API_KEY"]
-
-            # For secrets stored in Google Cloud Secret Manager
-            if "GEMINI_API_KEY_SECRET" in os.environ:
-                secret_id = os.environ["GEMINI_API_KEY_SECRET"]
-                
-                # Import the Secret Manager client library.
-                from google.cloud import secretmanager
-
-                # Create the Secret Manager client.
-                client = secretmanager.SecretManagerServiceClient()
-
-                # Build the resource name of the secret version.
-                name = f"{secret_id}/versions/latest"
-
-                # Access the secret version.
-                response = client.access_secret_version(request={"name": name})
-                
-                # Get the secret payload.
-                secret = response.payload.data.decode("UTF-8")
+            # Decrypts secret using the associated KMS key.
+            # Depending on whether the secret was a string or binary, one of these fields will be populated.
+            if 'SecretString' in get_secret_value_response:
+                secret = get_secret_value_response['SecretString']
+                print("Found the secret {secret_name}")
                 
                 # Secrets are often stored as JSON strings, so you might need to parse them
                 json_secret = json.loads(secret)
