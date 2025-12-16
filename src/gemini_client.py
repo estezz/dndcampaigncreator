@@ -4,6 +4,8 @@ import os
 import boto3, json
 from botocore.exceptions import ClientError
 import google.genai.errors
+import backoff
+
 
 class GeminiClient:
     def __init__(self):
