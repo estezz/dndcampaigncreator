@@ -3,6 +3,7 @@ from google import genai
 import os
 import boto3, json
 from botocore.exceptions import ClientError
+import google.genai.errors.ClientError
 
 class GeminiClient:
     def __init__(self):
@@ -60,7 +61,13 @@ class GeminiClient:
         
         return api_key
 
-        
+    @backoff.on_exception(
+        backoff.expo,
+        google.genai.errors.ClientError,
+        max_tries=5,
+        factor=2,
+        jitter=backoff.full_jitter
+    )    
     def generate_text(self, prompt, schema, model_name="gemini-2.5-flash"):
         """Generates text using the specified model."""
         
