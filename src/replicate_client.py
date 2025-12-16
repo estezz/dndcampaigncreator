@@ -1,6 +1,7 @@
 import replicate
 import os, boto3, json
 from botocore.exceptions import ClientError
+from replicate.exceptions import ReplicateError
 
 class ReplicateClient:
     def __init__(self):
@@ -61,21 +62,24 @@ class ReplicateClient:
     def generate_image_url(self, prompt):
         if "FLASK_DEBUG" in os.environ:
             return "test.com"
-
-        output = self.client.run(
-            "bytedance/seedream-4",
-            input={
-                "size": "2K",
-                "width": 2048,
-                "height": 2048,
-                "prompt": prompt,
-                "max_images": 1,
-                "image_input": [],
-                "aspect_ratio": "4:3",
-                "enhance_prompt": True,
-                "sequential_image_generation": "disabled"
-            }
-        )
+        try:
+            output = self.client.run(
+                "bytedance/seedream-4",
+                input={
+                    "size": "2K",
+                    "width": 2048,
+                    "height": 2048,
+                    "prompt": prompt,
+                    "max_images": 1,
+                    "image_input": [],
+                    "aspect_ratio": "4:3",
+                    "enhance_prompt": True,
+                    "sequential_image_generation": "disabled"
+                }
+            )
+        except ReplicateError  as e:
+            print(e)
+            print( f"prompt: {prompt} ")
 
         # To access the file URL:
         print(output[0].url)
