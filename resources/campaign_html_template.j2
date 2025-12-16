@@ -152,7 +152,8 @@
 
     <div id="start" class="section">
         <h2>2. Starting Point</h2>
-        <p>{{startingPoint}}</p>
+        <img> src={{startingPointImage.url}} alt={{startingPointImage.description}} style="map" width="100%">
+        <p></p>
     </div>
 
     <div id="hooks" class="section">
@@ -194,43 +195,58 @@
     <div id="npcs" class="section">
         <h2>7. Main Characters</h2>
         <div class="grid-2">
-            <div class="npc-card">
-                <h3>Lord Aris</h3>
-                <div class="npc-role">The Patron</div>
-                <p><strong>Goal:</strong> Protect his city at all costs.</p>
-                <p><strong>Quirk:</strong> Constantly polishes a signet ring.</p>
-            </div>
-            <div class="npc-card">
-                <h3>Vex</h3>
-                <div class="npc-role">The Antagonist</div>
-                <p><strong>Goal:</strong> Summon the dark entity.</p>
-                <p><strong>Quirk:</strong> Speaks in whispers.</p>
-            </div>
+            {% for character in mainCharacters %}
+                <div class="npc-card">
+                    <h3>{{character.name}</h3>
+                    <div class="npc-role">{{character.role}}</div>
+                    <p><strong>Goal:</strong> {{character.goal}}</p>
+                    <p><strong>Quirk:</strong> {{character.quirk}}</p>
+                </div>
+           {% endfor %}
         </div>
     </div>
 
     <div id="monsters" class="section">
         <h2>8. Monsters</h2>
-        
+            {% for monster in monsters %}
+        name: str
+    image: Image
+    AC: int
+    Initiative: int
+    HP : int
+    Speed: int  
+    Swim : int
+    Str: int
+    Dex: int
+    Con: int
+    Int: int
+    Wis: int
+    Cha: int
+    CR: int
+    XP: int
+    PB: int
+    Traits: str
+    description: str 
         <div class="stat-block">
-            <h3>Goblin Boss</h3>
-            <p><em>Small humanoid (goblinoid), neutral evil</em></p>
+            <h3>{{monster.name}}</h3>
+            <p><em>{{monster.description}}</em></p>
             <hr>
-            <div class="stat-line"><strong>Armor Class:</strong> 17 (chain shirt, shield)</div>
-            <div class="stat-line"><strong>Hit Points:</strong> 21 (6d6)</div>
-            <div class="stat-line"><strong>Speed:</strong> 30 ft.</div>
+            <div class="stat-line"><strong>Armor Class:</strong> {{monster.AC}}</div>
+            <div class="stat-line"><strong>Hit Points:</strong>{{monster.HP}} (</div>
+            <div class="stat-line"><strong>Speed:</strong>{{monster.Speed}}</div>
+            <div class="stat-line"><strong>Swim:</strong>{{monster.Swim}}</div>
+            <div class="stat-line"><strong>Initiative:</strong>{{monster.Initiative}}</div>
             <hr>
             <div class="stat-line">
-                <strong>STR</strong> 10 (+0) | 
-                <strong>DEX</strong> 14 (+2) | 
-                <strong>CON</strong> 10 (+0) | 
-                <strong>INT</strong> 10 (+0) | 
-                <strong>WIS</strong> 8 (-1) | 
-                <strong>CHA</strong> 10 (+0)
+                <strong>STR</strong> {{monster.Str}} (+{{monster.Str - 10}}) | 
+                <strong>DEX</strong> {{monster.Dex}} (+{{monster.Dex - 10) | 
+                <strong>CON</strong> {{monster.Con}} (+{{monster.Con - 10}}) | 
+                <strong>INT</strong> {{monster.Int}} (+{{monster.Int - 10}}) | 
+                <strong>WIS</strong> {{monster.Wis}} (+{{monster.Wis - 10}}) | 
+                <strong>CHA</strong> {{monster.Cha}} (+0)
             </div>
             <hr>
-            <p><strong>Nimble Escape.</strong> The goblin can take the Disengage or Hide action as a bonus action on each of its turns.</p>
-            <p><strong>Multiattack.</strong> The goblin makes two attacks with its scimitar.</p>
+            <p><strong>Nimble Escape.</strong>{{monster.Traits}}</p>
         </div>
     </div>
 

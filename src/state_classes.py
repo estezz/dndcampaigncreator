@@ -5,7 +5,7 @@ class Image(BaseModel):
     url: str
     description: str 
     prompt: str    
-    
+
 class PlotHook(BaseModel):
     title: str
     description: str = Field(description="HTML formatted description of the plot hook.")
@@ -18,11 +18,30 @@ class Character(BaseModel):
     name: str
     image: Image
     role: str
+    goal: str
+    quirk: str
     description: str = Field(description="HTML formatted description of the character.")    
 
 class Monster(BaseModel):
     name: str
-    statBlock: str = Field(description="HTML formatted stat block for the monster.")
+    image: Image
+    AC: int
+    Initiative: int
+    HP : int
+    Speed: int  
+    Swim : int
+    Str: int
+    Dex: int
+    Con: int
+    Int: int
+    Wis: int
+    Cha: int
+    CR: int
+    XP: int
+    PB: int
+    Traits: str
+    description: str 
+
 
 class Reward(BaseModel):
     name: str
@@ -51,7 +70,7 @@ class Campaign_Schema(BaseModel):
     plotHooks: List[PlotHook]
     mainPlotSteps: List[PlotStep]
     mainCharacters: List[Character]
-    monsterStatBlocks: List[Monster]
+    monsters: List[Monster]
     rewardsImagePrompt: Image
     rewardsList: List[Reward]
     generatedMagicItems: List[MagicItem]
