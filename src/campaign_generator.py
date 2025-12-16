@@ -52,7 +52,7 @@ class Campaign_Generator:
             if "Image" in key:
                 print(f"prompt: {value['prompt']}")
                 image_url = replicate_client.generate_image_url(value["prompt"])
-                dictionary["url"] = image_url
+                value["url"] = image_url
 
         return dictionary
 
