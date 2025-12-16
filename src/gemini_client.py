@@ -1,6 +1,8 @@
 from google import genai
+from google.genai import types
 import os
 import json
+
 
 class GeminiClient:
     """A client for interacting with the Gemini API."""
@@ -8,7 +10,7 @@ class GeminiClient:
     def __init__(self):
         """Initializes the Gemini client with an API key."""
         self.api_key = self._get_api_key()
-        genai.configure(api_key=self.api_key)
+        self.client = genai.Client(api_key=self.api_key)
 
     def _get_api_key(self):
         api_key=""
@@ -81,10 +83,6 @@ class GeminiClient:
             except FileNotFoundError:
                 print(f"Error: The file '{filename}' was not found.")
                 return "Mock response not found."
-
-        # model = genai.GenerativeModel(str(model_name))
-        # response = model.generate_content(prompt)
-        client = genai.Client()
 
         response = client.models.generate_content(
             model=model_name,

@@ -4,8 +4,8 @@ autopep8
 pytest
 
 # App
-google-genai # Client library for the Gemini API
-Pillow # PIL image-loading library
+google-genai>=1.55.0 
+Pillow 
 flask
 google.generativeai
 Jinja2
