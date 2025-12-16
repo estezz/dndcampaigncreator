@@ -198,7 +198,7 @@
             {% for character in mainCharacters %}
                 <div class="npc-card">
                     <h3>{{character.name}}</h3>
-                    <img src="{{character.image}}" alt="{{character.name}}" style="image" width="90%">
+                    <img src="{{character.image.url}}" alt="{{character.name}}" style="image" width="90%">
                     <div class="npc-role">{{character.role}}</div>
                     <p><strong>Goal:</strong> {{character.goal}}</p>
                     <p><strong>Quirk:</strong> {{character.quirk}}</p>
@@ -212,7 +212,7 @@
             {% for monster in monsters %}
                 <h3>{{monster.name}}</h3>
                 <p><em>{{monster.description}}</em></p>
-                <img src="{{monster.image}}" alt="{{monster.name}}" style="map" width="100%">
+                <img src="{{monster.image.url}}" alt="{{monster.name}}" style="map" width="100%">
                 
                 <div class="stat-block">
                     <hr>
