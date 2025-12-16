@@ -51,6 +51,7 @@ class Campaign_Generator:
                 dictionary[key] = self.add_images_to_json(dictionary=value)
             if "Image" in key:
                 image_url = replicate_client.generate_image_url(value["prompt"])
+                print(f"image_url: {value['prompt']}")
                 dictionary["url"] = image_url
 
         return dictionary
