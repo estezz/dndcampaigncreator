@@ -59,6 +59,20 @@ class ReplicateClient:
         
         return api_key
 
+    def generate_text(self, prompt):
+        output = replicate.run(
+            "openai/gpt-5",
+            input={
+                "prompt": "Are you AGI?",
+                "messages": [],
+                "verbosity": "medium",
+                "image_input": [],
+                "reasoning_effort": "minimal"
+            }
+        )
+
+        return output
+
     def generate_image_url(self, prompt):
         if "FLASK_DEBUG" in os.environ:
             return "test.com"
