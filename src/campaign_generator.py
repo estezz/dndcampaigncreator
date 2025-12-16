@@ -38,6 +38,7 @@ class Campaign_Generator:
         ## Create HTML from the campaign JSON
         template = env.get_template('./resources/campaign_html_template.j2')
         campaign.html = template.render( clean_campaign_json )     
+        print( f"campaign html: {campaign.html}")
         print("returning campaign")
         
         return campaign
