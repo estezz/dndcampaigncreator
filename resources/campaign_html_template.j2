@@ -198,6 +198,7 @@
             {% for character in mainCharacters %}
                 <div class="npc-card">
                     <h3>{{character.name}}</h3>
+                    <img src="{{character.image}}" alt="{{character.name}}" style="image" width="90%">
                     <div class="npc-role">{{character.role}}</div>
                     <p><strong>Goal:</strong> {{character.goal}}</p>
                     <p><strong>Quirk:</strong> {{character.quirk}}</p>
@@ -209,15 +210,17 @@
     <div id="monsters" class="section">
         <h2>8. Monsters</h2>
             {% for monster in monsters %}
+                <h3>{{monster.name}}</h3>
+                <p><em>{{monster.description}}</em></p>
+                <img src="{{monster.image}}" alt="{{monster.name}}" style="map" width="100%">
+                
                 <div class="stat-block">
-                    <h3>{{monster.name}}</h3>
-                    <p><em>{{monster.description}}</em></p>
                     <hr>
                     <div class="stat-line"><strong>Armor Class:</strong> {{monster.AC}}</div>
-                    <div class="stat-line"><strong>Hit Points:</strong>{{monster.HP}} (</div>
-                    <div class="stat-line"><strong>Speed:</strong>{{monster.Speed}}</div>
-                    <div class="stat-line"><strong>Swim:</strong>{{monster.Swim}}</div>
-                    <div class="stat-line"><strong>Initiative:</strong>{{monster.Initiative}}</div>
+                    <div class="stat-line"><strong>Hit Points:</strong> {{monster.HP}} (</div>
+                    <div class="stat-line"><strong>Speed:</strong> {{monster.Speed}}</div>
+                    <div class="stat-line"><strong>Swim:</strong> {{monster.Swim}}</div>
+                    <div class="stat-line"><strong>Initiative:</strong> {{monster.Initiative}}</div>
                     <hr>
                     <div class="stat-line">
                         <strong>STR</strong> {{monster.Str}} (+{{monster.Str - 10}}) | 
@@ -229,8 +232,8 @@
                     </div>
                     <hr>
                     <p></strong>{{monster.Traits}}</p>
+                </div    
             {% endfor %}
-        </div>
     </div>
 
     <div id="rewards" class="section">
