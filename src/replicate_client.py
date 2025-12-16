@@ -4,7 +4,7 @@ from botocore.exceptions import ClientError
 
 class ReplicateClient:
     def __init__(self):
-        if not ["FLASK_DEBUG"] in os.environ:
+        if not "FLASK_DEBUG" in os.environ:
             api_token = self.get_replicate_api_key()
             self.client = replicate.Client(api_token=api_token)
 
@@ -59,7 +59,7 @@ class ReplicateClient:
         return api_key
 
     def generate_image_url(self, prompt):
-        if n["FLASK_DEBUG"] in os.environ:
+        if "FLASK_DEBUG" in os.environ:
             return "test.com"
 
         output = self.client.run(
