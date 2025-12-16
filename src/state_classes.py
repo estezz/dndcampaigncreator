@@ -11,6 +11,8 @@ class PlotStep(BaseModel):
 
 class Character(BaseModel):
     name: str
+    image: Image
+    role: str
     description: str = Field(description="HTML formatted description of the character.")    
 
 class Monster(BaseModel):
@@ -23,6 +25,7 @@ class Reward(BaseModel):
 
 class MagicItem(BaseModel):
     name: str
+    image: Image
     description: str = Field(description="HTML formatted description of the magic item.")
 
 class PlotTwist(BaseModel):
@@ -42,7 +45,7 @@ class Campaign_Schema(BaseModel):
     history:str
     atmosphere: str
     setup: str = Field(description="HTML formatted setup and background story for the module.")
-    startingPoint: str
+    startingPointImage: Image
     mapImagePrompt: Image
     plotHooks: List[PlotHook]
     mainPlotSteps: List[PlotStep]
