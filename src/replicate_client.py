@@ -76,7 +76,7 @@ class ReplicateClient:
     
     def generate_image_url(self, prompt):
         if "FLASK_DEBUG" in os.environ:
-            return "test.com"
+            return "https://picsum.photos/200/300"
         try:
             output = self.client.run(
                 "bytedance/seedream-4",

@@ -49,7 +49,10 @@ class Campaign_Generator:
         """
         for key, value in dictionary.items():
             if isinstance(value, dict):
-                dictionary[key] = self.add_images_to_json(dictionary=value)
+                self.add_images_to_json(dictionary=value)
+            elif isinstance(value, list):
+                for item in value:
+                    self.add_images_to_json(dictionary=item)
             if "Image" in key or "image" in key:
                 print(f"prompt: {value['prompt']}")
                 image_url = replicate_client.generate_image_url(value["prompt"])
