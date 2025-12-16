@@ -61,7 +61,7 @@ class ReplicateClient:
         
         return api_key
     # Use the 'expo' backoff generator and add jitter
-    @backoff.on_exception(
+    @backoff(
         backoff.expo,
         max_tries=5,
         factor=2,
@@ -82,7 +82,7 @@ class ReplicateClient:
         return output
     
     # Use the 'expo' backoff generator and add jitter
-    @backoff.on_exception(
+    @backoff(
         backoff.expo,
         max_tries=5,
         factor=2,
