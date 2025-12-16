@@ -4,7 +4,6 @@ import os
 import boto3, json
 from botocore.exceptions import ClientError
 import google.genai.errors
-import backoff
 
 
 class GeminiClient:
@@ -62,14 +61,7 @@ class GeminiClient:
                 api_key = json_secret["GEMINI_API_KEY"]
         
         return api_key
-
-    @backoff.on_exception(
-        backoff.expo,
-        google.genai.errors.ClientError,
-        max_tries=5,
-        factor=2,
-        jitter=backoff.full_jitter
-    )    
+  
     def generate_text(self, prompt, schema, model_name="gemini-2.5-flash"):
         """Generates text using the specified model."""
         

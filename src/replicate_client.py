@@ -2,7 +2,6 @@ import replicate
 import os, boto3, json
 from botocore.exceptions import ClientError
 from replicate.exceptions import ReplicateError
-import backoff
 import random
 
 class ReplicateClient:
@@ -60,14 +59,7 @@ class ReplicateClient:
                 api_key = json_secret["REPLICATE_API_KEY"]
         
         return api_key
-    # Use the 'expo' backoff generator and add jitter
-    @backoff.on_exception(
-        backoff.expo,
-        ClientError,
-        max_tries=5,
-        factor=2,
-        jitter=backoff.full_jitter
-    )
+ 
     def generate_text(self, prompt):
         output = replicate.run(
             "openai/gpt-5",
@@ -82,14 +74,6 @@ class ReplicateClient:
 
         return output
     
-    # Use the 'expo' backoff generator and add jitter
-    @backoff.on_exception(
-        backoff.expo,
-        ClientError,
-        max_tries=5,
-        factor=2,
-        jitter=backoff.full_jitter
-    )
     def generate_image_url(self, prompt):
         if "FLASK_DEBUG" in os.environ:
             return "test.com"
