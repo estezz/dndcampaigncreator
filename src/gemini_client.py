@@ -75,7 +75,7 @@ class GeminiClient:
                 print(f"Error: The file '{filename}' was not found.")
                 return "Mock response not found."
 
-        response = client.models.generate_content(
+        response = self.client.models.generate_content(
             model=model_name,
             contents=prompt,
             config={
