@@ -3,7 +3,7 @@ from google import genai
 import os
 import boto3, json
 from botocore.exceptions import ClientError
-import google.genai.errors.ClientError
+import google.genai.errors
 
 class GeminiClient:
     def __init__(self):
