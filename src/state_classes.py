@@ -1,6 +1,11 @@
 from pydantic import BaseModel, Field
 from typing import List, Optional
 
+class Image(BaseModel):
+    url: str
+    description: str 
+    prompt: str    
+    
 class PlotHook(BaseModel):
     title: str
     description: str = Field(description="HTML formatted description of the plot hook.")
@@ -32,10 +37,6 @@ class PlotTwist(BaseModel):
     title: str
     description: str = Field(description="HTML formatted description of the plot twist.")
 
-class Image(BaseModel):
-    url: str
-    description: str 
-    prompt: str    
 
 class Campaign_Schema(BaseModel):
     title: str
