@@ -63,7 +63,7 @@ class ReplicateClient:
     # Use the 'expo' backoff generator and add jitter
     @backoff.on_exception(
         backoff.expo,
-        requests.exceptions.RequestException,
+        ReplicateError,
         max_tries=5,
         factor=2,
         jitter=backoff.full_jitter
@@ -85,7 +85,7 @@ class ReplicateClient:
     # Use the 'expo' backoff generator and add jitter
     @backoff.on_exception(
         backoff.expo,
-        requests.exceptions.RequestException,
+        ReplicateError,
         max_tries=5,
         factor=2,
         jitter=backoff.full_jitter
