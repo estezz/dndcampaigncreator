@@ -48,7 +48,7 @@ class Campaign_Schema(BaseModel):
     mainPlotSteps: List[PlotStep]
     mainCharacters: List[Character]
     monsterStatBlocks: List[Monster]
-    rewardsImagePrompt: str = Field(description="A prompt for a 16:9 image representing the main rewards.")
+    rewardsImagePrompt: Image
     rewardsList: List[Reward]
     generatedMagicItems: List[MagicItem]
     generatedPlotTwists: List[PlotTwist]

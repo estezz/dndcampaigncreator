@@ -1,0 +1,110 @@
+{
+    "title": "The Ash-Wing's Shadow",
+    "setting": "A remote market town called Oakhaven in the foothills of the Grey Mountains, Northern Rhovanion, Middle-earth.",
+    "partySize": 4,
+    "characterLevel": 2,
+    "history": "Oakhaven has long been a peaceful, if isolated, trading post. Legends speak of ancient evils stirring in the Grey Mountains, but they were thought dormant. Recently, a young dragon, known as 'Ash-Wing' for its soot-darkened scales, stirred from a forgotten slumber or was driven from its lair by something darker. It descends upon Oakhaven, not with malice, but with a primal need for treasure and a territorial instinct, leaving destruction in its wake. This dragon is a powerful juvenile, perhaps corrupted by some ancient magic from its deep mountain lair, giving it an unnaturally aggressive temperament.",
+    "atmosphere": "Desperate, tense, with underlying tones of ancient dread and the fragile resilience of good folk. A sense of urgency pervades as the dragon's presence threatens to utterly destroy Oakhaven and scatter its people.",
+    "setup": "<p>The market town of Oakhaven, nestled in the lower foothills of the imposing Grey Mountains, has always been a beacon of trade and community in the wild northern reaches of Rhovanion. Its inns are warm, its merchants are fair, and its folk are hardy. But in recent days, a new, terrifying shadow has fallen upon Oakhaven.</p><p>Reports, initially dismissed as panicked ramblings, spoke of a winged terror from the mountains. Now, there is no denying the truth: a dragon has descended. Not the colossal, ancient beasts of lore, perhaps, but a formidable young wyrm, its scales the colour of burnt ash, its eyes glowing embers. It has already made several devastating passes, scorching homes, scattering livestock, and claiming a section of the town as its own temporary hoard-site. Panic has gripped the populace; many have fled, but countless more are trapped, huddled in cellars or desperately trying to protect what little they have left.</p><p>The town\\u2019s small militia is shattered, its captain gravely wounded. The few remaining brave souls whisper of ancient pacts, forgotten dragon-slaying techniques, or desperate appeals for aid from distant kingdoms. The air is thick with smoke, fear, and the distant, unsettling echo of a reptilian roar. You, a group of travelers passing through or residents of Oakhaven, find yourselves thrust into this sudden nightmare. The fate of Oakhaven, and perhaps even its people, rests in your hands.</p>",
+    "startingPoint": "The players arrive at the outskirts of Oakhaven, witnessing the fresh devastation and panicked refugees fleeing the town. They might be among the first capable individuals to arrive, or they were already in the town when the attacks began.",
+    "mapImagePrompt": {
+      "url": "https://example.com/oakhaven_map.jpg",
+      "description": "A detailed map of Oakhaven and its immediate surroundings, showing burnt-out sections, the presumed dragon's lair (a prominent ruined tower or small cave entrance), and key locations like the town square, the Elder's house, and the collapsed bridge.",
+      "prompt": "Overhead battle map of a small, fortified market town nestled in the foothills of a grey mountain range. Show several areas with scorch marks and partially collapsed buildings. A prominent, partially ruined stone tower or cave entrance is visible on the edge of town, identified as the dragon's temporary lair. Key locations include a central market square, a sturdy tavern, the Elder's house, a collapsed wooden bridge over a small river, and escape routes into surrounding forests. Style: high fantasy, slightly grim, hand-drawn map aesthetic."
+    },
+    "plotHooks": [
+      {
+        "title": "The Desperate Plea",
+        "description": "<p>As the adventurers approach Oakhaven, they encounter a frantic group of refugees, among them a tearful mother clutching her child, begging for help to retrieve her husband, a miller trapped in the burning southern district. She offers a meager pouch of silver and a family heirloom as reward, but more importantly, appeals to their humanity and courage. The town's Elder, a stout but aging man named Brandis, also sends out a call for any brave souls to help organize a rescue and defense.</p>"
+      },
+      {
+        "title": "The Merchant's Ransom",
+        "description": "<p>A wealthy but cowardly merchant, Master Elara, offers a significant sum of gold to any who can retrieve a specific strongbox from his now-burning manor. He claims it contains vital trade agreements, but the adventurers might suspect it holds something more personal or valuable. This task could lead them directly into the more dangerous, dragon-scorched parts of town.</p>"
+      }
+    ],
+    "mainPlotSteps": [
+      {
+        "title": "Ashes and Echoes",
+        "description": "<p>The adventurers arrive at Oakhaven to find chaos. The town is partially ablaze, and the air is thick with smoke and fear. They must navigate the burning streets, rescue trapped townsfolk, fend off opportunistic goblins or wolves drawn by the devastation, and reach the surviving community hub (likely the fortified tavern or the Elder's house). Here, they learn the full extent of the dragon's attacks \\u2013 it's a young, aggressive 'Ash-Wing' dragon, making its temporary lair in the ruined watchtower on the town's northern edge. They discover the town's captain is gravely wounded, and the defenses are broken. Their immediate goal is to establish a safe zone, tend to the wounded, and gather information about the dragon's habits from terrified witnesses.</p>"
+      },
+      {
+        "title": "The Scorched Path and Whispers of the Past",
+        "description": "<p>With a clearer understanding of the threat, the party ventures into the more heavily damaged areas of Oakhaven, including the market square and the northern district leading towards the dragon's temporary lair. They might need to retrieve supplies, find missing townsfolk, or investigate strange occurrences. During their exploration, they might discover evidence that the Ash-Wing is not merely a random beast; perhaps cultists or corrupted creatures are operating in its shadow, or strange, ancient runes are found near its presumed lair. A local scholar or a wise elder might mention ancient tales of dragon-slaying artifacts or rituals once used in the Grey Mountains, hinting at a non-lethal solution or a way to weaken the beast. They might have a skirmish with the dragon's minions or even a brief, terrifying glimpse of the dragon itself from a distance, reinforcing its power.</p>"
+      },
+      {
+        "title": "The Forgotten Tomb and The Wyrm's Bane",
+        "description": "<p>Following clues from Session 2 (perhaps a torn map, a cryptic message, or an old legend), the party learns of an ancient dwarven tomb or a hidden elven glade deep within the foothills. This location is said to hold either a powerful artifact capable of lulling dragons to sleep, a forgotten ritual to bind or banish them, or ancient knowledge about a specific vulnerability of the Ash-Wing lineage. The journey to this place is fraught with peril \\u2013 dangerous wildlife, possibly more of the dragon's corrupted minions, or environmental hazards. Inside the tomb/glade, they must overcome puzzles, traps, and guardians to retrieve the 'Wyrm's Bane' \\u2013 be it an enchanted relic, a scroll of power, or the vital information they need for the final confrontation.</p>"
+      },
+      {
+        "title": "Confrontation at Ash-Wing's Roost",
+        "description": "<p>Equipped with the Wyrm's Bane, the adventurers make their way to the ruined watchtower, now Ash-Wing's roost. The approach is dangerous, with opportunistic creatures or lingering corruptive energies. The final confrontation with the young Ash-Wing dragon will be dynamic. The party can attempt a direct fight (though it will be extremely challenging for Level 2), but the module is designed for them to use the 'Wyrm's Bane' to their advantage. Perhaps the artifact pacifies the dragon, or the ritual weakens it enough for a tactical retreat, or they discover a way to collapse the roost entrance, trapping it. The goal is to neutralize the threat to Oakhaven, not necessarily to slay the dragon outright. The module concludes with Oakhaven saved, the dragon dealt with (at least for now), and the adventurers hailed as heroes, with new mysteries about the Grey Mountains potentially unveiled.</p>"
+      }
+    ],
+    "mainCharacters": [
+      {
+        "name": "Elder Brandis Stonehand",
+        "description": "<p>The stout and weary Elder of Oakhaven. Brandis is in his late fifties, with a weathered face and a once-booming voice now hoarse with worry. He's pragmatic and cares deeply for his people, but he's overwhelmed by the crisis. He offers what little resources the town has left and acts as a central quest-giver, desperate for solutions.</p>"
+      },
+      {
+        "name": "Elara of the Whispering Woods",
+        "description": "<p>A reclusive but wise elven ranger, who rarely ventures into Oakhaven but has watched over the region for decades. She might be found tending to the wounded or offering cryptic advice. Elara knows much of the Grey Mountains' ancient lore and might guide the party towards the 'Wyrm's Bane' or reveal secrets about the Ash-Wing's strange behavior. She is wary of outsiders but respects courage.</p>"
+      },
+      {
+        "name": "Kaelen, Wounded Militia Captain",
+        "description": "<p>A brave but currently incapacitated human warrior, Kaelen was the first to face the Ash-Wing and survived, albeit with severe burns. Though bedridden, he can provide valuable eyewitness accounts of the dragon's attack patterns, its appearance, and the initial panic. He harbors a deep sense of guilt for not being able to protect his town.</p>"
+      }
+    ],
+    "monsterStatBlocks": [
+      {
+        "name": "Ash-Wing Dragon (Young Wyrmling)",
+        "statBlock": "<p><em>Large Dragon, Chaotic Evil</em></p><p><strong>Armor Class</strong> 17 (Natural Armor)</p><p><strong>Hit Points</strong> 75 (10d10 + 20)</p><p><strong>Speed</strong> 30 ft., fly 60 ft.</p><p>STR 16 (+3) DEX 10 (+0) CON 14 (+2) INT 10 (+0) WIS 11 (+0) CHA 13 (+1)</p><p><strong>Saving Throws</strong> Dex +2, Con +4, Wis +2, Cha +3</p><p><strong>Skills</strong> Perception +4, Stealth +2</p><p><strong>Damage Immunities</strong> Fire</p><p><strong>Senses</strong> Blindsight 10 ft., Darkvision 60 ft., Passive Perception 14</p><p><strong>Languages</strong> Draconic</p><p><strong>Challenge</strong> 4 (1,100 XP)</p><p><em><strong>Ash Cloak.</strong></em> When the dragon is hit with a melee attack, its scales shed a cloud of irritating ash. The attacker must succeed on a DC 12 Constitution saving throw or be blinded until the start of their next turn.</p><p><em><strong>Actions</strong></em></p><p><em><strong>Multiattack.</strong></em> The dragon makes two attacks: one with its bite and one with its claws.</p><p><em><strong>Bite.</strong></em> Melee Weapon Attack: +5 to hit, reach 10 ft., one target. Hit: 8 (1d10 + 3) piercing damage plus 3 (1d6) fire damage.</p><p><em><strong>Claws.</strong></em> Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) slashing damage.</p><p><em><strong>Fire Breath (Recharge 5-6).</strong></em> The dragon exhales fire in a 15-foot cone. Each creature in that area must make a DC 12 Dexterity saving throw, taking 21 (6d6) fire damage on a failed save, or half as much damage on a successful one. This ability is used sparingly, mostly to intimidate or clear obstacles, not necessarily to wipe out the party in one go.</p>"
+      },
+      {
+        "name": "Goblin Scavenger",
+        "statBlock": "<p><em>Small Humanoid (Goblinoid), Neutral Evil</em></p><p><strong>Armor Class</strong> 13 (Leather Armor)</p><p><strong>Hit Points</strong> 7 (2d6)</p><p><strong>Speed</strong> 30 ft.</p><p>STR 8 (-1) DEX 14 (+2) CON 10 (+0) INT 10 (+0) WIS 8 (-1) CHA 8 (-1)</p><p><strong>Skills</strong> Stealth +6</p><p><strong>Senses</strong> Darkvision 60 ft., Passive Perception 9</p><p><strong>Languages</strong> Common, Goblin</p><p><strong>Challenge</strong> 1/4 (50 XP)</p><p><em><strong>Nimble Escape.</strong></em> The goblin can take the Disengage or Hide action as a bonus action on each of its turns.</p><p><em><strong>Actions</strong></em></p><p><em><strong>Scimitar.</strong></em> Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) slashing damage.</p><p><em><strong>Shortbow.</strong></em> Ranged Weapon Attack: +4 to hit, range 80/320 ft., one target. Hit: 5 (1d6 + 2) piercing damage.</p>"
+      },
+      {
+        "name": "Dire Wolf",
+        "statBlock": "<p><em>Large Beast, Unaligned</em></p><p><strong>Armor Class</strong> 14 (Natural Armor)</p><p><strong>Hit Points</strong> 37 (5d10 + 10)</p><p><strong>Speed</strong> 50 ft.</p><p>STR 17 (+3) DEX 15 (+2) CON 15 (+2) INT 3 (-4) WIS 12 (+1) CHA 7 (-2)</p><p><strong>Skills</strong> Perception +3, Stealth +4</p><p><strong>Senses</strong> Passive Perception 13</p><p><strong>Languages</strong> -</p><p><strong>Challenge</strong> 1 (200 XP)</p><p><em><strong>Keen Hearing and Smell.</strong></em> The wolf has advantage on Wisdom (Perception) checks that rely on hearing or smell.</p><p><em><strong>Pack Tactics.</strong></em> The wolf has advantage on an attack roll against a creature if at least one of the wolf's allies is within 5 feet of the creature and the ally isn't incapacitated.</p><p><em><strong>Actions</strong></em></p><p><em><strong>Bite.</strong></em> Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) piercing damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone.</p>"
+      }
+    ],
+    "rewardsImagePrompt": "A richly detailed, panoramic image, 16:9 aspect ratio, depicting a hero holding a gleaming, ancient dwarven axe, a silver-threaded cloak draped over their shoulders, standing victoriously over a smoldering, but not dead, young dragon, with a saved Middle-earth town in the background. Rays of sunlight break through lingering smoke, highlighting the hero and the town's resilience. Fantasy art style, epic, vibrant colors.",
+    "rewardsList": [
+      {
+        "name": "Oakhaven's Gratitude",
+        "description": "<p>The surviving townsfolk of Oakhaven offer their eternal gratitude. This manifests as free lodging and meals in any remaining establishment, significant discounts on goods and services, and the unwavering loyalty of the community. Should the party ever return to Oakhaven, they will be welcomed as heroes.</p>"
+      },
+      {
+        "name": "The Elder's Thanks",
+        "description": "<p>Elder Brandis, representing the town, presents the party with a significant sum of 500 gold pieces (shared among the party), gathered from the town's emergency funds and the personal contributions of grateful merchants.</p>"
+      },
+      {
+        "name": "A Map to Future Adventures",
+        "description": "<p>Among the treasures or lore found in the ancient tomb, or gifted by Elara, is a partial, ancient map detailing unexplored regions of the Grey Mountains, hinting at greater secrets, forgotten kingdoms, or other dangers and opportunities for future adventures.</p>"
+      }
+    ],
+    "generatedMagicItems": [
+      {
+        "name": "Wyrm's Whisper Amulet",
+        "description": "<p><em>Wondrous Item, Rare (requires attunement)</em></p><p>This amulet, carved from petrified dragon bone, was once worn by ancient dragon-speakers. While attuned to this amulet, you have advantage on Wisdom (Animal Handling) checks made to influence or calm reptilian creatures, and on Charisma (Persuasion) checks made against dragons. Additionally, once per day, you can cast the <em>Suggestion</em> spell (save DC 13) targeting a dragon or a dragon-kin, with the effect lasting up to 10 minutes (concentration). The suggestion must be related to avoiding conflict or retreating.</p>"
+      },
+      {
+        "name": "Ash-Forged Dagger",
+        "description": "<p><em>Weapon (Dagger), Uncommon</em></p><p>This dagger was crafted by a dwarven smith who witnessed the Ash-Wing's terror and sought to create a weapon against it. Its blade is dark, resembling cooled volcanic ash, and is unnaturally sharp. You gain a +1 bonus to attack and damage rolls made with this magic weapon. Additionally, when you hit a dragon or dragon-kin with this dagger, it deals an extra 1d4 fire damage.</p>"
+      }
+    ],
+    "generatedPlotTwists": [
+      {
+        "title": "The Dragon's True Master",
+        "description": "<p>The Ash-Wing is not acting purely on instinct. It is being subtly influenced or controlled by a darker, more ancient evil stirring in the depths of the Grey Mountains \\u2013 perhaps a sorcerer, a necromancer, or even a more ancient, dormant dragon whose will is extending. The 'Wyrm's Bane' might actually break this influence, revealing the Ash-Wing to be a frightened, confused creature, rather than truly malevolent. This twist could set up a larger, higher-level campaign.</p>"
+      },
+      {
+        "title": "Oakhaven's Secret Shame",
+        "description": "<p>The Ash-Wing's appearance is not entirely random. Generations ago, the founders of Oakhaven raided an ancient dwarven hoard, unknowingly disturbing a dragon's resting place or stealing a potent magical artifact that awakened the Ash-Wing. A surviving dwarven elder (or a ghostly apparition in the tomb) might reveal this truth, making the party question the morality of their quest and potentially forcing them to make amends rather than simply slaying the beast.</p>"
+      },
+      {
+        "title": "The False Wyrm",
+        "description": "<p>The 'dragon' ravaging Oakhaven is not a true dragon, but a magically created simulacrum or a powerful, scaled beast controlled by a hidden cult or a dark mage who seeks to destabilize the region for their own nefarious purposes. The true dragon might be slumbering deeply, or even dead, and this 'Ash-Wing' is merely a puppet. Defeating it would expose the orchestrator behind the attacks, shifting the narrative from beast-slaying to uncovering a conspiracy.</p>"
+      }
+    ]
+  }
