@@ -31,6 +31,8 @@ class Campaign_Generator:
         campaign.json = clean_campaign_json
 
         self.add_images_to_json(campaign.json)
+        print(campaign.json)
+
 
         ## Create HTML from the campaign JSON
         template = env.get_template('./resources/campaign_html_template.j2')
@@ -45,7 +47,7 @@ class Campaign_Generator:
         """
         for key, value in dictionary.items():
             if isinstance(value, dict):
-                dictionary[key] = self.add_images_to_json(value, key, replace_value)
+                dictionary[key] = self.add_images_to_json(dictionary=value)
             if "Image" in key:
                 image_url = replicate_client.generate_image_url(value)
                 dictionary["mapUrl"] = image_url
