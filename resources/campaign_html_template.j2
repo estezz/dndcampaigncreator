@@ -209,44 +209,26 @@
     <div id="monsters" class="section">
         <h2>8. Monsters</h2>
             {% for monster in monsters %}
-        name: str
-    image: Image
-    AC: int
-    Initiative: int
-    HP : int
-    Speed: int  
-    Swim : int
-    Str: int
-    Dex: int
-    Con: int
-    Int: int
-    Wis: int
-    Cha: int
-    CR: int
-    XP: int
-    PB: int
-    Traits: str
-    description: str 
-        <div class="stat-block">
-            <h3>{{monster.name}}</h3>
-            <p><em>{{monster.description}}</em></p>
-            <hr>
-            <div class="stat-line"><strong>Armor Class:</strong> {{monster.AC}}</div>
-            <div class="stat-line"><strong>Hit Points:</strong>{{monster.HP}} (</div>
-            <div class="stat-line"><strong>Speed:</strong>{{monster.Speed}}</div>
-            <div class="stat-line"><strong>Swim:</strong>{{monster.Swim}}</div>
-            <div class="stat-line"><strong>Initiative:</strong>{{monster.Initiative}}</div>
-            <hr>
-            <div class="stat-line">
-                <strong>STR</strong> {{monster.Str}} (+{{monster.Str - 10}}) | 
-                <strong>DEX</strong> {{monster.Dex}} (+{{monster.Dex - 10) | 
-                <strong>CON</strong> {{monster.Con}} (+{{monster.Con - 10}}) | 
-                <strong>INT</strong> {{monster.Int}} (+{{monster.Int - 10}}) | 
-                <strong>WIS</strong> {{monster.Wis}} (+{{monster.Wis - 10}}) | 
-                <strong>CHA</strong> {{monster.Cha}} (+0)
-            </div>
-            <hr>
-            <p><strong>Nimble Escape.</strong>{{monster.Traits}}</p>
+                <div class="stat-block">
+                    <h3>{{monster.name}}</h3>
+                    <p><em>{{monster.description}}</em></p>
+                    <hr>
+                    <div class="stat-line"><strong>Armor Class:</strong> {{monster.AC}}</div>
+                    <div class="stat-line"><strong>Hit Points:</strong>{{monster.HP}} (</div>
+                    <div class="stat-line"><strong>Speed:</strong>{{monster.Speed}}</div>
+                    <div class="stat-line"><strong>Swim:</strong>{{monster.Swim}}</div>
+                    <div class="stat-line"><strong>Initiative:</strong>{{monster.Initiative}}</div>
+                    <hr>
+                    <div class="stat-line">
+                        <strong>STR</strong> {{monster.Str}} (+{{monster.Str - 10}}) | 
+                        <strong>DEX</strong> {{monster.Dex}} (+{{monster.Dex - 10}}) | 
+                        <strong>CON</strong> {{monster.Con}} (+{{monster.Con - 10}}) | 
+                        <strong>INT</strong> {{monster.Int}} (+{{monster.Int - 10}}) | 
+                        <strong>WIS</strong> {{monster.Wis}} (+{{monster.Wis - 10}}) | 
+                        <strong>CHA</strong> {{monster.Cha}} (+0)
+                    </div>
+                    <hr>
+                    <p></strong>{{monster.Traits}}</p>
         </div>
     </div>
 
