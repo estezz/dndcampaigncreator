@@ -10,6 +10,8 @@ class GeminiClient:
     def __init__(self):
         """Initializes the Gemini client with an API key."""
         self.api_key = self._get_api_key()
+        print(f"Using API key: {self.api_key}")
+        
         self.client = genai.Client(api_key=self.api_key)
 
     def _get_api_key(self):
