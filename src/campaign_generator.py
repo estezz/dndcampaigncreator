@@ -30,9 +30,9 @@ class Campaign_Generator:
         clean_campaign_json = string_to_json(campaign_json_string)
         campaign.json = clean_campaign_json
 
-        print(f"before Images: {campaign.json}")
+        print(f"before Images: {json.dumps(campaign.json)}")
         self.add_images_to_json(campaign.json)
-        print(f"after Images: {campaign.json}")
+        print(f"after Images: {json.dumps(campaign.json)}")
 
 
         ## Create HTML from the campaign JSON
