@@ -14,17 +14,7 @@ class PlotStep(BaseModel):
     title: str
     description: str = Field(description="HTML formatted description of this plot step.", words=200)
 
-class Character(BaseModel):
-    name: str
-    image: Image
-    role: str
-    goal: str
-    quirk: str
-    description: str = Field(description="HTML formatted description of the character.")    
-
-class Monster(BaseModel):
-    name: str
-    image: Image
+class StatBlock(BaseModel):
     AC: int
     Initiative: int
     HP : int
@@ -39,9 +29,22 @@ class Monster(BaseModel):
     CR: int
     XP: int
     PB: int
+
+class Character(BaseModel):
+    name: str
+    image: Image
+    stats: StatBlock
+    role: str
+    goal: str
+    quirk: str
+    description: str  
+
+class Monster(BaseModel):
+    name: str
+    image: Image
+    stats: StatBlock
     Traits: str
     description: str 
-
 
 class Reward(BaseModel):
     name: str
