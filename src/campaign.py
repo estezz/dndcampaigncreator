@@ -49,6 +49,7 @@ class Monster(BaseModel):
 class Reward(BaseModel):
     name: str
     description: str = Field(description="HTML formatted description of the reward.")
+    image: Image
 
 class MagicItem(BaseModel):
     name: str
