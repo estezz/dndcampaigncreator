@@ -3,6 +3,7 @@ from google.genai import types
 import os
 import json
 import boto3
+from botocore.exceptions import ClientError
 
 
 class GeminiClient:
@@ -10,10 +11,11 @@ class GeminiClient:
 
     def __init__(self):
         """Initializes the Gemini client with an API key."""
-        self.api_key = self._get_api_key()
-        print(f"Using API key: {self.api_key}")
+        if not "FLASK_DEBUG" in os.environ:
+            self.api_key = self._get_api_key()
+            print(f"Using API key: {self.api_key}")
 
-        self.client = genai.Client(api_key=self.api_key)
+            self.client = genai.Client(api_key=self.api_key)
 
     def _get_api_key(self):
         secret_name = "GEMINI_API_KEY"
