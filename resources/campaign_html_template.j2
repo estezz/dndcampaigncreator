@@ -439,7 +439,9 @@
             <div class="reward-block" >
                 <h4 style="text-align: center;">{{reward.name}}</h4>
                 <p style="text-align: center;">{{reward.description}}</p>
-                <p style="text-align: center;">{{reward.image.url}}</p>
+                <p style="text-align: center;">                        
+                    <img src="{{reward.image.url}}" alt="{{reward.name}}" style="map" width="80%" />
+                </p>
             </div>
         {% endfor %}
     </div>
@@ -450,7 +452,9 @@
             <div class="reward-block" >
                 <h4 style="text-align: center;">{{item.name}}</h4>
                 <p style="text-align: center;">{{item.description}}</p>
-                <p style="text-align: center;">{{item.image.url}}</p>
+                <p style="text-align: center;">
+                    <img src="{{item.image.url}}" alt="{{item.name}}" style="map" width="80%" />
+                </p>
             </div>
         {% endfor %}
     </div>
