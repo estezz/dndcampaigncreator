@@ -1,6 +1,6 @@
 import json
 import os
-import re
+import re, html
 from src.gemini_client import GeminiClient
 from src.campaign import Campaign_Schema
 from src.campaign import Campaign
@@ -37,7 +37,7 @@ class Campaign_Generator:
 
         ## Create HTML from the campaign JSON
         template = env.get_template('./resources/campaign_html_template.j2')
-        campaign.html = template.render( clean_campaign_json )     
+        campaign.html = html.unescape(template.render( clean_campaign_json )   )  
         print( f"campaign html: {campaign.html}")
         print("returning campaign")
         
