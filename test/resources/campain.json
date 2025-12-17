@@ -1,201 +1,244 @@
 {
-  "title": "The Scourge of Stonehill",
-  "setting": "A secluded Rohan-style village, Stonehill, nestled in the foothills bordering the Misty Mountains, far from major settlements, known for its hearty folk and fine wool.",
+  "title": "The Ember in Oakhaven",
+  "setting": "Middle Earth, specifically the quiet farming village of Oakhaven, nestled near the eastern borders of the Shire, close to the edge of the Chetwood.",
   "partySize": 4,
   "characterLevel": 2,
-  "history": "Stonehill has existed for centuries, a peaceful, self-sufficient community. Local folklore speaks of ancient dragons sleeping in the mountains, dismissed as old wives' tales. The village elder, Elara, possesses fragments of old lore hinting at a dormant evil.",
-  "atmosphere": "Initially peaceful and rustic, quickly becoming tense and fearful with the looming threat of the dragon. Moments of quiet dread are punctuated by sudden, violent attacks. A sense of desperate hope and community resilience will permeate.",
-  "setup": "<h3>The Shadow Falls on Stonehill</h3><p>The crisp mountain air of Stonehill normally carries the scent of pine and hearth smoke, a comforting aroma of a community at peace. For generations, the folk of Stonehill have tilled their fields, tended their sheep, and lived simple, honest lives in the shadow of the imposing Misty Mountains. The nearest town is days away, making Stonehill a secluded haven, untouched by the greater strife of Middle-earth.</p><p>However, tranquility has been shattered. A crimson terror has descended from the peaks – a young, but undeniably fearsome, dragon. Its first attack was sudden and brutal, scorching a portion of the village, sending panicked inhabitants scattering, and leaving a lingering smell of ash and fear. Livestock vanished, homes were reduced to embers, and the chilling roar of the beast now echoes frequently through the valleys.</p><p>The villagers, hardy as they are, are overwhelmed. Their spears and bows are little match for scales of iron and breath of fire. They look to anyone with courage and skill for aid, their ancient peace replaced by a primal fear. The party finds themselves in Stonehill, perhaps having just arrived, or residing there briefly, and are now eyewitnesses to this unfolding catastrophe.</p>",
+  "history": "Oakhaven has known peace for generations, a tranquil haven far from the shadows that stir in the deeper wilderness. Its folk are simple, tending their crops and herds, living in harmony with the land. Unbeknownst to them, an ancient vein of lesser-known Mithril or an old, forgotten Dwarven treasure hoard lies buried beneath their lands, a secret lost even to the Dwarves of Erebor. Recently, a young drake, 'Glaurungir' (meaning 'Fire-worm's Heir'), driven from its hatching ground in the distant Misty Mountains by a territorial dispute with a larger, more formidable beast, has journeyed south. Its instinct, fueled by a nascent greed and hunger, led it to Oakhaven, where the faint scent of precious metals stirred its awakening avarice. It sees the village not as a home for folk, but as a potential hoard and hunting ground.",
+  "atmosphere": "Initially, the atmosphere is one of pastoral calm, quickly turning to unease, then dread and panic. The module will blend classic Middle-earth charm with escalating fantasy horror, leading to a desperate struggle for survival and heroism against a formidable, yet young, draconic threat. Expect moments of tension, investigation, thrilling chases, and a climactic battle.",
+  "setup": "<h1>The Ember in Oakhaven: A Middle-earth Adventure</h1><p>Welcome, Dungeon Master, to a tale set in the verdant, often peaceful, lands of Middle-earth. Your players are about to stumble into a brewing catastrophe in the sleepy village of Oakhaven. This module is designed for four 2nd-level characters and should span roughly four sessions of three hours each.</p><p>The village of Oakhaven is a picture of idyllic simplicity, its cottages nestled amongst ancient oak trees, fields of wheat swaying gently in the breeze, and the murmur of contented livestock filling the air. It’s the kind of place travelers pass through, offering a brief respite before continuing to Bree or the even more distant Shire.</p><p>However, an unforeseen terror has arrived. A young drake, Glaurungir, has recently made its presence known. It's not a fully grown dragon of immense power like Smaug, but a formidable juvenile beast, cunning and fiercely territorial, capable of immense destruction for its size. It has been driven from its mountain lair and has stumbled upon the hidden, forgotten wealth beneath Oakhaven, igniting its nascent draconic greed. The villagers are ill-equipped to face such a foe, and their peaceful existence is on the brink of fiery ruin. The fate of Oakhaven rests in the hands of your adventurers.</p>",
   "startingPointImage": {
-    "url": "https://replicate.delivery/xezq/0elYUMj2ftlz40LyM28KUmX890dkwl1UbaE6qlXPACgiF0zVA/tmp1lp8481u.jpg",
-    "description": "A small, rustic village in the foothills of mountains, with smoke rising from several buildings, and villagers looking up in fear at a distant, draconic shadow.",
-    "prompt": "A panoramic view of a small, medieval village nestled in a green valley at the base of craggy, snow-capped mountains. Several wooden houses are smoldering, with plumes of dark smoke rising. Villagers, dressed in simple tunics and cloaks, are looking up towards the mountain peaks with expressions of terror. A faint, dark silhouette of a dragon is visible against the clouds. Realistic, epic fantasy style, Middle-earth aesthetic, high detail."
+    "url": "https://www.imagehost.com/oakhaven_arrival.jpg",
+    "description": "A tranquil view of Oakhaven village, with smoke beginning to billow in the distance and a few panicked villagers pointing towards the sky.",
+    "prompt": "Middle-earth style village, Oakhaven, with thatched roofs and oak trees, gentle rolling hills in the background. In the distance, a column of smoke rises ominously. A few villagers in simple attire are looking up with expressions of fear and confusion. Golden hour lighting, detailed, epic fantasy art."
   },
   "mapImagePrompt": {
-    "url": "https://replicate.delivery/xezq/Nxwwyp5fMHVGGCtKVpck9kKBqYkU9krQeG78qdEIYPWeLonrA/tmp35wjqu84.jpg",
-    "description": "A hand-drawn style map of Stonehill village and its immediate surroundings, showing key locations and potential dragon attack paths.",
-    "prompt": "A detailed, hand-drawn fantasy map in the style of Middle-earth cartography. It depicts the village of Stonehill, showing individual houses, a central well, a market square, and a small temple. Surrounding the village are rolling hills, a forest edge, a winding river, and a path leading up into the jagged foothills of the Misty Mountains. Mark areas of recent dragon attacks with scorched symbols. Include a compass rose and a small legend in a classic fantasy font."
+    "url": "https://www.imagehost.com/oakhaven_map.jpg",
+    "description": "A detailed map of Oakhaven village and its immediate surroundings, including the edge of Chetwood and potential dragon lair locations.",
+    "prompt": "Hand-drawn fantasy map of a small Middle-earth village named Oakhaven. Show individual buildings, a main road, surrounding farmlands, a river, and a section of dense forest (Chetwood). Mark potential points of interest like a hidden cave, the village inn, and the elder's house. Clear, legible labels, parchment texture."
   },
   "plotHooks": [
     {
-      "title": "The Plea of the Elder",
-      "description": "<h3>The Plea of the Elder</h3><p>Upon arriving at Stonehill, or waking to chaos, the party is approached by Elder Elara, a wise woman with lines of worry etched into her face. She recounts the terror, begs for assistance, and offers what little the village can spare for anyone brave enough to confront the beast or at least help evacuate survivors and recover supplies. She might offer an heirloom, a rare medicinal herb, or promise the gratitude of a grateful community.</p>"
+      "title": "A Cry for Help",
+      "description": "<p>As the adventurers approach Oakhaven, they witness a frantic scene: panicked villagers fleeing their homes, screaming about a 'great fiery beast' descending upon them. A small group of militiamen, armed with little more than pitchforks, attempts to organize a defense. The PCs are immediately thrust into the action, needing to decide whether to aid the villagers, protect the innocent, or seek refuge themselves.</p>"
     },
     {
-      "title": "Missing Kin",
-      "description": "<h3>Missing Kin</h3><p>A frantic villager, perhaps a young farmer named Bran, approaches the party, weeping. His younger sister, Lyra, was tending sheep closer to the mountains when the dragon first struck, and she hasn't returned. He implores the party to help find her, fearing the worst but clinging to a sliver of hope that she might be hiding or injured. This hook immediately puts the party on the trail of the dragon's lair or recent activity.</p>"
+      "title": "Missing Flock, Fiery Trail",
+      "description": "<p>The party arrives at Oakhaven to find the village in a state of quiet panic. Several livestock herds have vanished, and a few farmers have gone missing. Strange, oversized tracks and scorched earth lead into the Chetwood. The village elder, Master Thorne, is desperately seeking brave souls to investigate these unsettling occurrences before more tragedy strikes. A modest reward is offered for information, and a larger one for dealing with the 'creature'.</p>"
     },
     {
-      "title": "Rumors of Treasure",
-      "description": "<h3>Rumors of Treasure</h3><p>A grizzled trapper named Kael, who narrowly escaped the dragon's first attack, whispers tales of the beast carrying off a large, glimmering object towards a specific cave mouth in the mountains. He implies the dragon might be hoarding treasure, even if it's a young one, which could be a significant reward for those brave enough to retrieve it, or at least a way to lure the beast away.</p>"
+      "title": "The Road to Bree is Closed",
+      "description": "<p>While traveling towards Bree, the adventurers find the main road blocked by debris and a charred wagon. Survivors from a merchant caravan recount a terrifying aerial attack by a 'winged horror' that carried off their goods and some of their guards. They warn that Oakhaven is the beast's current target, and the road ahead is too dangerous to pass. To proceed, the party must first address the threat.</p>"
     }
   ],
   "mainPlotSteps": [
     {
-      "title": "Session 1: The Ash and the Cry",
-      "description": "<h3>Session 1: The Ash and the Cry</h3><p>The party arrives in or witnesses the aftermath of Stonehill's first dragon attack. They interact with terrified villagers, particularly Elder Elara and those seeking missing loved ones. Their immediate task is to secure the village perimeter, aid the wounded, and investigate the initial attack site for clues on the dragon's size, type, and direction of flight. A smaller monster encounter (e.g., Goblins, Orc scouts) attracted by the chaos could occur, reinforcing the dangers of the wilds.</p>"
+      "title": "Session 1: The Shadow Descends",
+      "description": "<p>The module begins with the party arriving at Oakhaven or being caught in its immediate vicinity. Glaurungir, the young drake, makes a dramatic appearance, either directly attacking the village or showing clear signs of its destructive presence (e.g., a scorched field, a missing barn, frightened cries). The PCs must help organize a rudimentary defense, rescue trapped villagers, or simply survive the initial chaos. They'll gather initial clues about the beast's nature – it's winged, breathes fire, and is larger than any normal predator. Introduce Master Thorne and Elara, who can provide context and offer the first pleas for help.</p>"
     },
     {
-      "title": "Session 2: Trails of Terror",
-      "description": "<h3>Session 2: Trails of Terror</h3><p>Following clues from the first session (scorch marks, claw prints, frightened animals, or a villager's account), the party tracks the dragon's path deeper into the foothills. They discover its hunting grounds, perhaps finding a ravaged herd of mountain goats or evidence of its destructive foraging. They might stumble upon a mini-lair or a cache of minor stolen goods, leading to a skirmish with the dragon's territorial proxies (e.g., Mountain Orcs or Wargs who are also being displaced/affected by the dragon's presence).</p>"
+      "title": "Session 2: Whispers of the Wyrm",
+      "description": "<p>With the immediate threat subsided (or driven back temporarily), the party can investigate more thoroughly. They will interview villagers, examine sites of attack, and follow initial tracks leading into the Chetwood. Clues might reveal Glaurungir's juvenile nature (e.g., smaller hoard of gold coins, discarded Orcish armour from a previous skirmish, half-eaten deer carcass). They might encounter desperate villagers who tried to retrieve lost possessions and failed, or encounter small groups of opportunistic Goblins/Orcs drawn by the chaos. The ranger, Gareth, could offer aid in tracking or local knowledge, suggesting a specific cave system rumored to be old mines.</p>"
     },
     {
-      "title": "Session 3: The Dragon's Keep",
-      "description": "<h3>Session 3: The Dragon's Keep</h3><p>The party pinpoints the dragon's lair, likely a cave system high in the mountains. They must navigate treacherous terrain and potential traps or minor guardian creatures placed by the dragon. They discover the dragon's hoard – which, for a young dragon, might be smaller but still impressive, including some unique local treasures and perhaps the missing villager (Lyra) held captive. A confrontation with the dragon ensues, but it's not the final battle – perhaps it's a skirmish where the dragon assesses the threat, or it's injured and retreats.</p>"
+      "title": "Session 3: Into the Drake's Lair",
+      "description": "<p>The adventurers successfully track Glaurungir to its lair – a hidden cave system within the Chetwood, perhaps an old, forgotten Dwarven mine or a naturally formed cavern. The approach to the lair should be fraught with danger, possibly involving natural traps, Goblins or Giant Spiders serving as unintended guardians (or creatures driven into the cave by the drake), or challenging terrain. Within the lair's outer chambers, they'll find signs of Glaurungir's growing hoard, charred remains of victims, and evidence of the specific ore or magic it's attracted to. The session culminates in the party navigating these dangers, learning more about the drake's habits, and preparing for the final confrontation.</p>"
     },
     {
-      "title": "Session 4: The Scourge Vanquished",
-      "description": "<h3>Session 4: The Scourge Vanquished</h3><p>Having either wounded the dragon or driven it from its lair, the party must now prepare for a final confrontation. The dragon, enraged and perhaps weakened, might return to Stonehill for a vengeful final assault, forcing the villagers and party to enact a desperate defense. Alternatively, the party may have to lure it out or pursue it to a more advantageous battlefield. The module culminates in a climactic battle against the dragon, where the party's tactics and heroism determine the fate of Stonehill. The aftermath involves celebrating victory, rebuilding efforts, and receiving the village's gratitude.</p>"
+      "title": "Session 4: The Heart of the Ember",
+      "description": "<p>This session focuses on the climactic battle against Glaurungir. The drake will use its environment (flight, breath weapon, limited intelligence for traps) to its advantage. This is not a mindless beast, but a cunning young creature fighting for its new territory and growing treasure. The fight should be challenging, pushing the 2nd-level party to use teamwork and clever tactics. Upon defeating Glaurungir, the party can claim its fledgling hoard (which includes some of the village's stolen goods and the reason for its attraction, like the faint Mithril vein or the Dwarven treasure) and return to Oakhaven as heroes, ensuring the village's safety once more.</p>"
     }
   ],
   "mainCharacters": [
     {
-      "name": "Elder Elara",
+      "name": "Master Thorne",
       "image": {
-        "url": "https://i.imgur.com/example-elara.jpg",
-        "description": "An old, wise village elder with weathered skin and kind but resolute eyes, wearing simple, sturdy clothes.",
-        "prompt": "A close-up portrait of an elderly woman, perhaps 70s, with deep wrinkles but alert, intelligent eyes. She wears a practical woolen tunic and a simple wooden brooch. Her hair is braided with silver streaks. Medieval fantasy, realistic, wise and stern expression, Middle-earth aesthetic, natural lighting."
+        "url": "https://www.imagehost.com/masterthorne.jpg",
+        "description": "An aged, kindly village elder with a worried expression, holding a staff.",
+        "prompt": "Elderly human man, kind but worried expression, long grey beard, wearing simple earth-toned robes, holding a gnarled wooden staff. Set in a rustic village interior, detailed, gentle lighting, Middle-earth aesthetic."
       },
-      "role": "Village Leader, Quest Giver",
-      "goal": "Protect her people and rebuild Stonehill.",
-      "quirk": "Always carries a small, polished river stone for good luck.",
-      "description": "<h3>Elara, Elder of Stonehill</h3><p>Elara is the matriarch of Stonehill, her face weathered by years of sun and wind, but her eyes sharp and full of unwavering resolve. She has led the village through harsh winters and lean harvests, but nothing prepared her for a dragon. She is a fount of local knowledge and folklore, believing in ancient prophecies and signs. She feels a deep personal responsibility for every villager and will sacrifice much to ensure their safety. She carries a small, smooth river stone, a keepsake from her childhood, which she believes brings luck in times of trouble.</p>"
+      "stats": {
+        "AC": 10,
+        "Initiative": 0,
+        "HP": 7,
+        "Speed": 20,
+        "Swim": 0,
+        "Str": 8,
+        "Dex": 10,
+        "Con": 12,
+        "Int": 14,
+        "Wis": 15,
+        "Cha": 13,
+        "CR": 0,
+        "XP": 10,
+        "PB": 2
+      },
+      "role": "Village Elder / Quest Giver",
+      "goal": "To save Oakhaven and its people from the dragon.",
+      "quirk": "Rubs his beard nervously when contemplating difficult decisions. Speaks in proverbs and old sayings.",
+      "description": "Master Thorne is the venerable elder of Oakhaven, a wise and respected figure among the villagers. Though his days of physical prowess are long past, his mind is sharp, and he possesses a deep knowledge of local lore and the surrounding lands. He is burdened by the dragon's threat and looks to the adventurers with desperate hope."
     },
     {
-      "name": "Bran Stonehand",
+      "name": "Elara Meadowsweet",
       "image": {
-        "url": "https://i.imgur.com/example-bran.jpg",
-        "description": "A young, distraught farmer, visibly worried and desperate, clutching a broken piece of wood.",
-        "prompt": "A young man, early 20s, with a rugged, honest face streaked with dirt and worry. He has short, practical brown hair and is dressed in simple, patched farmer's clothes. His hands are calloused, and he nervously clutches a splintered wooden staff. Expression of anguish and determination. Medieval fantasy, realistic, Middle-earth peasant aesthetic."
+        "url": "https://www.imagehost.com/elara.jpg",
+        "description": "A kind and practical innkeeper, busy but concerned.",
+        "prompt": "Middle-aged human woman, warm and strong demeanor, practical clothing, an apron over her dress. She is wiping down a wooden counter in a cozy, rustic inn. Concerned expression, detailed, soft light."
       },
-      "role": "Grieving Villager, Motivator",
-      "goal": "Find his sister Lyra, alive or dead.",
-      "quirk": "Fidgets with a broken piece of a shepherd's crook.",
-      "description": "<h3>Bran Stonehand, Young Farmer</h3><p>Bran is a sturdy, earnest young farmer, barely old enough to shave, but whose hands are calloused from years of working the land. The dragon attack has left him distraught, especially since his younger sister, Lyra, is missing. He is desperate and willing to do anything to find her, offering what little coin or family heirlooms he has to the party. He's not cowardly, but lacks the skills to face the dragon himself. When stressed, he constantly fiddles with a splintered piece of his old shepherd's crook, a reminder of his lost flock and sister.</p>"
+      "stats": {
+        "AC": 10,
+        "Initiative": 1,
+        "HP": 9,
+        "Speed": 30,
+        "Swim": 0,
+        "Str": 10,
+        "Dex": 12,
+        "Con": 13,
+        "Int": 11,
+        "Wis": 14,
+        "Cha": 15,
+        "CR": 0,
+        "XP": 10,
+        "PB": 2
+      },
+      "role": "Innkeeper / Information Broker",
+      "goal": "To protect her inn, her family, and the community she serves.",
+      "quirk": "Always offers a warm meal, even when describing dire circumstances. Has an uncanny ability to know what's happening throughout the village.",
+      "description": "Elara is the stout-hearted proprietor of 'The Quiet Hearth,' Oakhaven's only inn. She is a pillar of the community, known for her delicious cooking and her no-nonsense attitude. Beneath her calm exterior, she harbors deep concern for her village and will do what she can to assist those brave enough to face the threat."
     },
     {
-      "name": "Kael the Trapper",
+      "name": "Gareth Stonebrook",
       "image": {
-        "url": "https://i.imgur.com/example-kael.jpg",
-        "description": "A grizzled, wary trapper with keen eyes and a lean build, dressed for the wilderness.",
-        "prompt": "A lean, wiry man in his 40s or 50s, with a weathered face, a short, practical beard, and intense, observant eyes. He wears worn leather armor and carries a small pouch at his belt. His posture is slightly hunched, suggesting a life in the wilderness. He has a shrewd, cautious expression. Medieval fantasy, realistic, ranger/trapper aesthetic, Middle-earth."
+        "url": "https://www.imagehost.com/gareth.jpg",
+        "description": "A weathered ranger of the wild, vigilant and observant.",
+        "prompt": "Rugged human ranger, early 30s, lean build, dark green and brown leather armor, longbow slung over his shoulder, keen observant eyes. Standing at the edge of a dense forest, dappled sunlight, detailed, realistic fantasy art, Aragorn-esque."
       },
-      "role": "Information Provider, Scout",
-      "goal": "Survive and perhaps profit from the chaos.",
-      "quirk": "Always has a pouch of dried berries and nuts, and offers them to anyone he talks to.",
-      "description": "<h3>Kael the Trapper</h3><p>Kael is a lean, wiry man with keen eyes that have seen much of the wild. He lives on the fringes of Stonehill, making his living from trapping and hunting in the foothills. He's gruff and wary of outsiders, but the dragon has forced him closer to the village for safety. He witnessed the dragon's flight path and might know old paths or forgotten caves in the mountains, making him a valuable, if reluctant, guide. He habitually chews on dried berries, offering them as a strange form of conversational punctuation.</p>"
+      "stats": {
+        "AC": 14,
+        "Initiative": 3,
+        "HP": 22,
+        "Speed": 30,
+        "Swim": 0,
+        "Str": 12,
+        "Dex": 16,
+        "Con": 14,
+        "Int": 11,
+        "Wis": 15,
+        "Cha": 9,
+        "CR": 1,
+        "XP": 200,
+        "PB": 2
+      },
+      "role": "Local Ranger / Guide",
+      "goal": "To maintain the balance of the wild and protect the innocent from encroaching dangers.",
+      "quirk": "Prefers the company of animals to most people. Communicates with subtle gestures and terse sentences.",
+      "description": "Gareth is a ranger who silently watches over the borders of the Chetwood, often passing through Oakhaven for supplies. He is familiar with the wilder parts of the region and has sensed a disturbance long before the drake's full fury was unleashed. He is cautious but committed to justice and can offer invaluable tracking skills and knowledge of the terrain."
     }
   ],
   "monsters": [
     {
-      "name": "Ignis, the Young Wyrm",
+      "name": "Glaurungir (Young Drake)",
       "image": {
-        "url": "https://i.imgur.com/example-young-dragon.jpg",
-        "description": "A young, but fearsome red dragon with vibrant crimson scales and glowing eyes, perched on a rocky outcrop.",
-        "prompt": "A vibrant red dragon, clearly young but still imposing, with smooth, crimson scales and sharp, intelligent eyes that glow with an inner fire. It has leathery wings and a long, muscular tail. It is perched on a jagged, smoking rock formation, surveying a mountain pass. High fantasy, realistic, fearsome but majestic. Middle-earth style dragon."
+        "url": "https://www.imagehost.com/glaurungir.jpg",
+        "description": "A fierce, young red-scaled dragon with developing wings and a predatory gaze.",
+        "prompt": "Young dragon, red scales, about the size of a large horse, powerful build, growing wings, sharp claws, intelligent and predatory eyes, breathing a wisp of smoke. Set in a dark, cavernous lair with glints of gold. Highly detailed, fantasy art, cinematic lighting."
       },
-      "AC": 17,
-      "Initiative": 4,
-      "HP": 119,
-      "Speed": 30,
-      "Swim": 0,
-      "Str": 19,
-      "Dex": 14,
-      "Con": 18,
-      "Int": 10,
-      "Wis": 11,
-      "Cha": 13,
-      "CR": 6,
-      "XP": 2300,
-      "PB": 3,
-      "Traits": "Darkvision 120 ft., Passive Perception 14. <b>Legendary Resistance (1/Day)</b>: If Ignis fails a saving throw, it can choose to succeed instead. <b>Fiery Breath (Recharge 5-6)</b>: Ignis exhales fire in a 15-foot cone. Each creature in that area must make a DC 13 Dexterity saving throw, taking 4d6 fire damage on a failed save, or half as much damage on a successful one. This CR and HP is adjusted for a party of 4 level 2 characters, assuming tactical engagement or prior weakening of the beast.",
-      "description": "Ignis is a young but ambitious red dragon, driven by instinct and a desire to establish its own territory. It's not fully mature, but still possesses formidable fire breath and thick scales. It revels in destruction and the fear it inspires, slowly building a hoard. While intelligent, its youth makes it prone to overconfidence and rage. Its scales are a vibrant crimson, and its eyes glow with an inner fire. It's an imposing, terrifying sight for the villagers."
+      "stats": {
+        "AC": 15,
+        "Initiative": 2,
+        "HP": 45,
+        "Speed": 30,
+        "Swim": 0,
+        "Str": 16,
+        "Dex": 14,
+        "Con": 16,
+        "Int": 8,
+        "Wis": 10,
+        "Cha": 10,
+        "CR": 2,
+        "XP": 450,
+        "PB": 2
+      },
+      "Traits": "<b>Flyby:</b> The drake doesn't provoke an opportunity attack when it flies out of an enemy's reach. <b>Actions: Bite:</b> Melee Weapon Attack: +5 to hit, reach 5ft, one target. Hit: 1d10 + 3 piercing damage. <b>Fire Breath (Recharge 5-6):</b> The drake exhales fire in a 15-foot cone. Each creature in that area must make a DC 13 Dexterity saving throw, taking 2d6 fire damage on a failed save, or half as much damage on a successful one.",
+      "description": "Glaurungir is a young, but fearsome, red-scaled drake. Not yet the size of a true adult dragon, it is still a deadly predator with a nascent hoard-lust. It hunts the local fauna and has begun to eye the village's livestock and the hidden treasure beneath Oakhaven. It is cunning, but also prone to fits of draconic rage and overconfidence."
     },
     {
-      "name": "Mountain Orc Scout",
+      "name": "Chetwood Wolf",
       "image": {
-        "url": "https://i.imgur.com/example-orc.jpg",
-        "description": "A grimy, brutish mountain orc with crude armor and a sneering expression.",
-        "prompt": "A grotesque, green-skinned orc, lean and muscular, with tusks protruding from its lower jaw. It wears crude, patched leather armor and carries a rusty scimitar. Its eyes are beady and malicious, and its expression is a snarl. It stands in a rocky, barren landscape. Middle-earth style orc, gritty realism."
+        "url": "https://www.imagehost.com/chetwood_wolf.jpg",
+        "description": "A lean, grey wolf with intelligent, hungry eyes, lurking in forest shadows.",
+        "prompt": "Large, gaunt grey wolf, amber eyes, fur matted with forest debris, teeth bared subtly, lurking in the shadows of a dense, ancient forest. Crepuscular lighting, detailed, realistic."
       },
-      "AC": 13,
-      "Initiative": 1,
-      "HP": 15,
-      "Speed": 30,
-      "Swim": 0,
-      "Str": 14,
-      "Dex": 12,
-      "Con": 16,
-      "Int": 7,
-      "Wis": 10,
-      "Cha": 8,
-      "CR": 0,
-      "XP": 100,
-      "PB": 2,
-      "Traits": "Darkvision 60 ft. <b>Aggressive</b>: As a bonus action, the orc can move up to its speed toward a hostile creature that it can see.",
-      "description": "These crude, brutish orcs have been driven from their usual hunting grounds by the dragon's presence and now scavenge near Stonehill, taking advantage of the chaos. They are opportunistic and dangerous, armed with rusty scimitars and javelins. They're more nuisance than major threat, but can overwhelm an unwary party if encountered in numbers."
+      "stats": {
+        "AC": 13,
+        "Initiative": 2,
+        "HP": 11,
+        "Speed": 40,
+        "Swim": 0,
+        "Str": 12,
+        "Dex": 15,
+        "Con": 12,
+        "Int": 3,
+        "Wis": 12,
+        "Cha": 6,
+        "CR": 1,
+        "XP": 200,
+        "PB": 2
+      },
+      "Traits": "<b>Keen Hearing and Smell:</b> The wolf has advantage on Wisdom (Perception) checks that rely on hearing or smell. <b>Pack Tactics:</b> The wolf has advantage on an attack roll against a creature if at least one of the wolf's allies is within 5 feet of the creature and the ally isn't incapacitated. <b>Actions: Bite:</b> Melee Weapon Attack: +4 to hit, reach 5ft, one target. Hit: 2d4 + 2 piercing damage. If the target is a creature, it must succeed on a DC 11 Strength saving throw or be knocked prone.",
+      "description": "These grey wolves are common inhabitants of the Chetwood, usually avoiding people. However, the chaos brought by Glaurungir has disrupted their territories, making them more aggressive and desperate for food. They might attack the party if encountered on the trail to the drake's lair, especially if weakened or fleeing from the dragon's wrath."
     }
   ],
   "rewardsImagePrompt": {
-    "url": "https://replicate.delivery/xezq/19Eef2Kn7OkfJJrte5yRwkbqrLAaaLL94tcQUE5SrvCiYQPXB/tmp70_9ld91.jpg",
-    "description": "A small pile of gold, a few silver coins, some rustic village trinkets, and a gleaming, unique magic item, possibly a worn short sword or a leather bracer.",
-    "prompt": "A close-up of a small, rustic wooden table piled with rewards. On it are a few stacks of tarnished gold coins, a handful of silver pieces, a small pouch of dried herbs, a simple carved wooden bird, and a prominent, slightly glowing short sword with an elven design on its hilt. The background is blurred, focusing on the treasures. High fantasy, realistic, Middle-earth aesthetic."
+    "url": "https://www.imagehost.com/oakhaven_hoard_rewards.jpg",
+    "description": "A gleaming pile of gold coins, various gems, and a few unique, ancient artifacts, reflecting light.",
+    "prompt": "Magnificent treasure hoard, sparkling gold coins, an array of colorful precious gems, ancient dwarven artifacts, a few unique magical items, all gleaming in the light of a hidden chamber. Fantasy art, extremely detailed, rich colors, dramatic lighting."
   },
   "rewardsList": [
     {
-      "name": "Gratitude of Stonehill",
-      "description": "<h3>Gratitude of Stonehill</h3><p>The eternal thanks of Elder Elara and the villagers of Stonehill, offering safe haven, food, and lodging whenever the party returns. They will also provide free repairs for armor and weapons, and share any rare herbs or local knowledge they possess.</p>"
+      "name": "Hero's Welcome",
+      "description": "<p>Upon their triumphant return to Oakhaven, the adventurers are hailed as heroes. The villagers offer them free lodging and meals at The Quiet Hearth for a month, heartfelt gratitude, and a place of honor in their community. Master Thorne might even offer a small plot of land as a token of the village's eternal thanks, should they ever wish to settle.</p>"
     },
     {
-      "name": "Dragon's Hoard",
-      "description": "<h3>Dragon's Hoard</h3><p>A modest hoard for a young dragon, including 300 gp, 500 sp, and various pieces of stolen household silver (worth another 100 gp). It also contains a finely woven tapestry depicting a battle between ancient men and orcs (worth 150 gp) and a small, strangely warm stone that glows faintly (a minor magic item, perhaps a 'Warmth Stone' providing resistance to cold for an hour once per day).</p>"
+      "name": "Glaurungir's Hoard",
+      "description": "<p>The young drake's hoard, though not massive, contains a respectable collection of stolen Oakhaven valuables (silverware, minor jewels, a few gold coins) alongside trinkets it gathered on its journey from the Misty Mountains. This could amount to <b>200-300 gold pieces</b>, a few small gemstones (worth <b>50 gp each</b>), and perhaps some other minor valuables or rare trade goods.</p>"
     },
     {
-      "name": "Village Support",
-      "description": "<h3>Village Support</h3><p>Upon defeating the dragon, the villagers will band together to provide the party with provisions, healing supplies, and perhaps a small, reliable riding horse each as a token of their immense gratitude, should the party need to travel.</p>"
+      "name": "Fame in the Green Hills",
+      "description": "<p>Tales of the adventurers' bravery will spread throughout the surrounding villages and possibly even to Bree. They will be recognized and respected, gaining advantage on Charisma (Persuasion) checks when dealing with common folk in the region. This might also attract the attention of other individuals seeking assistance or opportunities for further adventures.</p>"
     }
   ],
   "generatedMagicItems": [
     {
-      "name": "Stonehill Defender's Blade",
+      "name": "Oakheart Charm",
       "image": {
-        "url": "https://i.imgur.com/example-defenders-blade.jpg",
-        "description": "A simple iron shortsword with a worn leather grip, faintly glowing with an inner light.",
-        "prompt": "A simple, utilitarian shortsword with a sturdy iron blade and a plain leather-wrapped hilt. A subtle, faint magical glow emanates from the blade. It looks well-used but cared for. Fantasy weapon art, realistic, Middle-earth style."
+        "url": "https://www.imagehost.com/oakheart_charm.jpg",
+        "description": "A small, intricately carved wooden charm shaped like an oak leaf, glowing softly.",
+        "prompt": "Small, intricately carved wooden charm in the shape of an oak leaf, with subtle elven knotwork. It emits a faint, warm green glow. Held in a open palm against a forest background. Detailed, magical realism."
       },
-      "description": "<h3>Stonehill Defender's Blade</h3><p><em>Weapon (shortsword), uncommon</em></p><p>This simple iron shortsword was once wielded by Stonehill's first protector, imbued with a minor defensive enchantment. When you hit a creature with this magic weapon, you gain 1 temporary hit point. This effect can occur once per turn. The blade feels strangely light and hums softly when danger is near.</p>"
+      "description": "<p><i>Wondrous Item, Uncommon (Requires Attunement)</i></p><p>This small, smooth wooden charm, carved from the heartwood of an ancient Oakhaven tree, hums with a faint protective energy. While attuned to this charm, you have advantage on saving throws against being frightened. Additionally, once per long rest, you can use an action to touch the charm and gain <b>5 temporary hit points</b> for 1 minute.</p>"
     },
     {
-      "name": "Elara's Charm of Steadfastness",
+      "name": "Drake-Scale Shield",
       "image": {
-        "url": "https://i.imgur.com/example-elaras-charm.jpg",
-        "description": "A small, intricately carved wooden amulet depicting a mountain ram, strung on a leather cord.",
-        "prompt": "A small, round wooden amulet, intricately carved with the image of a majestic mountain ram. It is strung on a simple, braided leather cord. The wood is dark and smooth from wear. Fantasy artifact, realistic, folk art style, Middle-earth aesthetic."
+        "url": "https://www.imagehost.com/drake_scale_shield.jpg",
+        "description": "A sturdy, round shield reinforced with a few gleaming red dragon scales.",
+        "prompt": "Round, sturdy wooden shield, reinforced with several gleaming, deep red dragon scales. The scales are meticulously integrated into the shield's design. Held by a gloved hand. Detailed, realistic fantasy art."
       },
-      "description": "<h3>Elara's Charm of Steadfastness</h3><p><em>Wondrous item, uncommon (requires attunement)</em></p><p>This small, intricately carved wooden amulet, gifted by Elder Elara, depicts a mountain ram. While wearing this charm, you have advantage on saving throws against being frightened. Additionally, once per long rest, you can use an action to gain a +1 bonus to your AC for 1 minute.</p>"
-    },
-    {
-      "name": "Wyrmscale Gauntlets",
-      "image": {
-        "url": "https://i.imgur.com/example-wyrmscale-gauntlets.jpg",
-        "description": "A pair of light gauntlets crafted from reddish-brown dragon scales, supple yet strong.",
-        "prompt": "A pair of light, fingerless gauntlets made from small, overlapping reddish-brown dragon scales stitched onto sturdy leather. They appear flexible and durable, with a faint sheen. A subtle wisp of smoke seems to linger near them. Fantasy armor, realistic, Middle-earth style."
-      },
-      "description": "<h3>Wyrmscale Gauntlets</h3><p><em>Armor (light gauntlets), uncommon</em></p><p>Fashioned from a few shed scales of Ignis, these gauntlets provide surprisingly durable protection. While wearing these gauntlets, you gain a +1 bonus to your AC. They are warm to the touch and possess a faint, lingering scent of smoke.</p>"
+      "description": "<p><i>Shield, Uncommon</i></p><p>This sturdy shield is crafted from Oakhaven oak, reinforced with a few thick, crimson scales shed by Glaurungir. While wielding this shield, you gain a +1 bonus to AC. Additionally, once per day, as a reaction when you are hit by fire damage, you can activate the shield to reduce that damage by <b>1d6</b> (minimum 0).</p>"
     }
   ],
   "generatedPlotTwists": [
     {
-      "title": "The Dragon's True Master",
-      "description": "<h3>The Dragon's True Master</h3><p>The young dragon Ignis is not acting alone. It is being subtly influenced or even commanded by a more sinister, unseen force (e.g., a disillusioned hermit, a goblin shaman, or even an ancient, malevolent spirit stirred by the dragon's presence) who seeks to cause chaos in the region for their own nefarious ends. This twist could be revealed by finding a strange amulet in the dragon's lair or by observing peculiar behavior from the beast.</p>"
+      "title": "The True Master",
+      "description": "<p>Glaurungir is not acting independently. It is being coerced or subtly controlled by a more sinister, unseen force. Perhaps a minor Necromancer or a power-hungry human sorcerer, driven by the desire for the forgotten treasure beneath Oakhaven, has used dark magic to bend the young drake's will. Defeating the drake only solves part of the problem, leading to a new, more insidious threat lurking in the shadows.</p>"
     },
     {
-      "title": "The Elder's Secret Lore",
-      "description": "<h3>The Elder's Secret Lore</h3><p>Elder Elara has been holding back crucial information. She knows of an ancient ritual or forgotten artifact (perhaps alluded to in the fragments of lore she possesses) that could banish or weaken a dragon, but it comes with a terrible cost or requires a dangerous quest to retrieve its components. She might reveal this secret only when the situation seems dire, testing the party's resolve.</p>"
+      "title": "A Plea for Aid",
+      "description": "<p>The 'dragon' is not inherently evil, but sick, wounded, or desperate. It was driven from its home by a greater, more terrible beast or a band of Orcs/Goblins who have now followed its trail. Glaurungir's attacks on Oakhaven were not out of malice but a desperate attempt to gather resources or create a safe haven. The party might discover this truth during their investigation, forcing a moral dilemma: defeat the suffering creature, or find a way to help it and face the larger threat that pursues it.</p>"
     },
     {
-      "title": "The Dragon is Protecting Something",
-      "description": "<h3>The Dragon is Protecting Something</h3><p>The dragon's destructive rampages are not purely malicious. It is, in fact, trying to protect something valuable or sentient within its lair or a nearby hidden location from an even greater, more immediate threat. Perhaps it guards a forgotten dwarven treasure vault from invading orcs, or a rare magical sapling from those who would exploit it. This adds moral complexity to simply slaying the beast.</p>"
+      "title": "The False Hero",
+      "description": "<p>One of the seemingly helpful NPCs, perhaps the charismatic Elara or even a 'retired' adventurer in Oakhaven, has ulterior motives. They know about the forgotten treasure beneath the village and have secretly used the dragon's presence as a diversion or even subtly encouraged its attacks to drive away the villagers, hoping to claim the hoard for themselves once the adventurers deal with the drake. This betrayal could occur just as the party is about to claim victory or rewards.</p>"
     }
   ]
 }
