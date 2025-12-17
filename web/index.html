@@ -45,36 +45,37 @@
     <main>
         <h1>D&D Campaign Details</h1>
         <form id="adventure-form">
-            <div>
-                <label for="campaignSetting">Campaign Setting:</label><br>
-                <textarea id="campaignSetting" name="campaignSetting" rows="4" cols="50" required>
-                    Middle Earth
+            <div class="full-width">
+                <label for="campaignSetting">Campaign Setting:</label>
+                <textarea id="campaignSetting" name="campaignSetting" rows="4" required>
+                    Rising from the sea like a rotting tooth, the island is a choked tangle of ancient mangroves and cypress trees. The air hangs heavy with the stench of guano and stagnant water. It is a place of deafening vertical warfare: the high canopy belongs to aggressive, screeching primate colonies, while the darkened skies are ruled by massive clouds of bats. Below lies a treacherous, waist-deep swamp teeming with unseen aquatic predators, ensuring that the only safety is found in the precarious, moss-slicked branches above.
                 </textarea>
             </div>
-            <div>
-                <label for="partySize">Party Size:</label><br>
-                <input type="number" id="partySize" name="partySize" min="1" max="10" value="4" required>
+            <div class="horizontal-group full-width">
+                <div>
+                    <label for="partySize">Party Size:</label>
+                    <input type="number" id="partySize" name="partySize" min="1" max="10" value="4" required>
+                </div>
+                <div>
+                    <label for="characterLevel">Character Level:</label>
+                    <input type="number" id="characterLevel" name="characterLevel" min="1" max="20" value="2" required>
+                </div>
+                <div>
+                    <label for="numberOfSessions">Number of Sessions:</label>
+                    <input type="number" id="numberOfSessions" name="numberOfSessions" min="1" value="4" required>
+                </div>
+                <div>
+                    <label for="numberOfHoursPerSession">Hours Per Session:</label>
+                    <input type="number" id="numberOfHoursPerSession" name="numberOfHoursPerSession" min="1" value="3" required>
+                </div>
             </div>
-            <div>
-                <label for="characterLevel">Character Level:</label><br>
-                <input type="number" id="characterLevel" name="characterLevel" min="1" max="20" value="2" required>
-            </div>
-            <div>
-                <label for="numberOfSessions">Number of Sessions:</label><br>
-                <input type="number" id="numberOfSessions" name="numberOfSessions" min="1" value="4" required>
-            </div>
-            <div>
-                <label for="numberOfHoursPerSession">Hours Per Session:</label><br>
-                <input type="number" id="numberOfHoursPerSession" name="numberOfHoursPerSession" min="1" value="3" required>
-            </div>
-            <div>
-                <label for="storyLine">Story Line:</label><br>
-                <textarea id="storyLine" name="storyLine" rows="6" cols="50" required>
-                    There is a dragon loose on the town.
+            <div class="full-width">
+                <label for="storyLine">Story Line:</label>
+                <textarea id="storyLine" name="storyLine" rows="6" required>
+                    "The Silence of the Swamp" is an adventure where heroes investigate a maddening plague originating from the Isle of Cacophony. Upon arrival, they discover an escalating war between the Simian Dynasty and the Velveteen Wing, whose deafening battle for dominance threatens to wake the island itself—actually a slumbering Dragon Turtle. The party must navigate the treacherous vertical terrain, choosing to ally with a faction or force a neutral truce via an ancient artifact, all while racing against the clock to silence the noise before the leviathan wakes and drowns the entire island.
                 </textarea>
             </div>
-            <br>
-            <div>
+            <div class="full-width">
                 <button type="submit">Submit</button>
             </div>
         </form>
