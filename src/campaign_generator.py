@@ -2,8 +2,8 @@ import json
 import os
 import re
 from src.gemini_client import GeminiClient
-from src.state_classes import Campaign_Schema
-from src.state_classes import Campaign
+from src.campaign import Campaign_Schema
+from src.campaign import Campaign
 from src.replicate_client import ReplicateClient
 
 from jinja2 import Environment, FileSystemLoader    
