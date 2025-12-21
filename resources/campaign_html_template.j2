@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<container id="content-to-download" style="border: 1px solid black; padding: 10px;">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -198,12 +199,7 @@
             font-size: 14px;
         }
 
-        /* --- Bottom Section (CR, XP, PB) --- */
-        .actions {
-            margin-top: 10px;
-        }
-
-    </style>
+    </style>        
     <script>
         function downloadPartialHTML() {
             // 1. Get the content of the target element
@@ -214,7 +210,7 @@
             
             // 3. Create a temporary anchor element
             const a = document.createElement('a');
-            a.download = 'section.html'; // Set the filename
+            a.download = "{{title | escape}}.html"; // Set the filename
             a.href = URL.createObjectURL(blob);
             
             // 4. Trigger the download
@@ -227,15 +223,18 @@
 </head>
 <body>
 
-<div id="content-to-download" style="border: 1px solid black; padding: 10px;">
 <div class="container">
 
     <header>
         <div class="title">{{title}}</div>
         <p style="text-align: center; font-weight: bold; font-style: italic; font-size: 20px">Target Level: 1-5 | Setting: Forgotten Realms</p>
     </header>
-    <button onclick="downloadPartialHTML()">Download This Section</button>
-     
+    <button class="dragon-btn" onclick="downloadPartialHTML()">
+        <span class="dragon-scales"></span>
+        <span class="btn-text">Download as HTML</span>
+    </button>
+    <br/>
+    <br/>
     <div class="toc">
         <h3>Campaign Contents</h3>
         <ul>
@@ -473,7 +472,7 @@
         <h2>9. Rewards</h2>
         {%  for reward in rewardsList %}
             <div class="reward-block" >
-                <h4 style="text-align: center;">{{reward.name}}</h4>
+                <h3 style="text-align: left; ">{{reward.name}}</h4>
                 <p style="text-align: center;">{{reward.description}}</p>
                 <p style="text-align: center;">                        
                     <img src="{{reward.image.url}}" alt="{{reward.name}}" style="map" width="80%" />
@@ -486,7 +485,7 @@
         <h2>10. Magic Items</h2>
         {%  for item in generatedMagicItems %}
             <div class="reward-block" >
-                <h4 style="text-align: center;">{{item.name}}</h4>
+                <h3 style="text-align: left;">{{item.name}}</h4>
                 <p style="text-align: center;">{{item.description}}</p>
                 <p style="text-align: center;">
                     <img src="{{item.image.url}}" alt="{{item.name}}"  width="50%" align=center/>
@@ -494,7 +493,7 @@
             </div>
         {% endfor %}
     </div>
-    </div>
 </div>
 </body>
 </html>
+</container>
