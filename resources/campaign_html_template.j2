@@ -260,8 +260,10 @@
 
     <div id="start" class="section">
         <h2>2. Starting Point</h2>
-        <img src="{{startingPointImage.url}}" alt="{{startingPointImage.description}}" style="map" width="80%" />
-        <p></p>
+        <p><strong>Starting Point:</strong> {{startingPoint}}</p>
+        <p style="text-align: center;">
+            <img src="{{startingPointImage.url}}" alt="{{startingPointImage.description}}" style="map" width="80%" />
+        </p>
     </div>
 
     <div id="hooks" class="section">
@@ -301,7 +303,9 @@
     <div id="map" class="section">
         <h2>6. Regional Map</h2>
         <div class="map-container">
-            <img src="{{ mapImagePrompt.url }}"" alt="{{regionalMapTitle}}" style="map" width="100%" />
+                <p style="text-align: center;">
+                    <img src="{{ mapImagePrompt.url }}"" alt="{{regionalMapTitle}}" style="map" width="100%" />
+                </p>
         </div>
         <p><em>Key Locations: 1. The Capital, 2. The Ruins, 3. The Forbidden Forest.</em></p>
     </div>
@@ -313,7 +317,9 @@
                  <div class="stat-block">
                     <hr class="tapered-rule">
                     <h3>{{character.name}}</h3>
-                    <img src="{{character.image.url}}" alt="{{character.name}}" style="image" width="80%" />
+                    <p style="text-align: center;">
+                        <img src="{{character.image.url}}" alt="{{character.name}}" style="image" width="80%" />
+                    </p>
                     <div class="npc-role">{{character.role}}</div>
                     <hr class="tapered-rule">
 
@@ -397,7 +403,9 @@
                     <div class="creature-heading">
                         <h1>{{monster.name}}</h1>
                         <h2>{{monster.description}}</h2>
-                        <img src="{{monster.image.url}}" alt="{{monster.name}}" style="map" width="80%" />
+                        <p style="text-align: center;">
+                            <img src="{{monster.image.url}}" alt="{{monster.name}}" style="map" width="80%" />
+                        </p>
                     </div>
                     
                     <hr class="tapered-rule">

@@ -29,14 +29,7 @@ form.addEventListener('submit', async function (event) {
 
         const responseData = await response.text();
             
-        // 1. Open a new blank tab
-        const newTab = window.open();
-        
-        // 2. Write the HTML content into the new tab
-        newTab.document.open();
-        newTab.document.write(responseData);
-        newTab.document.close()
-        //output.innerHTML = responseData;
+        document.body.innerHTML = responseData;
 
     } catch (error) {
         console.error('Error submitting form:', error);
