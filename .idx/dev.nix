@@ -10,6 +10,7 @@
     pkgs.python311Packages.pytest
     pkgs.docker
     pkgs.sudo
+    pkgs.pipenv 
   ];
   # Sets environment variables in the workspace
   env = {};

@@ -89,6 +89,7 @@
         .map-container img {
             max-width: 100%;
             max-height: 100%;
+            object-fit: contain
         }
 
         /* NPC Cards */
@@ -303,8 +304,8 @@
     <div id="map" class="section">
         <h2>6. Regional Map</h2>
         <div class="map-container">
-                <p style="text-align: center;">
-                    <img src="{{ mapImagePrompt.url }}"" alt="{{regionalMapTitle}}" style="map" width="100%" />
+                <p style="text-align: center;" >
+                    <img src="{{ mapImagePrompt.url }}"" alt="{{regionalMapTitle}}" style="map; object-fit: contain" width="90%" />
                 </p>
         </div>
         <p><em>Key Locations: 1. The Capital, 2. The Ruins, 3. The Forbidden Forest.</em></p>
