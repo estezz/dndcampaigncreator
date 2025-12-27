@@ -220,6 +220,12 @@
             // 5. Clean up
             URL.revokeObjectURL(a.href);
         }
+
+        function regenerateImage(domId) {
+            alert("regenerating image" + domId);
+            const mapImage = document.getElementById(domId);
+            document.getElementById( mapImage ).src="https://www.imatest.com/wp-content/uploads/2020/06/LabReflectiveModule-3-2-RESIZED.jpg"
+        }
     </script>
 </head>
 <body>
@@ -305,7 +311,8 @@
         <h2>6. Regional Map</h2>
         <div class="map-container">
                 <p style="text-align: center;" >
-                    <img src="{{ mapImagePrompt.url }}"" alt="{{regionalMapTitle}}" style="map; object-fit: contain" width="90%" />
+                    <img id="regionalMap" src="{{ mapImagePrompt.url }}"" alt="{{regionalMapTitle}}" style="map; object-fit: contain" width="90%" />
+                    <button onclick="regenerateImage('regionalMap')">Regenerate Map</button>
                 </p>
         </div>
         <p><em>Key Locations: 1. The Capital, 2. The Ruins, 3. The Forbidden Forest.</em></p>

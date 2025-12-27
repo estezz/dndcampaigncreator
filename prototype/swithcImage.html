@@ -1,0 +1,13 @@
+<img id="myImage" src="https://picsum.photos/200/300" width="300">
+<button id="myButton" onclick="changeImage()">Change Image</button>
+
+<script>
+  const image = document.getElementById('myImage');
+  const button = document.getElementById('myButton');
+
+  
+  function changeImage() {
+    document.getElementById("myImage").src = "https://picsum.photos/500";
+
+  }
+</script>
