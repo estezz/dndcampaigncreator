@@ -29,7 +29,7 @@ form.addEventListener('submit', async function (event) {
 
         const responseData = await response.text();
             
-        document.body.innerHTML = responseData;
+        document.write( responseData );
 
     } catch (error) {
         console.error('Error submitting form:', error);
