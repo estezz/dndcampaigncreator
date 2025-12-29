@@ -33,7 +33,8 @@ class TestCampaignTemplates:
             context = json.load(f)
 
         rendered_content = template.render(context)
-
+        print(rendered_content)
+        
         assert "A Whispered Warning" in rendered_content
         assert "The Iron Crown" in rendered_content
         assert "middle-aged human male" in rendered_content
