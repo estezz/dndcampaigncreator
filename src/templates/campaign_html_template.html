@@ -1,0 +1,285 @@
+<header>
+    <div class="title">{{title}}</div>
+    <p style="text-align: center; font-weight: bold; font-style: italic; font-size: 20px">Target Level: 1-5 | Setting:
+        Forgotten Realms</p>
+</header>
+<button class="dragon-btn" onclick="downloadPartialHTML()">
+    <span class="dragon-scales"></span>
+    <span class="btn-text">Download as HTML</span>
+</button>
+<br />
+<br />
+<div class="toc">
+    <h3>Campaign Contents</h3>
+    <ul>
+        <li><a href="#setup">1. Setup & Background</a></li>
+        <li><a href="#start">2. Starting Point</a></li>
+        <li><a href="#hooks">3. Plot Hooks</a></li>
+        <li><a href="#mainplot">4. Main Plot Steps</a></li>
+        <li><a href="#twists">5. Plot Twists</a></li>
+        <li><a href="#map">6. Regional Map</a></li>
+        <li><a href="#npcs">7. Main Characters</a></li>
+        <li><a href="#monsters">8. Monsters</a></li>
+        <li><a href="#rewards">9. Rewards</a></li>
+    </ul>
+</div>
+
+<div id="setup" class="section">
+    <h2>1. Setup & Background</h2>
+    <p><strong>Setting:</strong> {{setting}} </p>
+    <p><strong>History:</strong> {{history}} </p>
+    <p><strong>Atmosphere:</strong> {{atmosphere}} </p>
+    <p><strong>Setup:</strong> {{setup}} </p>
+</div>
+
+<div id="start" class="section">
+    <h2>2. Starting Point</h2>
+    <img src="{{startingPointImage.url}}" alt="{{startingPointImage.description}}" style="map" width="80%" />
+    <p></p>
+</div>
+
+<div id="hooks" class="section">
+    <h2>3. Plot Hooks</h2>
+    <ol>
+        {% for plotHook in plotHooks %}
+        <li>
+            <h3>{{ plotHook.title }}</h3>
+            <p>{{ plotHook.description }}</p>
+        </li>
+        {% endfor %}
+    </ol>
+</div>
+
+<div id="mainplot" class="section">
+    <h2>4. Main Plot Steps</h2>
+    <ol>
+        {% for plotStep in mainPlotSteps %}
+        <li>
+            <h3>{{ plotStep.title }}</h3>
+            <p>{{ plotStep.description }}</p>
+        </li>
+        {% endfor %}
+    </ol>
+</div>
+
+<div id="twists" class="section">
+    <h2>5. Plot Twists</h2>
+    {% for plotTwist in generatedPlotTwists %}
+    <div class="twist-box">
+        <strong>{{ plotTwist.title }}</strong>
+        <p>{{ plotTwist.description }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+<div id="map" class="section">
+    <h2>6. Regional Map</h2>
+    <div class="map-container">
+        <img src="{{ mapImagePrompt.url }}"" alt=" {{regionalMapTitle}}" style="map" width="100%" />
+    </div>
+    <p><em>Key Locations: 1. The Capital, 2. The Ruins, 3. The Forbidden Forest.</em></p>
+</div>
+
+<div id="npcs" class="section">
+    <h2>7. Main Characters</h2>
+    <div class="grid-2">
+        {% for character in mainCharacters %}
+        <div class="stat-block">
+            <hr class="tapered-rule">
+            <h3>{{character.name}}</h3>
+            <img src="{{character.image.url}}" alt="{{character.name}}" style="image" width="80%" />
+            <div class="npc-role">{{character.image.description}}</div>
+            <hr class="tapered-rule">
+            <div class="npc-role">{{character.role}}</div>
+            <hr class="tapered-rule">
+
+            <div class="top-stats">
+                <div class="property-line">
+                    <h4>{{character.stats.AC}} (AC)</h4>
+                    <p>15 (natural armor)</p>
+                </div>
+                <div class="property-line">
+                    <h4>{{character.stats.HP}} (HP)</h4>
+                    <p>45</p>
+                </div>
+                <div class="property-line">
+                    <h4>Speed</h4>
+                    <p>{{character.stats.Speed}} ft - {{character.stats.Swim}} ft swim.</p>
+                </div>
+                <div class="property-line">
+                    <h4>Initiative</h4>
+                    <p>{{character.stats.Initiative}}</p>
+                </div>
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="abilities">
+                <div>
+                    <h4>STR</h4>
+                    <p>{{character.stats.Str}} (+{{character.stats.Str - 10}})</p>
+                </div>
+                <div>
+                    <h4>DEX</h4>
+                    <p>{{character.stats.Dex}} (+{{character.stats.Dex - 10}})</p>
+                </div>
+                <div>
+                    <h4>CON</h4>
+                    <p>{{character.stats.Con}} (+{{character.stats.Con - 10}})</p>
+                </div>
+                <div>
+                    <h4>INT</h4>
+                    <p>{{character.stats.Int}} (+{{character.stats.Int - 10}})</p>
+                </div>
+                <div>
+                    <h4>WIS</h4>
+                    <p>{{character.stats.Wis}} (+{{character.stats.Wis - 10}})</p>
+                </div>
+                <div>
+                    <h4>CHA</h4>
+                    <p>{{character.stats.Cha}} (+{{character.stats.Cha - 10}})</p>
+                </div>
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="bottom-stats">
+                <div class="property-line">
+                    <h4>Challenge</h4>
+                    <p>{{character.stats.CR}}-{{character.stats.XP}}(XP)</p>
+                </div>
+                <div class="property-line">
+                    <h4>Proficiency Bonus</h4>
+                    <p>{{character.stats.PB}}</p>
+                </div>
+            </div>
+            <div class="bottom-stats">
+                <div class="stat-line">
+                    <h4>Traits</h4>
+                    <p>{{character.Traits}}</p>
+                </div>
+            </div>
+
+            <p><strong>Goal:</strong> {{character.goal}}</p>
+            <p><strong>Quirk:</strong> {{character.quirk}}</p>
+
+            <hr class="tapered-rule">
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div id="monsters" class="section">
+    <h2>8. Monsters</h2>
+    <div class="grid-2">
+        {% for monster in monsters %}
+
+        <div class="stat-block">
+            <hr class="tapered-rule">
+
+            <div class="creature-heading">
+                <h1>{{monster.name}}</h1>
+                <h2>{{monster.description}}</h2>
+                <img src="{{monster.image.url}}" alt="{{monster.name}}" style="map" width="80%" />
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="top-stats">
+                <div class="property-line">
+                    <h4>{{monster.stats.AC}} (AC)</h4>
+                    <p>15 (natural armor)</p>
+                </div>
+                <div class="property-line">
+                    <h4>{{monster.stats.HP}} (HP)</h4>
+                    <p>45</p>
+                </div>
+                <div class="property-line">
+                    <h4>Speed</h4>
+                    <p>{{monster.stats.Speed}} ft - {{monster.stats.Swim}} ft swim.</p>
+                </div>
+                <div class="property-line">
+                    <h4>Initiative</h4>
+                    <p>{{monster.stats.Initiative}}</p>
+                </div>
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="abilities">
+                <div>
+                    <h4>STR</h4>
+                    <p>{{monster.stats.Str}} (+{{monster.stats.Str - 10}})</p>
+                </div>
+                <div>
+                    <h4>DEX</h4>
+                    <p>{{monster.stats.Dex}} (+{{monster.stats.Dex - 10}})</p>
+                </div>
+                <div>
+                    <h4>CON</h4>
+                    <p>{{monster.stats.Con}} (+{{monster.stats.Con - 10}})</p>
+                </div>
+                <div>
+                    <h4>INT</h4>
+                    <p>{{monster.stats.Int}} (+{{monster.stats.Int - 10}})</p>
+                </div>
+                <div>
+                    <h4>WIS</h4>
+                    <p>{{monster.stats.Wis}} (+{{monster.stats.Wis - 10}})</p>
+                </div>
+                <div>
+                    <h4>CHA</h4>
+                    <p>{{monster.stats.Cha}} (+{{monster.stats.Cha - 10}})</p>
+                </div>
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="bottom-stats">
+                <div class="property-line">
+                    <h4>Challenge</h4>
+                    <p>{{monster.stats.CR}}-{{monster.stats.XP}}(XP)</p>
+                </div>
+                <div class="property-line">
+                    <h4>Proficiency Bonus</h4>
+                    <p>{{monster.stats.PB}}</p>
+                </div>
+            </div>
+            <div class="bottom-stats">
+                <div class="stat-line">
+                    <h4>Traits</h4>
+                    <p>{{monster.Traits}}</p>
+                </div>
+            </div>
+
+            <hr class="tapered-rule">
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div id="rewards" class="section">
+    <h2>9. Rewards</h2>
+    {% for reward in rewardsList %}
+    <div class="reward-block">
+        <h3 style="text-align: left; ">{{reward.name}}</h4>
+            <p style="text-align: center;">{{reward.description}}</p>
+            <p style="text-align: center;">
+                <img src="{{reward.image.url}}" alt="{{reward.name}}" style="map" width="80%" />
+            </p>
+    </div>
+    {% endfor %}
+</div>
+
+<div id="magicItems" class="section">
+    <h2>10. Magic Items</h2>
+    {% for item in generatedMagicItems %}
+    <div class="reward-block">
+        <h3 style="text-align: left;">{{item.name}}</h4>
+            <p style="text-align: center;">{{item.description}}</p>
+            <p style="text-align: center;">
+                <img src="{{item.image.url}}" alt="{{item.name}}" width="50%" align=center />
+            </p>
+    </div>
+    {% endfor %}
+</div>
