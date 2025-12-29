@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{{title}}</title>
-    </head>
-    <body>
-        <container id="content-to-download">
-            {% include "campaign_html_template.html" %}
-        </container></container>
-        <script>
-            {% include "campaign_javascript.js" %}      
-        </script>
-        
-    </body>
-
-</html>
+<container id="content-to-download">
+    <html>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>{{title}}</title>
+            <style>
+                {% include "campaign_style.css" %}
+            </style>
+        </head>
+        <body>
+                {% include "campaign_html_template.html" %}
+                <script>
+                    {% include "campaign_javascript.js" %}      
+                    </script>
+            
+        </body>
+    
+    </html>
+</container>

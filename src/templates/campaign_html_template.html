@@ -34,7 +34,7 @@
 
 <div id="start" class="section">
     <h2>2. Starting Point</h2>
-    <img src="{{startingPointImage.url}}" alt="{{startingPointImage.description}}" style="map" width="80%" />
+    <img src="{{startingPointImage.url}}" alt="{{startingPointImage.description}}" class="center"/>
     <p></p>
 </div>
 
@@ -75,7 +75,7 @@
 <div id="map" class="section">
     <h2>6. Regional Map</h2>
     <div class="map-container">
-        <img src="{{ mapImagePrompt.url }}"" alt=" {{regionalMapTitle}}" style="map" width="100%" />
+        <img src="{{ mapImagePrompt.url }}"" alt=" {{regionalMapTitle}}" class="center" width="100%" />
     </div>
     <p><em>Key Locations: 1. The Capital, 2. The Ruins, 3. The Forbidden Forest.</em></p>
 </div>
@@ -87,7 +87,7 @@
         <div class="stat-block">
             <hr class="tapered-rule">
             <h3>{{character.name}}</h3>
-            <img src="{{character.image.url}}" alt="{{character.name}}" style="image" width="80%" />
+            <img src="{{character.image.url}}" alt="{{character.name}}" class="center" width="80%" />
             <div class="npc-role">{{character.image.description}}</div>
             <hr class="tapered-rule">
             <div class="npc-role">{{character.role}}</div>
@@ -180,7 +180,7 @@
             <div class="creature-heading">
                 <h1>{{monster.name}}</h1>
                 <h2>{{monster.description}}</h2>
-                <img src="{{monster.image.url}}" alt="{{monster.name}}" style="map" width="80%" />
+                <img src="{{monster.image.url}}" alt="{{monster.name}}" class="center" width="80%" />
             </div>
 
             <hr class="tapered-rule">
@@ -265,7 +265,7 @@
         <h3 style="text-align: left; ">{{reward.name}}</h4>
             <p style="text-align: center;">{{reward.description}}</p>
             <p style="text-align: center;">
-                <img src="{{reward.image.url}}" alt="{{reward.name}}" style="map" width="80%" />
+                <img src="{{reward.image.url}}" alt="{{reward.name}}" class="center" width="80%" />
             </p>
     </div>
     {% endfor %}
@@ -278,7 +278,7 @@
         <h3 style="text-align: left;">{{item.name}}</h4>
             <p style="text-align: center;">{{item.description}}</p>
             <p style="text-align: center;">
-                <img src="{{item.image.url}}" alt="{{item.name}}" width="50%" align=center />
+                <img src="{{item.image.url}}" alt="{{item.name}}" width="50%" class="center" />
             </p>
     </div>
     {% endfor %}
