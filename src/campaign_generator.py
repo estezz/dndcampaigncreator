@@ -1,12 +1,13 @@
 import json
 import os
 import re, html
+from pathlib import Path
 from src.gemini_client import GeminiClient
 from src.campaign import Campaign_Schema
 from src.campaign import Campaign
 from src.replicate_client import ReplicateClient
 
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import Environment, FileSystemLoader, select_autoescape
 import base64
 
 campaign = Campaign()
@@ -17,10 +18,17 @@ class Campaign_Generator:
 
     def generate_campaign(self, parameter_dict):
         # Set up the Jinja2 environment to load templates from the current directory
-        env = Environment(loader=FileSystemLoader("."))
+        base_path = Path(__file__).parent
+        print(f"test location {base_path}")
 
+        # Join the base path with the filename
+        templates_path = (base_path / "templates" ).resolve()
+        env = Environment(
+                loader=FileSystemLoader(templates_path),  # Assuming templates are in src/templates
+                autoescape=select_autoescape(["html", "js"])
+            )
         # Load the template
-        template = env.get_template("./resources/campaign_prompt.j2")
+        template = env.get_template("campaign_prompt.j2")
 
         # Render the template with the provided data
         prompt = template.render(parameter_dict)
@@ -38,8 +46,8 @@ class Campaign_Generator:
         print(f"after Images: {json.dumps(campaign.json)}")
 
         ## Create HTML from the campaign JSON
-        template = env.get_template("./resources/campaign_html_template.j2")
-        campaign.html = html.unescape(template.render(clean_campaign_json))
+        template = env.get_template("main_campaign_template.html")
+        campaign.html = html.unescape(template.render(campaign.json))
         print(f"campaign html: {campaign.html}")
         print("returning campaign")
 

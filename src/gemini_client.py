@@ -67,7 +67,7 @@ class GeminiClient:
         if "FLASK_DEBUG" in os.environ:
             try:
                 # In debug mode, read from a file instead of calling the API
-                filename = "test/resources/campain.json"
+                filename = "test/resources/campaign.json"
                 with open(filename, "r") as file:
                     return file.read()
             except FileNotFoundError:
