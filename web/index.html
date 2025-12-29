@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,6 +61,7 @@
             transition: all 0.4s ease-in-out;
             overflow: hidden;
             /* Ensures pseudo-elements stay inside */
+            text-align: center;
         }
 
         /* --- THE TEXT --- */
@@ -178,6 +180,7 @@
 </head>
 
 <body>
+    <div id="error-popup" class="error-popup">The magic was not aligned</div>
     <main>
         <h1>D&D Campaign Details</h1>
         <form id="adventure-form">
@@ -242,6 +245,14 @@ One of these anchors, the Iron Crown, has resurfaced in the desolate mood-lands 
         const form = document.getElementById('adventure-form');
         const spinner = document.getElementById('spinner');
         const output = document.querySelector('.output');
+        const errorPopup = document.getElementById('error-popup');
+
+        function showErrorPopup() {
+            errorPopup.style.display = 'block';
+            setTimeout(() => {
+                errorPopup.style.display = 'none';
+            }, 3000); // Hide after 3 seconds
+        }
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
