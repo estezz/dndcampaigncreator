@@ -22,9 +22,11 @@ resource "aws_ecs_cluster" "my_cluster" {
   name = "app-cluster"
 }
 
-
-
-
+# 2. CloudWatch Log Group
+resource "aws_cloudwatch_log_group" "app_log_group" {
+  name              = "/ecs/dnd"
+  retention_in_days = 30
+}
 
 #Creating Task Definition
 resource "aws_ecs_task_definition" "app_task" {
@@ -37,12 +39,20 @@ resource "aws_ecs_task_definition" "app_task" {
       "essential": true,
       "portMappings": [
         {
-          "containerPort": 5000,
-          "hostPort": 5000
+          "containerPort": 8080,
+          "hostPort": 8080
         }
       ],
       "memory": 512,
       "cpu": 256
+    },
+    "logConfiguration" : {
+      logDriver : "awslogs"
+      "options" : {
+        "awslogs-group"         : aws_cloudwatch_log_group.app_log_group.name
+        "awslogs-region"        : "us-east-1"
+        "awslogs-stream-prefix" : "ecs"
+      }
     }
   ]
   DEFINITION
