@@ -29,7 +29,7 @@ resource "aws_cloudwatch_log_group" "dnd_log_group" {
 }
 
 resource "aws_cloudwatch_log_stream" "dnd_log_stream" {
-  name               = "dnd-log-stream"
+  name               = "ecs/dnd_task"
   log_group_name = "${aws_cloudwatch_log_group.dnd_log_group.name}"
 }
 
@@ -115,10 +115,6 @@ resource "aws_alb" "application_load_balancer" {
   # security group
   security_groups = ["${aws_security_group.load_balancer_security_group.id}"]
 }
-
-
-
-
 
 #Adding Security Group 
 # Create a security group for the load balancer:
