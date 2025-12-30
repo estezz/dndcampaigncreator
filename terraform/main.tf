@@ -19,7 +19,7 @@ resource "aws_ecr_repository" "dnd_ecr_repo" {
 }
 
 resource "aws_ecs_cluster" "dnd_cluster" {
-  name = "app-cluster"
+  name = "dnd-cluster"
 }
 
 # 2. CloudWatch Log Group
