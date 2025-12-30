@@ -31,22 +31,21 @@ resource "aws_cloudwatch_log_group" "dnd_log_group" {
 #Creating Task Definition
 resource "aws_ecs_task_definition" "app_task" {
   family                   = "app-first-task"
-  container_definitions = jsonencode([{
-    name  = "my-app-container"
-    image = "${aws_ecr_repository.dnd_ecr_repo.repository_url}:latest"
-    portMappings = [{
-      containerPort = 80
-      hostPort      = 80
-    }]
-    logConfiguration = {
-      logDriver = "awslogs"
-      options = {
-        "awslogs-group"         = aws_cloudwatch_log_group.dnd_log_group
-        "awslogs-region"        = "us-east-2"
-        "awslogs-stream-prefix" = "ecs"
-      }
+  container_definitions = jsonencode([
+    {
+      name      = "first"
+      image     = "${aws_ecr_repository.dnd_ecr_repo.repository_url}:latest"
+      cpu       = 10
+      memory    = 512
+      essential = true
+      portMappings = [
+        {
+          containerPort = 80
+          hostPort      = 80
+        }
+      ]
     }
-  }])
+  ])
   
   requires_compatibilities = ["FARGATE"] # use Fargate as the launch type
   network_mode             = "awsvpc"    # add the AWS VPN network mode as this is required for Fargate
