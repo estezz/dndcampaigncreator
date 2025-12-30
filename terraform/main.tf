@@ -33,7 +33,7 @@ resource "aws_ecs_task_definition" "app_task" {
   family                   = "app-first-task"
   container_definitions = jsonencode([{
     name  = "my-app-container"
-    image = "${aws_ecr_repository.dnd_repo.repository_url}:latest"
+    image = "${aws_ecr_repository.dnd_ecr_repo.repository_url}:latest"
     portMappings = [{
       containerPort = 80
       hostPort      = 80
