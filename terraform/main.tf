@@ -14,7 +14,7 @@ provider "aws" {
 }
 
 # Create an ECR repository
-resource "aws_ecr_repository" "app_ecr_repo" {
+resource "aws_ecr_repository" "dnd_ecr_repo" {
   name = "dnd"
 }
 
@@ -23,7 +23,7 @@ resource "aws_ecs_cluster" "my_cluster" {
 }
 
 # 2. CloudWatch Log Group
-resource "aws_cloudwatch_log_group" "app_log_group" {
+resource "aws_cloudwatch_log_group" "dnd_log_group" {
   name              = "/ecs/dnd"
   retention_in_days = 30
 }
@@ -33,7 +33,7 @@ resource "aws_ecs_task_definition" "app_task" {
   family                   = "app-first-task"
   container_definitions = jsonencode([{
     name  = "my-app-container"
-    image = "${aws_ecr_repository.app_repo.repository_url}:latest"
+    image = "${aws_ecr_repository.dnd_repo.repository_url}:latest"
     portMappings = [{
       containerPort = 80
       hostPort      = 80
@@ -41,7 +41,7 @@ resource "aws_ecs_task_definition" "app_task" {
     logConfiguration = {
       logDriver = "awslogs"
       options = {
-        "awslogs-group"         = aws_cloudwatch_log_group.dnd_log_group.dnd
+        "awslogs-group"         = aws_cloudwatch_log_group.dnd_log_group
         "awslogs-region"        = "us-east-2"
         "awslogs-stream-prefix" = "ecs"
       }
