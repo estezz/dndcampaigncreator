@@ -1,10 +1,12 @@
 from src.campaign_generator import Campaign_Generator
 import src.campaign_generator as campaign_generator_utils
 from src.replicate_client import ReplicateClient
-from flask import Flask, jsonify, request, send_file, send_from_directory
+from flask import Flask, jsonify, request, send_file, send_from_directory, render_template, session
 import os
+from pathlib import Path
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="src/templates")
+app.secret_key = 'your_super_secret_key'
 campaign_dict = {}
 campaign_generator = Campaign_Generator()
 
@@ -25,7 +27,24 @@ def generate_campaign_api():
     campaign_dict = request.get_json()
     print(campaign_dict)
     campaign = campaign_generator.generate_campaign(campaign_dict)
-   
+    try:
+        session['campaign'] = campaign.json
+    except Exception as e:
+        print(e)
+    
+    return campaign.html
+
+@app.route("/api/edit/campaign", methods=["POST"])
+def edit_campaign_api():
+    campaign_dict = session['campaign']
+    input = request.get_json()
+    print(campaign_dict)
+    campaign = campaign_generator.generate_campaign(campaign_dict)
+    try:
+        session['campaign'] = campaign.json
+    except Exception as e:
+        print(e)
+    
     return campaign.html
 
 @app.route('/api/image', methods=['GET'])
@@ -41,6 +60,15 @@ def generate_image():
 def serve_static(path):
     return send_from_directory('web', path)
 
+@app.errorhandler(404)
+def page_not_found(e):
+    # Render custom 404.html template
+    return render_template('404.html'), 404
+
+@app.errorhandler(Exception)
+def internal_server_error(e):
+    
+    return render_template("500.html"), 500
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get('PORT', 80)))

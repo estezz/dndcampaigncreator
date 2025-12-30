@@ -8,5 +8,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 EXPOSE 8080
-
+RUN export PORT=8080
 CMD ["python3", "main.py"]

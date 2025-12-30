@@ -24,7 +24,7 @@
     </ul>
 </div>
 
-<div id="setup" class="section">
+<div id="setup" class="section" clickable="true">
     <h2>1. Setup & Background</h2>
     <p><strong>Setting:</strong> {{setting}} </p>
     <p><strong>History:</strong> {{history}} </p>
@@ -32,13 +32,13 @@
     <p><strong>Setup:</strong> {{setup}} </p>
 </div>
 
-<div id="start" class="section">
+<div id="start" class="section" clickable="true">
     <h2>2. Starting Point</h2>
     <img src="{{startingPointImage.url}}" alt="{{startingPointImage.description}}" class="center"/>
     <p></p>
 </div>
 
-<div id="hooks" class="section">
+<div id="hooks" class="section" clickable="true">
     <h2>3. Plot Hooks</h2>
     <ol>
         {% for plotHook in plotHooks %}
@@ -50,7 +50,7 @@
     </ol>
 </div>
 
-<div id="mainplot" class="section">
+<div id="mainplot" class="section" clickable="true">
     <h2>4. Main Plot Steps</h2>
     <ol>
         {% for plotStep in mainPlotSteps %}
@@ -62,7 +62,7 @@
     </ol>
 </div>
 
-<div id="twists" class="section">
+<div id="twists" class="section" clickable="true">
     <h2>5. Plot Twists</h2>
     {% for plotTwist in generatedPlotTwists %}
     <div class="twist-box">
@@ -72,7 +72,7 @@
     {% endfor %}
 </div>
 
-<div id="map" class="section">
+<div id="map" class="section" clickable="true">
     <h2>6. Regional Map</h2>
     <div class="map-container">
         <img src="{{ mapImagePrompt.url }}"" alt=" {{regionalMapTitle}}" class="center" width="100%" />
@@ -80,7 +80,7 @@
     <p><em>Key Locations: 1. The Capital, 2. The Ruins, 3. The Forbidden Forest.</em></p>
 </div>
 
-<div id="npcs" class="section">
+<div id="npcs" class="section" clickable="true">
     <h2>7. Main Characters</h2>
     <div class="grid-2">
         {% for character in mainCharacters %}
@@ -169,7 +169,7 @@
     </div>
 </div>
 
-<div id="monsters" class="section">
+<div id="monsters" class="section" clickable="true">
     <h2>8. Monsters</h2>
     <div class="grid-2">
         {% for monster in monsters %}
@@ -258,7 +258,7 @@
     </div>
 </div>
 
-<div id="rewards" class="section">
+<div id="rewards" class="section" clickable="true">
     <h2>9. Rewards</h2>
     <div class="grid-2">
         {% for reward in rewardsList %}
@@ -273,7 +273,7 @@
     </div>
 </div>
 
-<div id="magicItems" class="section">
+<div id="magicItems" class="section" clickable="true">
     <h2>10. Magic Items</h2>
     <div class="grid-2">
         {% for item in generatedMagicItems %}
@@ -285,5 +285,14 @@
                 </p>
         </div>
         {% endfor %}
+    </div>
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+      <p>Element ID:</p>
+      <textarea id="popupTextarea"></textarea>
+      <button id="submitEdit" >Submit Edit</button>
     </div>
 </div>

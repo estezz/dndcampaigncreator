@@ -19,8 +19,6 @@ class Campaign_Generator:
     def generate_campaign(self, parameter_dict):
         # Set up the Jinja2 environment to load templates from the current directory
         base_path = Path(__file__).parent
-        print(f"test location {base_path}")
-
         # Join the base path with the filename
         templates_path = (base_path / "templates" ).resolve()
         env = Environment(
