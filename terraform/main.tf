@@ -28,6 +28,11 @@ resource "aws_cloudwatch_log_group" "dnd_log_group" {
   retention_in_days = 30
 }
 
+resource "aws_cloudwatch_log_stream" "dnd_log_stream" {
+  name               = "dnd-log-stream"
+  log_group_name = "${aws_cloudwatch_log_group.dnd_log_group.name}"
+}
+
 #Creating Task Definition
 resource "aws_ecs_task_definition" "dnd_task" {
   family                   = "dnd_task"
