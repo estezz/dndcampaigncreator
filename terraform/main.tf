@@ -48,7 +48,7 @@ resource "aws_ecs_task_definition" "dnd_task" {
         logDriver = "awslogs"
         options = {
           "awslogs-group"         = aws_cloudwatch_log_group.dnd_log_group.name
-          "awslogs-region"        = "us-east-1"
+          "awslogs-region"        = "us-east-2"
           "awslogs-stream-prefix" = "ecs"
         }
       }
