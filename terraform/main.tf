@@ -30,7 +30,7 @@ resource "aws_cloudwatch_log_group" "dnd_log_group" {
 
 #Creating Task Definition
 resource "aws_ecs_task_definition" "dnd_task" {
-  family                   = "dnd-task"
+  family                   = "dnd_task"
   container_definitions = jsonencode([
     {
       name      = "dnd_task"
