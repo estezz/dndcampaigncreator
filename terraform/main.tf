@@ -30,10 +30,10 @@ resource "aws_cloudwatch_log_group" "dnd_log_group" {
 
 #Creating Task Definition
 resource "aws_ecs_task_definition" "app_task" {
-  family                   = "app-first-task"
+  family                   = "dnd-task"
   container_definitions = jsonencode([
     {
-      name      = "first"
+      name      = "dnd-container"
       image     = "${aws_ecr_repository.dnd_ecr_repo.repository_url}:latest"
       cpu       = 10
       memory    = 512
