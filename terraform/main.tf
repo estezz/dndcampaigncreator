@@ -18,7 +18,7 @@ resource "aws_ecr_repository" "dnd_ecr_repo" {
   name = "dnd"
 }
 
-resource "aws_ecs_cluster" "my_cluster" {
+resource "aws_ecs_cluster" "dnd_cluster" {
   name = "app-cluster"
 }
 
@@ -29,7 +29,7 @@ resource "aws_cloudwatch_log_group" "dnd_log_group" {
 }
 
 #Creating Task Definition
-resource "aws_ecs_task_definition" "app_task" {
+resource "aws_ecs_task_definition" "dnd_task" {
   family                   = "dnd-task"
   container_definitions = jsonencode([
     {
