@@ -33,7 +33,7 @@ resource "aws_ecs_task_definition" "dnd_task" {
   family                   = "dnd-task"
   container_definitions = jsonencode([
     {
-      name      = "dnd-container"
+      name      = "dnd_task"
       image     = "${aws_ecr_repository.dnd_ecr_repo.repository_url}:latest"
       cpu       = 10
       memory    = 512
@@ -75,10 +75,6 @@ resource "aws_iam_role_policy_attachment" "ecsTaskExecutionRole_policy" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
 
-
-
-
-
 #VPC
 # Provide a reference to your default VPC
 resource "aws_default_vpc" "default_vpc" {
@@ -92,9 +88,6 @@ resource "aws_default_subnet" "default_subnet_a" {
 resource "aws_default_subnet" "default_subnet_b" {
   availability_zone = "us-east-2b"
 }
-
-
-
 
 
 #Creating Load Balancer
@@ -132,9 +125,6 @@ resource "aws_security_group" "load_balancer_security_group" {
 }
 
 
-
-
-
 #Configure the load balancer with the VPC networking
 resource "aws_lb_target_group" "target_group" {
   name        = "target-group"
@@ -153,9 +143,6 @@ resource "aws_lb_listener" "listener" {
     target_group_arn = "${aws_lb_target_group.target_group.arn}" # target group
   }
 }
-
-
-
 
 #Create an ECS Service
 resource "aws_ecs_service" "app_service" {
