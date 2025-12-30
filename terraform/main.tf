@@ -44,18 +44,14 @@ resource "aws_ecs_task_definition" "app_task" {
         }
       ],
       "memory": 512,
-      "cpu": 256
-    },
-    {
-      "logConfiguration" : 
-        {
-          logDriver : "awslogs",
-          "options" : 
-          {
-            "awslogs-group"         : aws_cloudwatch_log_group.app_log_group.name
-            "awslogs-region"        : "us-east-2"
-          "awslogs-stream-prefix" : "ecs"
-          }
+      "cpu": 256,
+      logConfiguration = {
+        logDriver = "awslogs"
+        options = {
+          "awslogs-group"         = "/ecs/dnd"
+          "awslogs-region"        = "us-east-2"
+          "awslogs-stream-prefix" = "ecs"
+        }
       }
     }
   ]
