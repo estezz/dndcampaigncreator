@@ -32,6 +32,8 @@ resource "aws_cloudwatch_log_stream" "dnd_log_stream" {
 #Creating Task Definition
 resource "aws_ecs_task_definition" "dnd_task" {
   family                   = "dnd_task"
+  task_role_arn = aws_iam_role.ecsTaskRole.arn
+  execution_role_arn = aws_iam_role.ecsTaskExecutionRole.arn
   container_definitions = jsonencode([
     {
       name      = "dnd_task"
@@ -40,8 +42,6 @@ resource "aws_ecs_task_definition" "dnd_task" {
       memory    = 512
       essential = true
       
-      task_role_arn = aws_iam_role.ecsTaskRole.arn
-      execution_role_arn = aws_iam_role.ecsTaskExecutionRole.arn
 
       # Log Configuration Block
       logConfiguration = {
