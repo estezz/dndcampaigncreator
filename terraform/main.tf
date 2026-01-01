@@ -40,8 +40,8 @@ resource "aws_ecs_task_definition" "dnd_task" {
       memory    = 512
       essential = true
       
-      task_role_arn = "${aws_iam_role.ecsTaskRole.arn}"
-      execution_role_arn = "${aws_iam_role.ecsTaskExecutionRole.arn}"
+      task_role_arn = aws_iam_role.ecsTaskRole.arn
+      execution_role_arn = aws_iam_role.ecsTaskExecutionRole.arn
 
       # Log Configuration Block
       logConfiguration = {
