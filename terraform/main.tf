@@ -13,10 +13,6 @@ provider "aws" {
   region     = "us-east-2"  # Specify your desired AWS region
 }
 
-# Create an ECR repository
-resource "aws_ecr_repository" "dnd_ecr_repo" {
-  name = "dnd"
-}
 
 resource "aws_ecs_cluster" "dnd_cluster" {
   name = "dnd-cluster"
@@ -39,7 +35,7 @@ resource "aws_ecs_task_definition" "dnd_task" {
   container_definitions = jsonencode([
     {
       name      = "dnd_task"
-      image     = "${aws_ecr_repository.dnd_ecr_repo.repository_url}:latest"
+      image     = "802379732270.dkr.ecr.us-east-2.amazonaws.com/dnd:latest"
       cpu       = 10
       memory    = 512
       essential = true
