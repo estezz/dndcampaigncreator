@@ -10,6 +10,9 @@ from src.replicate_client import ReplicateClient
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 import base64
+import logging
+logger = logging.getLogger(__name__)
+
 
 campaign = Campaign()
 replicate_client = ReplicateClient()
@@ -42,15 +45,15 @@ class Campaign_Generator:
         clean_campaign_json = string_to_json(campaign_json_string)
         campaign.json = clean_campaign_json
 
-        print(f"before Images: {json.dumps(campaign.json)}")
+        logger.debug(f"before Images: {json.dumps(campaign.json)}")
         self.add_images_to_json(campaign.json)
-        print(f"after Images: {json.dumps(campaign.json)}")
+        logger.debug(f"after Images: {json.dumps(campaign.json)}")
 
         ## Create HTML from the campaign JSON
         template = env.get_template("main_campaign_template.html")
         campaign.html = html.unescape(template.render(campaign.json))
-        print(f"campaign html: {campaign.html}")
-        print("returning campaign")
+        logger.debug(f"campaign html: {campaign.html}")
+        logger.debug("returning campaign")
 
         return campaign
 
@@ -89,11 +92,11 @@ class Campaign_Generator:
 
         for key, value in dictionary.items():
             if isinstance(value, dict):
-                self.collect_images_prompts(dictionary=value, images_prompts=image_dict)
+                self.add_images(dictionary=value, image_dict=image_dict)
             elif isinstance(value, list):
                 for item in value:
-                    self.collect_images_prompts(
-                        dictionary=item, images_prompts=image_dict
+                    self.add_images(
+                        dictionary=item, image_dict=image_dict
                     )
             if "Image" in key or "image" in key:
                 value["url"] = image_dict[value["prompt"]]
@@ -118,7 +121,7 @@ def string_to_json(input_string):
     try:
         clean_json = json.loads(clean_string)
     except Exception as e:
-        print(f"Error: {e}")
+        logger.debug(f"Error: {e}")
     return clean_json
 
 

@@ -4,3 +4,4 @@ __pycache__
 pytestdebug.log
 dnd.tar.gz
 terraform/.terraform
+dnd.log

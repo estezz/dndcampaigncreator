@@ -4,6 +4,10 @@ from src.replicate_client import ReplicateClient
 from flask import Flask, jsonify, request, send_file, send_from_directory, render_template, session
 import os
 from pathlib import Path
+import logging
+logging.basicConfig(filename='dnd.log', level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+
 
 app = Flask(__name__, template_folder="src/templates")
 app.secret_key = 'your_super_secret_key'
@@ -67,7 +71,7 @@ def page_not_found(e):
 
 @app.errorhandler(Exception)
 def internal_server_error(e):
-    
+    logger.error(f"Internal Server Error: {e}")
     return render_template("500.html"), 500
 
 if __name__ == "__main__":

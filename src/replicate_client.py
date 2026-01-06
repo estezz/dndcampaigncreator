@@ -40,28 +40,28 @@ class ReplicateClient:
             except ClientError as e:
                 # Handle exceptions as appropriate for your application
                 if e.response["Error"]["Code"] == "ResourceNotFoundException":
-                    print(f"The requested secret {secret_name} was not found.")
+                    logger.debug(f"The requested secret {secret_name} was not found.")
                 elif e.response["Error"]["Code"] == "DecryptionFailureException":
                     # Secrets Manager can't decrypt the protected secret text using the provided KMS key
-                    print("Secrets Manager can't decrypt the secret value.")
+                    logger.debug("Secrets Manager can't decrypt the secret value.")
                 elif e.response["Error"]["Code"] == "InternalServiceErrorException":
                     # An error occurred on the server side
-                    print("An internal service error occurred.")
+                    logger.debug("An internal service error occurred.")
                 elif e.response["Error"]["Code"] == "InvalidParameterException":
-                    print("The request had invalid parameters.")
+                    logger.debug("The request had invalid parameters.")
                 elif e.response["Error"]["Code"] == "InvalidRequestException":
-                    print(
+                    logger.debug(
                         "The request was invalid, e.g., secret is scheduled for deletion."
                     )
                 else:
-                    print(f"An error occurred: {e.response['Error']['Code']}")
+                    logger.debug(f"An error occurred: {e.response['Error']['Code']}")
                 raise
             else:
                 # Decrypts secret using the associated KMS key.
                 # Depending on whether the secret was a string or binary, one of these fields will be populated.
                 if "SecretString" in get_secret_value_response:
                     secret = get_secret_value_response["SecretString"]
-                    print("Found the secret {secret_name}")
+                    logger.debug("Found the secret {secret_name}")
 
                     # Secrets are often stored as JSON strings, so you might need to parse them
                     json_secret = json.loads(secret)
@@ -135,11 +135,11 @@ class ReplicateClient:
                 },
             )
         except ReplicateError as e:
-            print(e)
-            print(f"prompt: {prompt} ")
+            logger.debug(e)
+            logger.debug(f"prompt: {prompt} ")
 
         # To access the file URL:
-        print(output[0].url)
+        logger.debug(output[0].url)
         # => "http://example.com"
 
         return output[0].url
