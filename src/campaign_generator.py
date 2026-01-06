@@ -1,6 +1,7 @@
 import json
 import os
 import re, html
+import asyncio
 from pathlib import Path
 from src.gemini_client import GeminiClient
 from src.campaign import Campaign_Schema
@@ -20,11 +21,13 @@ class Campaign_Generator:
         # Set up the Jinja2 environment to load templates from the current directory
         base_path = Path(__file__).parent
         # Join the base path with the filename
-        templates_path = (base_path / "templates" ).resolve()
+        templates_path = (base_path / "templates").resolve()
         env = Environment(
-                loader=FileSystemLoader(templates_path),  # Assuming templates are in src/templates
-                autoescape=select_autoescape(["html", "js"])
-            )
+            loader=FileSystemLoader(
+                templates_path
+            ),  # Assuming templates are in src/templates
+            autoescape=select_autoescape(["html", "js"]),
+        )
         # Load the template
         template = env.get_template("campaign_prompt.j2")
 
@@ -55,27 +58,51 @@ class Campaign_Generator:
         """use the promt in the json to create an image
         then add the image to the json
         """
+
+        # get all the image prompts and create images from the json
+        images_prompts = []
+        self.collect_images_prompts(dictionary, images_prompts)
+        image_dict = replicate_client.generate_images(images_prompts)
+
+        # add the images to the json
+        self.add_images(dictionary, image_dict)
+        return image_dict
+
+    def collect_images_prompts(self, dictionary, images_prompts):
+        """get all the image prompts from the json"""
+
         for key, value in dictionary.items():
             if isinstance(value, dict):
-                self.add_images_to_json(dictionary=value)
+                self.collect_images_prompts(
+                    dictionary=value, images_prompts=images_prompts
+                )
             elif isinstance(value, list):
                 for item in value:
-                    self.add_images_to_json(dictionary=item)
+                    self.collect_images_prompts(
+                        dictionary=item, images_prompts=images_prompts
+                    )
             if "Image" in key or "image" in key:
-                print(f"prompt: {value['prompt']}")
-                image_url = replicate_client.generate_image_url(value["prompt"])
-                value["url"] = image_url
+                images_prompts.append(value["prompt"])
 
-        return dictionary
+    def add_images(self, dictionary, image_dict):
+        """add images to campaign  json"""
+
+        for key, value in dictionary.items():
+            if isinstance(value, dict):
+                self.collect_images_prompts(dictionary=value, images_prompts=image_dict)
+            elif isinstance(value, list):
+                for item in value:
+                    self.collect_images_prompts(
+                        dictionary=item, images_prompts=image_dict
+                    )
+            if "Image" in key or "image" in key:
+                value["url"] = image_dict[value["prompt"]]
 
 
-def generate_image():
-    # image = campaign_generator_utils.file_to_base64_string('my-image.png')
-    replicate_client = ReplicateClient()
-    image = replicate_client.generate_image_url("a dog in a park")
+def generate_image(prompt):
+    image_url = replicate_client.generate_image_url(value["prompt"])
 
-    html = f'<img src="{image}" class="img-fluid" alt="Description of the image">'
-    return html
+    return image_url
 
 
 def string_to_json(input_string):
