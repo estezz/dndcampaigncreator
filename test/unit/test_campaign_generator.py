@@ -5,16 +5,16 @@ from src.state_classes import Campaign
 import src.campaign_generator as campaign_generator_utils
 
 class TestCampaignGenerator:
-    @patch('src.campaign_generator.GeminiClient')
+   # @patch('src.campaign_generator.GeminiClient')
     def test_generate_campaign(client, MockGeminiClient):
-        # Arrange
-        mock_gemini_client = MockGeminiClient.return_value
-        mock_gemini_client.generate_text.return_value = """```json 
-        {"title": "My Campaign"} 
-        ``` """
-        mock_gemini_client.generate_html.return_value = """```html 
-        <h1>My Campaign</h1> 
-        ``` """
+        # # Arrange
+        # mock_gemini_client = MockGeminiClient.return_value
+        # mock_gemini_client.generate_text.return_value = """```json 
+        # {"title": "My Campaign"} 
+        # ``` """
+        # mock_gemini_client.generate_html.return_value = """```html 
+        # <h1>My Campaign</h1> 
+        # ``` """
 
         generator = Campaign_Generator()
         parameter_dict = {
