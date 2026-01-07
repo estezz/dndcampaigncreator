@@ -96,13 +96,13 @@ class ReplicateClient:
             image_dict = asyncio.run(self.async_generate_images(prompts))
         except* ValueError as eg:
             # Handle specifically ValueError within the group
-            log.exception(eg)
+            logger.exception(eg)
             # You can iterate or split the exception group if needed
             for exc in eg.exceptions:
-                log.exception(exc)
+                logger.exception(exc)
         except* Exception as eg:
             # Handle other potential exceptions if necessary
-            log.exception(eg)
+            logger.exception(eg)
         
         logger.debug("finished async_generate_images")
         logger.debug(results)
