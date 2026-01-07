@@ -105,7 +105,7 @@ class ReplicateClient:
             logger.exception(eg)
         
         logger.debug("finished async_generate_images")
-        logger.debug(results)
+        logger.debug(image_dict)
         return image_dict    
             
 
