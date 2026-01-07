@@ -90,7 +90,20 @@ class ReplicateClient:
             for prompt in prompts:
                 image_dict[prompt] = "https://picsum.photos/200/300"
             return image_dict
-        image_dict = asyncio.run(self.async_generate_images(prompts))
+        
+        image_dict = {}
+        try:
+            image_dict = asyncio.run(self.async_generate_images(prompts))
+        except* ValueError as eg:
+            # Handle specifically ValueError within the group
+            log.exception(eg)
+            # You can iterate or split the exception group if needed
+            for exc in eg.exceptions:
+                log.exception(exc)
+        except* Exception as eg:
+            # Handle other potential exceptions if necessary
+            log.exception(eg)
+        
         logger.debug("finished async_generate_images")
         logger.debug(results)
         return image_dict    
