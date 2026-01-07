@@ -71,7 +71,7 @@ def page_not_found(e):
 
 @app.errorhandler(Exception)
 def internal_server_error(e):
-    logger.error(f"Internal Server Error: {e}")
+    logger.exception(f"Internal Server Error: {e}")
     return render_template("500.html"), 500
 
 if __name__ == "__main__":
