@@ -5,13 +5,11 @@ from replicate.exceptions import ReplicateError
 import random
 import asyncio
 import logging
-
+logger = logging.getLogger(__name__)
 
 class ReplicateClient:
     def __init__(self):
-        self.logger = logging.getLogger(__name__)
-
-        self.logger.debug("Initializing replicate client")
+        logger.debug("Initializing replicate client")
         if not "FLASK_DEBUG" in os.environ:
             api_token = self.get_replicate_api_key()
             self.client = replicate.Client(api_token=api_token)
@@ -84,7 +82,7 @@ class ReplicateClient:
         return output
 
     def generate_images(self, prompts):
-        self.logger.debug("starting async_generate_images")
+        logger.debug("starting async_generate_images")
 
         """ for testing without paying for replicate """
         if "FLASK_DEBUG" in os.environ:
@@ -93,8 +91,8 @@ class ReplicateClient:
                 image_dict[prompt] = "https://picsum.photos/200/300"
             return image_dict
         image_dict = asyncio.run(self.async_generate_images(prompts))
-        self.logger.debug("finished async_generate_images")
-        self.logger.debug(results)
+        logger.debug("finished async_generate_images")
+        logger.debug(results)
         return image_dict    
             
 
