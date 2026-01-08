@@ -1,6 +1,6 @@
-from src.campaign_generator import Campaign_Generator
-import src.campaign_generator as campaign_generator_utils
-from src.replicate_client import ReplicateClient
+from campaign_generator import Campaign_Generator
+import campaign_generator as campaign_generator_utils
+from replicate_client import ReplicateClient
 from flask import Flask, jsonify, request, send_file, send_from_directory, render_template, session
 import os
 from pathlib import Path

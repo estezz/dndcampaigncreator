@@ -3,10 +3,10 @@ import os
 import re, html
 import asyncio
 from pathlib import Path
-from src.gemini_client import GeminiClient
-from src.campaign import Campaign_Schema
-from src.campaign import Campaign
-from src.replicate_client import ReplicateClient
+from gemini_client import GeminiClient
+from campaign import Campaign_Schema
+from campaign import Campaign
+from replicate_client import ReplicateClient
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 import base64

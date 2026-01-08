@@ -6,7 +6,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 
 export PORT=8080
-python main.py
+python src/main.py
 
 
 
