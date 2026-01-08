@@ -9,7 +9,7 @@ logging.basicConfig(filename='dnd.log', level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 
-app = Flask(__name__, template_folder="src/templates")
+app = Flask(__name__, template_folder="templates")
 app.secret_key = 'your_super_secret_key'
 campaign_dict = {}
 campaign_generator = Campaign_Generator()
