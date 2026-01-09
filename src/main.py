@@ -4,8 +4,10 @@ from replicate_client import ReplicateClient
 from flask import Flask, jsonify, request, send_file, send_from_directory, render_template, session
 import os
 from pathlib import Path
+import json
+import uuid
 import logging
-logging.basicConfig(filename='dnd.log', level=logging.DEBUG)
+logging.basicConfig(filename='../logs/dnd.log', level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 
@@ -28,26 +30,33 @@ def index():
 """
 @app.route("/api/generate/campaign", methods=["POST"])
 def generate_campaign_api():
-    campaign_dict = request.get_json()
-    print(campaign_dict)
-    campaign = campaign_generator.generate_campaign(campaign_dict)
+    campaign_input = request.get_json()
+    logger.debug(campaign_input)
+    campaign = campaign_generator.generate_campaign(campaign_input)
     try:
-        session['campaign'] = campaign.json
+        original_filename = '../logs/campaign.json'
+        name, extension = os.path.splitext(original_filename)
+        campaign_filename = f"{name}_{uuid.uuid4()}{extension}"
+        session['campaign.id'] = campaign_filename
+
+        """ save the campaign to a file """
+        with open(campaign_filename, 'w') as json_file:
+            json.dump(campaign.json, json_file, indent=4)
     except Exception as e:
-        print(e)
+        logger.exception(e)
     
     return campaign.html
 
 @app.route("/api/edit/campaign", methods=["POST"])
 def edit_campaign_api():
-    campaign_dict = session['campaign']
+    campaign_filename = session['campaign.id']
     input = request.get_json()
-    print(campaign_dict)
+
+    with open(campaign_filename, 'r') as json_file:
+        campaign_dict = json.load(json_file)
+
+    logger.debug("loaded the campaign from file")
     campaign = campaign_generator.generate_campaign(campaign_dict)
-    try:
-        session['campaign'] = campaign.json
-    except Exception as e:
-        print(e)
     
     return campaign.html
 

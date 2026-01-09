@@ -3,7 +3,7 @@
     <p style="text-align: center; font-weight: bold; font-style: italic; font-size: 20px">Target Level: 1-5 | Setting:
         Forgotten Realms</p>
 </header>
-<button id="download-button" class="dragon-btn" >
+<button id="download-button" class="dragon-btn">
     <span class="dragon-scales"></span>
     <span class="btn-text">Download as HTML</span>
 </button>
@@ -34,7 +34,7 @@
 
 <div id="start" class="section" clickable="true">
     <h2>2. Starting Point</h2>
-    <img src="{{startingPointImage.url}}" alt="{{startingPointImage.description}}" class="center"/>
+    <img src="{{startingPointImage.url}}" alt="{{startingPointImage.description}}" class="center" />
     <p></p>
 </div>
 
@@ -291,8 +291,11 @@
 <!-- The Modal -->
 <div id="myModal" class="modal">
     <div class="modal-content">
-      <p>Element ID:</p>
-      <textarea id="popupTextarea"></textarea>
-      <button id="submitEdit" >Submit Edit</button>
+        <form id="editForm">
+            <input type="text" id="elementID" for="elementID" />
+            <label for="prompt">Describe what you want:</label>
+            <input type="text" id="prompt" name="prompt">
+            <button id="submitEdit" >Submit Edit</button>
+        </form>        
     </div>
 </div>

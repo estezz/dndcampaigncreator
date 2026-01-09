@@ -5,7 +5,9 @@ import json
 import boto3
 from botocore.exceptions import ClientError
 import logging
+
 logger = logging.getLogger(__name__)
+
 
 class GeminiClient:
     """A client for interacting with the Gemini API."""
@@ -68,10 +70,10 @@ class GeminiClient:
         if "FLASK_DEBUG" in os.environ:
             try:
                 # In debug mode, read from a file instead of calling the API
-                filename = "test/resources/campaign.json"
+                filename = "../test/resources/campaign.json"
                 with open(filename, "r") as file:
                     return file.read()
-            except FileNotFoundError:
+            except FileNotFoundError:   
                 logger.debug(f"Error: The file '{filename}' was not found.")
                 return "Mock response not found."
 

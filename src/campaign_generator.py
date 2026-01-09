@@ -11,6 +11,7 @@ from replicate_client import ReplicateClient
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 import base64
 import logging
+
 logger = logging.getLogger(__name__)
 
 
@@ -45,14 +46,11 @@ class Campaign_Generator:
         clean_campaign_json = string_to_json(campaign_json_string)
         campaign.json = clean_campaign_json
 
-        logger.debug(f"before Images: {json.dumps(campaign.json)}")
         self.add_images_to_json(campaign.json)
-        logger.debug(f"after Images: {json.dumps(campaign.json)}")
 
         ## Create HTML from the campaign JSON
         template = env.get_template("main_campaign_template.html")
         campaign.html = html.unescape(template.render(campaign.json))
-        logger.debug(f"campaign html: {campaign.html}")
         logger.debug("returning campaign")
 
         return campaign
@@ -95,9 +93,7 @@ class Campaign_Generator:
                 self.add_images(dictionary=value, image_dict=image_dict)
             elif isinstance(value, list):
                 for item in value:
-                    self.add_images(
-                        dictionary=item, image_dict=image_dict
-                    )
+                    self.add_images(dictionary=item, image_dict=image_dict)
             if "Image" in key or "image" in key:
                 value["url"] = image_dict[value["prompt"]]
 

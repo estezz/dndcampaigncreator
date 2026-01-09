@@ -19,7 +19,8 @@ document.getElementById("download-button").addEventListener('click', function ()
 
 // Get DOM elements
 const modal = document.getElementById("myModal");
-const textarea = document.getElementById("popupTextarea");
+const editForm = document.getElementById("editForm")
+const elementID = document.getElementById("elementID");
 const submitEditBtn = document.getElementById("submitEdit");
 const triggerBtns = document.getElementsByClassName("open-popup");
 
@@ -28,46 +29,55 @@ document.querySelectorAll('[clickable]').forEach(item => {
     item.onclick = function () {
         modal.style.display = "block";
         // Display the ID of the clicked button
-        textarea.value = this.id;
+        elementID.value = this.id;
     }
 });
 
-// Close modal when (x) is clicked
-submitEditBtn.onclick = function () {
-    input = document.getElementById("popupTextarea").value;
-    modal.style.display = "none";
+submitEditBtn.addEventListener ('click', async function (event) {
+    event.preventDefault();
+
+    // const formData = new FormData(editForm);
+    // const jsonData = Object.fromEntries(formData);
+    // const jsonString = JSON.stringify(jsonData);
+    
+    const jsonData = {
+        "elementID" : elementID.value,
+        "prompt" : document.getElementById("prompt").value,
+    }
+    const jsonString = JSON.stringify(jsonData);
+
     try {
-        const response = fetch('/api/edit/campaign', {
+        const response = await fetch('/api/edit/campaign', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'text/html'
             },
-            body: input
+            body: jsonString
         });
 
         if (!response.ok) {
-            const errorMessage = response.text();
+            const errorMessage = await response.text();
             throw new Error(errorMessage);
         }
 
-        const responseData =  response.text();
-            
+        const responseData = await response.text();
+        output.innerHTML = '';
         document.write( responseData );
 
     } catch (error) {
         console.error('Error submitting form:', error);
         output.innerHTML = `An error occurred: ${error.message}`;
     } finally {
-        spinner.style.display = 'none';
+       
     }
-}
+});
 
 // Close modal if user clicks outside of it
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
+// window.onclick = function (event) {
+//     if (event.target == modal) {
+//         modal.style.display = "none";
+//     }
+// }
 
 

@@ -9,6 +9,7 @@
             "type": "debugpy",
             "request": "launch",
             "module": "flask",
+            "cwd": "${workspaceFolder}/src", // <--- Set the working directory
             "env": {
                 "FLASK_APP": "main.py",
                 "FLASK_DEBUG": "1"
