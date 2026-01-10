@@ -55,10 +55,12 @@ def edit_campaign_api():
     with open(campaign_filename, 'r') as json_file:
         campaign_dict = json.load(json_file)
 
+    element_id = input["elementID"]
+    prompt = input["prompt"]
     logger.debug("loaded the campaign from file")
-    campaign = campaign_generator.generate_campaign(campaign_dict)
+    campaign_text = campaign_generator.edit_campaign_text(prompt, element_id, campaign_dict)
     
-    return campaign.html
+    return campaign_text[element_id]
 
 @app.route('/api/image', methods=['GET'])
 def generate_image():

@@ -20,9 +20,8 @@ replicate_client = ReplicateClient()
 
 
 class Campaign_Generator:
-
-    def generate_campaign(self, parameter_dict):
-        # Set up the Jinja2 environment to load templates from the current directory
+    def __init__(self):
+         # Set up the Jinja2 environment to load templates from the current directory
         base_path = Path(__file__).parent
         # Join the base path with the filename
         templates_path = (base_path / "templates").resolve()
@@ -33,14 +32,18 @@ class Campaign_Generator:
             autoescape=select_autoescape(["html", "js"]),
         )
         # Load the template
-        template = env.get_template("campaign_prompt.j2")
+        self.campaign_template = env.get_template("campaign_prompt.j2")
+        self.html_template = env.get_template("main_campaign_template.html")
+        self.gemini_client = GeminiClient()
 
+    def generate_campaign(self, parameter_dict):
+       
         # Render the template with the provided data
-        prompt = template.render(parameter_dict)
+        prompt = self.campaign_template.render(parameter_dict)
         clean_prompt = prompt.replace("\n", " ")
 
-        gemini_client = GeminiClient()
-        campaign_json_string = gemini_client.generate_text(
+        
+        campaign_json_string = self.gemini_client.generate_text(
             prompt=clean_prompt, schema=Campaign_Schema.model_json_schema()
         )
         clean_campaign_json = string_to_json(campaign_json_string)
@@ -49,8 +52,7 @@ class Campaign_Generator:
         self.add_images_to_json(campaign.json)
 
         ## Create HTML from the campaign JSON
-        template = env.get_template("main_campaign_template.html")
-        campaign.html = html.unescape(template.render(campaign.json))
+        campaign.html = html.unescape(self.html_template.render(campaign.json))
         logger.debug("returning campaign")
 
         return campaign
@@ -97,6 +99,20 @@ class Campaign_Generator:
             if "Image" in key or "image" in key:
                 value["url"] = image_dict[value["prompt"]]
 
+    def edit_campaign_text(self, prompt, element_id, campaign_json):
+        """ generate a new value for the element id """
+
+
+        prompt_with_instructions = f""" edit the 'setup' element in this JSON 
+        using this prompt : {prompt}, \n
+        {campaign_json}"""
+
+        campaign_json_string = self.gemini_client.generate_text(
+            prompt=prompt_with_instructions, schema=None
+        )
+        clean_campaign_json = string_to_json(campaign_json_string)
+
+        return clean_campaign_json
 
 def generate_image(prompt):
     image_url = replicate_client.generate_image_url(value["prompt"])

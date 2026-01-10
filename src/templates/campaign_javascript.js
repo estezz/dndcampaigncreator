@@ -62,8 +62,9 @@ submitEditBtn.addEventListener ('click', async function (event) {
         }
 
         const responseData = await response.text();
-        output.innerHTML = '';
-        document.write( responseData );
+        document.getElementById(elementID.value).innerHTML = responseData
+        
+        modal.style.display = "none";
 
     } catch (error) {
         console.error('Error submitting form:', error);
