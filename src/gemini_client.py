@@ -14,11 +14,10 @@ class GeminiClient:
 
     def __init__(self):
         """Initializes the Gemini client with an API key."""
-        if not "FLASK_DEBUG" in os.environ:
-            self.api_key = self._get_api_key()
-            logger.debug(f"Using API key: {self.api_key}")
+        self.api_key = self._get_api_key()
+        logger.debug(f"Using API key: {self.api_key}")
 
-            self.client = genai.Client(api_key=self.api_key)
+        self.client = genai.Client(api_key=self.api_key)
 
     def _get_api_key(self):
         secret_name = "GEMINI_API_KEY"
@@ -66,16 +65,6 @@ class GeminiClient:
 
     def generate_text(self, prompt, schema, model_name="gemini-2.5-flash"):
         """Generates text using the specified model."""
-
-        if "FLASK_DEBUG" in os.environ:
-            try:
-                # In debug mode, read from a file instead of calling the API
-                filename = "../test/resources/campaign.json"
-                with open(filename, "r") as file:
-                    return file.read()
-            except FileNotFoundError:   
-                logger.debug(f"Error: The file '{filename}' was not found.")
-                return "Mock response not found."
 
         response = self.client.models.generate_content(
             model=model_name,
