@@ -60,7 +60,7 @@ def edit_campaign_api():
     logger.debug("loaded the campaign from file")
     campaign_text = campaign_generator.edit_campaign_text(prompt, element_id, campaign_dict)
     
-    return campaign_text[element_id]
+    return campaign_text
 
 @app.route('/api/image', methods=['GET'])
 def generate_image():

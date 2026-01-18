@@ -36,10 +36,6 @@ document.querySelectorAll('[clickable]').forEach(item => {
 submitEditBtn.addEventListener ('click', async function (event) {
     event.preventDefault();
 
-    // const formData = new FormData(editForm);
-    // const jsonData = Object.fromEntries(formData);
-    // const jsonString = JSON.stringify(jsonData);
-    
     const jsonData = {
         "elementID" : elementID.value,
         "prompt" : document.getElementById("prompt").value,
