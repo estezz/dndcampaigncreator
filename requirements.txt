@@ -8,9 +8,10 @@ google-genai>=1.55.0
 Pillow 
 flask
 google.generativeai
-Jinja2
+jinja2
 replicate
 pydantic
 boto3
 asyncio
+pytest
 
