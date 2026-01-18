@@ -7,3 +7,4 @@ terraform/.terraform
 logs/dnd.log
 src/campaign_*.json
 logs/campaign_*.json
+.swp
