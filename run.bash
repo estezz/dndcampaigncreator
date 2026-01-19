@@ -3,6 +3,7 @@ if [ ! -d .venv ]; then
 fi 
 
 source .venv/bin/activate
+python -m ensurepip --upgrade
 pip install -r requirements.txt
 
 export PORT=8080
