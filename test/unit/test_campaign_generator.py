@@ -2,9 +2,9 @@
 
 import os
 from pathlib import Path
-import pytest
 from unittest.mock import patch
 from json import JSONDecodeError
+import pytest
 from moto import mock_aws
 from campaign_generator import CampaignGenerator, string_to_json
 from campaign import Campaign
