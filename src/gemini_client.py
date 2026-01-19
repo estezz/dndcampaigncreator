@@ -1,10 +1,10 @@
-from google import genai
-from google.genai import types
-import os
+"""This module provides a client for interacting with the Gemini API."""
+
 import json
+import logging
+from google import genai
 import boto3
 from botocore.exceptions import ClientError
-import logging
 
 logger = logging.getLogger(__name__)
 
@@ -15,7 +15,6 @@ class GeminiClient:
     def __init__(self):
         """Initializes the Gemini client with an API key."""
         self.api_key = self._get_api_key()
-        logger.debug(f"Using API key: {self.api_key}")
 
         self.client = genai.Client(api_key=self.api_key)
 
@@ -34,7 +33,7 @@ class GeminiClient:
         except ClientError as e:
             # Handle exceptions as appropriate for your application
             if e.response["Error"]["Code"] == "ResourceNotFoundException":
-                logger.debug(f"The requested secret {secret_name} was not found.")
+                logger.debug("The requested secret %s was not found.", secret_name)
             elif e.response["Error"]["Code"] == "DecryptionFailureException":
                 # Secrets Manager can't decrypt the protected secret text using the provided KMS key
                 logger.debug("Secrets Manager can't decrypt the secret value.")
@@ -48,11 +47,12 @@ class GeminiClient:
                     "The request was invalid, e.g., secret is scheduled for deletion."
                 )
             else:
-                logger.debug(f"An error occurred: {e.response['Error']['Code']}")
+                logger.debug("An error occurred: %s", e.response['Error']['Code'])
             raise
         else:
             # Decrypts secret using the associated KMS key.
-            # Depending on whether the secret was a string or binary, one of these fields will be populated.
+            # Depending on whether the secret was a string or binary,
+            # one of these fields will be populated.
             if "SecretString" in get_secret_value_response:
                 secret = get_secret_value_response["SecretString"]
                 logger.debug("Found the secret {secret_name}")

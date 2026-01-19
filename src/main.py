@@ -13,7 +13,7 @@ from flask import (
     render_template,
     session,
 )
-from campaign_generator import Campaign_Generator
+from campaign_generator import CampaignGenerator
 
 logging.basicConfig(filename="../logs/dnd.log", level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -39,7 +39,7 @@ def generate_campaign_api():
     It then creates HTML from the campaign state that is returned to the frontend.
     """
 
-    campaign_generator = Campaign_Generator()
+    campaign_generator = CampaignGenerator()
     campaign_input = request.get_json()
     logger.debug(campaign_input)
     if campaign_input is None or campaign_input == {}:
@@ -63,7 +63,7 @@ def generate_campaign_api():
 def edit_campaign_api():
     """this edits the campaign from the user input"""
 
-    campaign_generator = Campaign_Generator()
+    campaign_generator = CampaignGenerator()
     campaign_filename = session["campaign.id"]
     input_json = request.get_json()
 

@@ -1,21 +1,25 @@
+"""this module creates campaigns using a prompt and AI"""
+
 import json
 import os
-import re, html
-import asyncio
+import html
+import base64
+import logging
 from pathlib import Path
+from jinja2 import Environment, FileSystemLoader, select_autoescape, meta
 from gemini_client import GeminiClient
-from campaign import Campaign_Schema
+from campaign import CampaignSchema
 from campaign import Campaign
 from replicate_client import ReplicateClient
 
-from jinja2 import Environment, FileSystemLoader, select_autoescape, meta
-import base64
-import logging
 
 logger = logging.getLogger(__name__)
 
 
-class Campaign_Generator:
+class CampaignGenerator:
+    """this class creates campaigns using a prompt and AI"""
+
+    gemini_client = GeminiClient()
     campaign = Campaign()
     replicate_client = ReplicateClient()
     # Set up the Jinja2 environment to load templates from the current directory
@@ -26,8 +30,8 @@ class Campaign_Generator:
     campaign_prompt_template = "campaign_prompt.j2"
 
     def __init__(self):
-        
-        env = Environment(  
+
+        env = Environment(
             loader=FileSystemLoader(
                 self.templates_path
             ),  # Assuming templates are in src/templates
@@ -39,14 +43,14 @@ class Campaign_Generator:
         self.gemini_client = GeminiClient()
 
     def generate_campaign(self, parameter_dict):
-       
+        """this method uses AI and templates to create a DnD Campaign in HTML format"""
+
         # Render the template with the provided data
         prompt = self.campaign_template.render(parameter_dict)
         clean_prompt = prompt.replace("\n", " ")
 
-        
         campaign_json_string = self.gemini_client.generate_text(
-            prompt=clean_prompt, schema=Campaign_Schema.model_json_schema()
+            prompt=clean_prompt, schema=CampaignSchema.model_json_schema()
         )
         clean_campaign_json = string_to_json(campaign_json_string)
         self.campaign.json = clean_campaign_json
@@ -54,13 +58,15 @@ class Campaign_Generator:
         self.add_images_to_json(self.campaign.json)
 
         ## Create HTML from the campaign JSON
-        self.campaign.html = html.unescape(self.html_template.render(self.campaign.json))
+        self.campaign.html = html.unescape(
+            self.html_template.render(self.campaign.json)
+        )
         logger.debug("returning campaign")
 
         return self.campaign
 
     def add_images_to_json(self, dictionary):
-        """use the promt in the json to create an image
+        """This uses the promt in the json to create an image
         then add the image to the json
         """
 
@@ -102,7 +108,7 @@ class Campaign_Generator:
                 value["url"] = image_dict[value["prompt"]]
 
     def edit_campaign_text(self, prompt, element_id, campaign_json):
-        """ generate a new value for the element id """
+        """generate a new value for the element id"""
 
         env = Environment(
             loader=FileSystemLoader(
@@ -116,53 +122,49 @@ class Campaign_Generator:
         template_source = env.loader.get_source(env, template_name)[0]
         template_variables = meta.find_undeclared_variables(env.parse(template_source))
 
-        prompt_with_instructions = f""" edit the '{template_variables}' element in this JSON 
-        using this prompt : {prompt}, \n
+        prompt_with_instructions = f""" edit the '{template_variables}' element in this JSON
+         using this prompt : {prompt}, \n
         {campaign_json}"""
 
-        
         if "FLASK_DEBUG" in os.environ:
             section_text = "this has been edited"
             self.campaign.json[element_id] = section_text
         else:
             campaign_json_string = self.gemini_client.generate_text(
-                prompt=prompt_with_instructions, schema=Campaign_Schema.model_json_schema()
+                prompt=prompt_with_instructions,
+                schema=CampaignSchema.model_json_schema(),
             )
             self.campaign.json = json.loads(campaign_json_string)
-        
+
         section_html = html.unescape(section_template.render(self.campaign.json))
 
         return section_html
 
-    def generate_image(prompt):
-        image_url = self.replicate_client.generate_image_url(value["prompt"])
+    def generate_image(self, prompt):
+        """This method uses the replicate client to generate an image from a prompt"""
+
+        image_url = self.replicate_client.generate_image_url(prompt)
 
         return image_url
 
 
 def string_to_json(input_string):
-    match = re.search(r"json\s*([\s\S]*?)\s*", input_string, re.DOTALL)
+    """This method takes a JSON-ish string and cleans it up and loads it into a json object"""
 
-    json_string = input_string
-
-    clean_string = json_string
+    clean_string = input_string
     clean_string = clean_string.replace("\n", " ")
     clean_string = clean_string.replace("```json", "")
     clean_string = clean_string.replace("```", "")
     clean_json = {}
-    try:
-        clean_json = json.loads(clean_string)
-    except Exception as e:
-        logger.debug(f"Error: {e}")
+
+    clean_json = json.loads(clean_string)
+
     return clean_json
 
 
-# Source - https://stackoverflow.com/a/45335542
-# Posted by Farmer Joe, modified by community. See post 'Timeline' for change history
-# Retrieved 2025-12-13, License - CC BY-SA 3.0
-
-
 def replace_item(obj, key, replace_value):
+    """This method finds a key in a dictionary and replaces
+    the value with the supplied replace_value"""
     for k, v in obj.items():
         if isinstance(v, dict):
             obj[k] = replace_item(v, key, replace_value)
@@ -190,5 +192,3 @@ def file_to_base64_string(filename):
 
     except FileNotFoundError:
         return f"Error: The file '{filename}' was not found."
-    except Exception as e:
-        return f"An error occurred: {e}"

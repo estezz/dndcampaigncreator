@@ -1,6 +1,6 @@
 
 import pytest
-from src.campaign_generator import Campaign_Generator
+from src.campaign_generator import CampaignGenerator
 
 def test_generate_caampaign():
     parameter_dict = {
@@ -12,7 +12,7 @@ def test_generate_caampaign():
         "storyLine": "The beer has been poisoned"
 
     }
-    campaign_generator = Campaign_Generator()
+    campaign_generator = CampaignGenerator()
     campaign_generator.generate_campaign(parameter_dict=parameter_dict)
 
 def test_edit_campaign_text():
@@ -25,7 +25,7 @@ def test_edit_campaign_text():
         "storyLine": "The beer has been poisoned"
 
     }
-    campaign_generator = Campaign_Generator()
+    campaign_generator = CampaignGenerator()
 
     new_text = campaign_generator.edit_campaign_text("build a new setup", "setup", parameter_dict)
     print(new_text)

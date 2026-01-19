@@ -1,7 +1,7 @@
 import pytest
 from moto import mock_aws
 from unittest.mock import MagicMock, patch
-from campaign_generator import Campaign_Generator, string_to_json
+from campaign_generator import CampaignGenerator, string_to_json
 from campaign import Campaign
 import campaign_generator as campaign_generator_utils
 import os
@@ -46,7 +46,7 @@ class TestCampaignGenerator:
         } 
         ``` """
 
-        generator = Campaign_Generator()
+        generator = CampaignGenerator()
         generator.gemini_client = mock_gemini_client
         base_path = Path(__file__).parent
         generator.templates_path = (base_path / "templates").resolve()
