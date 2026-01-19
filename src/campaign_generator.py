@@ -11,6 +11,7 @@ from gemini_client import GeminiClient
 from campaign import CampaignSchema
 from campaign import Campaign
 from replicate_client import ReplicateClient
+import campaign_generator as campaign_generator_utils
 
 
 logger = logging.getLogger(__name__)

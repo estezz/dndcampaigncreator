@@ -1,22 +1,24 @@
-import pytest
-from moto import mock_aws
-from unittest.mock import MagicMock, patch
-from campaign_generator import CampaignGenerator, string_to_json
-from campaign import Campaign
-import campaign_generator as campaign_generator_utils
+"""this module tests the campaign generator"""
+
 import os
 from pathlib import Path
+from unittest.mock import patch
+from json import JSONDecodeError
+import pytest
+from moto import mock_aws
+from campaign_generator import CampaignGenerator, string_to_json
+from campaign import Campaign
+import src.campaign_generator as campaign_generator_utils
 
 
 @pytest.fixture
 def aws_credentials():
-    """Mocked AWS Credentials for moto."""
+    """Mock AWS Credentials for moto."""
     os.environ["AWS_ACCESS_KEY_ID"] = "testing"
     os.environ["AWS_SECRET_ACCESS_KEY"] = "testing"
     os.environ["AWS_SECURITY_TOKEN"] = "testing"
     os.environ["AWS_SESSION_TOKEN"] = "testing"
     os.environ["AWS_DEFAULT_REGION"] = "us-east-2"
-    # Note: Setting dummy credentials is important to prevent boto3 from attempting to use real credentials
 
 
 @pytest.fixture
@@ -32,10 +34,10 @@ class TestCampaignGenerator:
 
     @patch("campaign_generator.GeminiClient")
     def test_generate_campaign(self, MockGeminiClient):
-        """ test the generate_campaign method"""
+        """test the generate_campaign method"""
 
         mock_gemini_client = MockGeminiClient.return_value
-        mock_gemini_client.generate_text.return_value = """```json 
+        mock_gemini_client.generate_text.return_value = """```json
         {
             \"campaignSetting\": \"A fantasy world\",
             \"partySize\": \"4\",
@@ -51,15 +53,15 @@ class TestCampaignGenerator:
         generator.gemini_client = mock_gemini_client
         base_path = Path(__file__).parent
         generator.templates_path = (base_path / "templates").resolve()
-        generator.__init__() # pylint: disable=C2801
-        
+        generator.__init__()  # pylint: disable=C2801
+
         parameter_dict = {
             "campaignSetting": "A fantasy world",
             "partySize": "4",
             "characterLevel": "5",
             "numberOfSessions": "2",
             "numberOfHoursPerSession": "4",
-            "storyLine": "The beer has been poisoned"
+            "storyLine": "The beer has been poisoned",
         }
 
         # Act
@@ -75,43 +77,46 @@ class TestCampaignGenerator:
 
         mock_gemini_client.generate_text.assert_called_once()
 
+    def test_string_to_json_with_json(self):
+        """test the string_to_json method"""
+        # Arrange
+        input_string = """```json 
+        {"key": "value"}
+        ``` """
+        expected_json = {"key": "value"}
 
-# def test_string_to_json_with_json():
-#     # Arrange
-#     input_string = """(```json \n)
-#     ({"key": "value"} \n)
-#     (``` /n) """
-#     expected_json = {"key": "value"}
+        # Act
+        result = string_to_json(input_string)
 
-#     # Act
-#     result = string_to_json(input_string)
+        # Assert
+        assert result == expected_json
 
-#     # Assert
-#     assert result == expected_json
+    def test_string_to_json_no_json(self):
+        """test the string_to_json method with no non JSON string"""
+        with pytest.raises(JSONDecodeError) as execinfo:
+            # Arrange
+            input_string = "this is not json"
 
-# def test_string_to_json_no_json():
-#     # Arrange
-#     input_string = 'this is not json'
+            # Act
+            string_to_json(input_string)
 
-#     # Act
-#     result = string_to_json(input_string)
+            # Assert
+            assert "Expecting value" in str(execinfo.value)
 
-#     # Assert
-#     assert result == 'this is not json'
+    def test_replace_value(self):
+        """test the replace_value method"""
 
-# def test_replace_value():
-#     campaign = {
-#         "image_prompt": "pretty_image1",
-#         "key2": "value2",
-#         "steps": {"image_prompt": "pretty_image2"}
-#     }
+        campaign = {
+            "image_prompt": "pretty_image1",
+            "key2": "value2",
+            "steps": {"image_prompt": "pretty_image2"},
+        }
 
-#     with_images = {
-#         "image_prompt": "foundIt",
-#         "key2": "value2",
-#         "steps": {"image_prompt": "foundIt"}
-#     }
-#     campaign_generator_utils.replace_item(campaign, "image_prompt", "foundIt")
+        with_images = {
+            "image_prompt": "foundIt",
+            "key2": "value2",
+            "steps": {"image_prompt": "foundIt"},
+        }
+        campaign_generator_utils.replace_item(campaign, "image_prompt", "foundIt")
 
-
-#     assert campaign == with_images
+        assert campaign == with_images

@@ -1,3 +1,4 @@
+# pylint: disable=R0903
 """This module holds the state of the curently generated DnD Campaign"""
 
 from typing import List
