@@ -21,4 +21,4 @@ jobs:
     - name: Analysing the code with pylint
       run: |
         export PYTHONPATH=src:test:$PYTHONPATH
-        pylint $(git ls-files  src/*.py test/*/*.py)
+        pylint $(git ls-files  src/*.py test/*/*.py) --fail-under=8
