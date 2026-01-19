@@ -28,6 +28,7 @@ def mocked_aws(aws_credentials):
 
 @mock_aws
 class TestCampaignGenerator:
+    """test the campaign generator"""
 
     @patch("campaign_generator.GeminiClient")
     def test_generate_campaign(self, MockGeminiClient):

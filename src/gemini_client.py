@@ -30,6 +30,18 @@ class GeminiClient:
 
         try:
             get_secret_value_response = client.get_secret_value(SecretId=secret_name)
+            # Decrypts secret using the associated KMS key.
+            # Depending on whether the secret was a string or binary,
+            # one of these fields will be populated.
+            if "SecretString" in get_secret_value_response:
+                secret = get_secret_value_response["SecretString"]
+                logger.debug("Found the secret {secret_name}")
+
+                # Secrets are often stored as JSON strings, so you might need to parse them
+                json_secret = json.loads(secret)
+                api_key = json_secret["GEMINI_API_KEY"]
+
+            return api_key
         except ClientError as e:
             # Handle exceptions as appropriate for your application
             if e.response["Error"]["Code"] == "ResourceNotFoundException":
@@ -49,19 +61,7 @@ class GeminiClient:
             else:
                 logger.debug("An error occurred: %s", e.response['Error']['Code'])
             raise
-        else:
-            # Decrypts secret using the associated KMS key.
-            # Depending on whether the secret was a string or binary,
-            # one of these fields will be populated.
-            if "SecretString" in get_secret_value_response:
-                secret = get_secret_value_response["SecretString"]
-                logger.debug("Found the secret {secret_name}")
-
-                # Secrets are often stored as JSON strings, so you might need to parse them
-                json_secret = json.loads(secret)
-                api_key = json_secret["GEMINI_API_KEY"]
-
-        return api_key
+            
 
     def generate_text(self, prompt, schema, model_name="gemini-2.5-flash"):
         """Generates text using the specified model."""

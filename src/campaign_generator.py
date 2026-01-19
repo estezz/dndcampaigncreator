@@ -18,18 +18,17 @@ logger = logging.getLogger(__name__)
 
 class CampaignGenerator:
     """this class creates campaigns using a prompt and AI"""
-
-    gemini_client = GeminiClient()
-    campaign = Campaign()
-    replicate_client = ReplicateClient()
-    # Set up the Jinja2 environment to load templates from the current directory
     base_path = Path(__file__).parent
-    # Join the base path with the filename
     templates_path = (base_path / "templates").resolve()
-    main_campaign_template = "main_campaign_template.html"
-    campaign_prompt_template = "campaign_prompt.j2"
 
     def __init__(self):
+        self.campaign = Campaign()
+        self.replicate_client = ReplicateClient()
+        self.gemini_client = GeminiClient()
+        
+        # Set up the Jinja2 environment to load templates from the current directory
+        self.main_campaign_template = "main_campaign_template.html"
+        self.campaign_prompt_template = "campaign_prompt.j2"
 
         env = Environment(
             loader=FileSystemLoader(
@@ -37,7 +36,8 @@ class CampaignGenerator:
             ),  # Assuming templates are in src/templates
             autoescape=select_autoescape(["html", "js", "j2"]),
         )
-        # Load the template
+
+        # Load the templates
         self.campaign_template = env.get_template(self.campaign_prompt_template)
         self.html_template = env.get_template(self.main_campaign_template)
         self.gemini_client = GeminiClient()

@@ -1,3 +1,6 @@
+"""This module tests the main.py module"""
+
+import os
 import pytest
 import json
 from moto import mock_aws
