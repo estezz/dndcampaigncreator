@@ -41,7 +41,6 @@ class CampaignGenerator:
         # Load the templates
         self.campaign_template = env.get_template(self.campaign_prompt_template)
         self.html_template = env.get_template(self.main_campaign_template)
-        self.gemini_client = GeminiClient()
 
     def generate_campaign(self, parameter_dict):
         """this method uses AI and templates to create a DnD Campaign in HTML format"""
@@ -55,7 +54,7 @@ class CampaignGenerator:
         )
         clean_campaign_json = string_to_json(campaign_json_string)
         self.campaign.json = clean_campaign_json
-
+        #print(self.gemini_client.generate_text())
         self.add_images_to_json(self.campaign.json)
 
         ## Create HTML from the campaign JSON

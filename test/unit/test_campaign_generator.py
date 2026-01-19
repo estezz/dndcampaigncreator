@@ -2,9 +2,9 @@
 
 import os
 from pathlib import Path
+import pytest
 from unittest.mock import patch
 from json import JSONDecodeError
-import pytest
 from moto import mock_aws
 from campaign_generator import CampaignGenerator, string_to_json
 from campaign import Campaign
@@ -34,11 +34,11 @@ class TestCampaignGenerator:
 
     @patch("campaign_generator.GeminiClient")
     @patch("campaign_generator.ReplicateClient")
-    def test_generate_campaign(self, MockGeminiClient, MockReplicateClient):
+    def test_generate_campaign(self, mock_replicate_client, mock_gemini_client):
         """test the generate_campaign method"""
 
-        mock_gemini_client = MockGeminiClient()
-        mock_gemini_client.generate_text.return_value = """```json
+        mock_gemini_client.return_value.generate_text.return_value = str(
+            """```json
         {
             \"campaignSetting\": \"A fantasy world\",
             \"partySize\": \"4\",
@@ -49,9 +49,11 @@ class TestCampaignGenerator:
             \"storyLine\": \"The beer has been poisoned\"
         } 
         ``` """
+        )
 
-        mock_replicate_client = MockReplicateClient()
-        mock_replicate_client.generate_images.return_value = {"prompt1": "url1"}
+        mock_replicate_client.return_value.generate_images.return_value = {
+            "prompt1": "url1"
+        }
         generator = CampaignGenerator()
         generator.gemini_client = mock_gemini_client
         generator.replicate_client = mock_replicate_client
@@ -80,7 +82,7 @@ class TestCampaignGenerator:
         assert campaign.json["numberOfHoursPerSession"] == "4"
         assert campaign.json["storyLine"] == "The beer has been poisoned"
 
-        mock_gemini_client.generate_text.assert_called_once()
+        mock_gemini_client.return_value.generate_text.assert_called_once()
 
     def test_string_to_json_with_json(self):
         """test the string_to_json method"""
