@@ -18,11 +18,10 @@ class ReplicateClient:
 
     def __init__(self):
         logger.debug("Initializing replicate client")
-        if not "FLASK_DEBUG" in os.environ:
-            api_token = self.get_replicate_api_key()
-            self.client = replicate.Client(api_token=api_token)
+        api_token = self.get_replicate_api_key()
+        self.client = replicate.Client(api_token=api_token)
 
-            self.api_token = api_token
+        self.api_token = api_token
 
     def get_replicate_api_key(self):
         """This method look for the Replicate API Key as a environment variable
@@ -96,13 +95,6 @@ class ReplicateClient:
         """This method generates images using the replicate API"""
         
         logger.debug("starting async_generate_images")
-
-        """ for testing without paying for replicate """
-        if "FLASK_DEBUG" in os.environ:
-            image_dict = {}
-            for prompt in prompts:
-                image_dict[prompt] = "https://picsum.photos/200/300"
-            return image_dict
 
         image_dict = {}
         try:

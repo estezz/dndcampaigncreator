@@ -33,10 +33,11 @@ class TestCampaignGenerator:
     """test the campaign generator"""
 
     @patch("campaign_generator.GeminiClient")
-    def test_generate_campaign(self, MockGeminiClient):
+    @patch("campaign_generator.ReplicateClient")
+    def test_generate_campaign(self, MockGeminiClient, MockReplicateClient):
         """test the generate_campaign method"""
 
-        mock_gemini_client = MockGeminiClient.return_value
+        mock_gemini_client = MockGeminiClient())
         mock_gemini_client.generate_text.return_value = """```json
         {
             \"campaignSetting\": \"A fantasy world\",
@@ -49,8 +50,12 @@ class TestCampaignGenerator:
         } 
         ``` """
 
+        mock_replicate_client = MockReplicateClient()
+        mock_replicate_client.generate_images.return_value = {"prompt1": "url1"}
         generator = CampaignGenerator()
         generator.gemini_client = mock_gemini_client
+        generator.replicate_client = mock_replicate_client
+
         base_path = Path(__file__).parent
         generator.templates_path = (base_path / "templates").resolve()
         generator.__init__()  # pylint: disable=C2801
