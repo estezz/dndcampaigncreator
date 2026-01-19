@@ -51,7 +51,7 @@ class TestCampaignGenerator:
         generator.gemini_client = mock_gemini_client
         base_path = Path(__file__).parent
         generator.templates_path = (base_path / "templates").resolve()
-        generator.__init__()
+        generator.__init__() # pylint: disable=C2801
         
         parameter_dict = {
             "campaignSetting": "A fantasy world",
