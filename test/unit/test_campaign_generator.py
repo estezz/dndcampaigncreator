@@ -37,7 +37,7 @@ class TestCampaignGenerator:
     def test_generate_campaign(self, MockGeminiClient, MockReplicateClient):
         """test the generate_campaign method"""
 
-        mock_gemini_client = MockGeminiClient())
+        mock_gemini_client = MockGeminiClient()
         mock_gemini_client.generate_text.return_value = """```json
         {
             \"campaignSetting\": \"A fantasy world\",
