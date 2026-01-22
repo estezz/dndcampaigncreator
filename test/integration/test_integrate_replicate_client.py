@@ -1,5 +1,5 @@
 import pytest
-from src.replicate_client import ReplicateClient
+from replicate_image_client import ReplicateImageClient
 import logging
 logging.basicConfig(filename='dnd.log', level=logging.DEBUG)
 

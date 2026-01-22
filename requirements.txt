@@ -3,6 +3,7 @@ pip
 autopep8
 pytest
 pylint
+dotenv
 
 # App
 google-genai>=1.55.0 

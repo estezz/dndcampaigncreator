@@ -5,11 +5,13 @@ import logging
 from google import genai
 import boto3
 from botocore.exceptions import ClientError
+from text_generation_interface import TextGenerationInterface
+
 
 logger = logging.getLogger(__name__)
 
 
-class GeminiClient:
+class GeminiTextClient(TextGenerationInterface): #pylint: disable=too-few-public-methods
     """A client for interacting with the Gemini API."""
 
     def __init__(self):

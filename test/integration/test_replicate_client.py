@@ -1,7 +1,7 @@
+"""This module tests the replicate image client"""
 
-import pytest
 from unittest.mock import patch, MagicMock
-from replicate_client import ReplicateClient
+from replicate_image_client import ReplicateImageClient
 
 class TestReplicateClient:
 

@@ -7,10 +7,12 @@ import base64
 import logging
 from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, select_autoescape, meta
-from gemini_client import GeminiClient
+from gemini_text_client import GeminiTextClient
 from campaign import CampaignSchema
 from campaign import Campaign
-from replicate_client import ReplicateClient
+from replicate_image_client import ReplicateImageClient
+from mock_text_client import MockTextClient
+from mock_image_client import MockImageClient
 import campaign_generator as campaign_generator_utils
 
 
@@ -19,14 +21,20 @@ logger = logging.getLogger(__name__)
 
 class CampaignGenerator:
     """this class creates campaigns using a prompt and AI"""
+
     base_path = Path(__file__).parent
     templates_path = (base_path / "templates").resolve()
 
     def __init__(self):
         self.campaign = Campaign()
-        self.replicate_client = ReplicateClient()
-        self.gemini_client = GeminiClient()
-        
+
+        if "FLASK_DEBUG" in os.environ:
+            self.image_client = MockImageClient()
+            self.text_client = MockTextClient()
+        else:
+            self.image_client = ReplicateImageClient()
+            self.text_client = GeminiTextClient()
+
         # Set up the Jinja2 environment to load templates from the current directory
         self.main_campaign_template = "main_campaign_template.html"
         self.campaign_prompt_template = "campaign_prompt.j2"
@@ -49,12 +57,12 @@ class CampaignGenerator:
         prompt = self.campaign_template.render(parameter_dict)
         clean_prompt = prompt.replace("\n", " ")
 
-        campaign_json_string = self.gemini_client.generate_text(
+        campaign_json_string = self.text_client.generate_text(
             prompt=clean_prompt, schema=CampaignSchema.model_json_schema()
         )
         clean_campaign_json = string_to_json(campaign_json_string)
         self.campaign.json = clean_campaign_json
-        #print(self.gemini_client.generate_text())
+        # print(self.gemini_client.generate_text())
         self.add_images_to_json(self.campaign.json)
 
         ## Create HTML from the campaign JSON
@@ -73,7 +81,7 @@ class CampaignGenerator:
         # get all the image prompts and create images from the json
         images_prompts = []
         self.collect_images_prompts(dictionary, images_prompts)
-        image_dict = self.replicate_client.generate_images(images_prompts)
+        image_dict = self.image_client.generate_images(images_prompts)
 
         # add the images to the json
         self.add_images(dictionary, image_dict)
@@ -126,15 +134,11 @@ class CampaignGenerator:
          using this prompt : {prompt}, \n
         {campaign_json}"""
 
-        if "FLASK_DEBUG" in os.environ:
-            section_text = "this has been edited"
-            self.campaign.json[element_id] = section_text
-        else:
-            campaign_json_string = self.gemini_client.generate_text(
-                prompt=prompt_with_instructions,
-                schema=CampaignSchema.model_json_schema(),
-            )
-            self.campaign.json = json.loads(campaign_json_string)
+        campaign_json_string = self.text_client.generate_text(
+            prompt=prompt_with_instructions,
+            schema=CampaignSchema.model_json_schema(),
+        )
+        self.campaign.json = json.loads(campaign_json_string)
 
         section_html = html.unescape(section_template.render(self.campaign.json))
 
@@ -143,7 +147,7 @@ class CampaignGenerator:
     def generate_image(self, prompt):
         """This method uses the replicate client to generate an image from a prompt"""
 
-        image_url = self.replicate_client.generate_image_url(prompt)
+        image_url = self.image_client.generate_image_url(prompt)
 
         return image_url
 

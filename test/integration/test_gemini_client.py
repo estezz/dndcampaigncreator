@@ -1,8 +1,9 @@
 import unittest
-from moto import mock_aws
 import os
 from unittest.mock import patch, MagicMock
-from gemini_client import GeminiClient
+import pytest
+from moto import mock_aws
+from gemini_text_client import GeminiTextClient
 
 @pytest.fixture
 def aws_credentials():

@@ -1,2 +1,2 @@
 [MAIN]
-source-roots=[src,test]
+source-roots = ./src,./test

@@ -12,62 +12,26 @@ import src.campaign_generator as campaign_generator_utils
 
 
 @pytest.fixture
-def aws_credentials():
-    """Mock AWS Credentials for moto."""
-    os.environ["AWS_ACCESS_KEY_ID"] = "testing"
-    os.environ["AWS_SECRET_ACCESS_KEY"] = "testing"
-    os.environ["AWS_SECURITY_TOKEN"] = "testing"
-    os.environ["AWS_SESSION_TOKEN"] = "testing"
-    os.environ["AWS_DEFAULT_REGION"] = "us-east-2"
-
-
-@pytest.fixture
-def mocked_aws(aws_credentials):
-    """Mock all AWS interactions for a test function."""
-    with mock_aws():
-        yield
-
+def set_test_env():
+    """set the test environment"""
+    os.environ["FLASK_DEBUG"] = "True"
+    
 
 @mock_aws
 class TestCampaignGenerator:
     """test the campaign generator"""
 
-    @patch("campaign_generator.GeminiClient")
-    @patch("campaign_generator.ReplicateClient")
-    def test_generate_campaign(self, mock_replicate_client, mock_gemini_client):
+    def test_generate_campaign(self, set_test_env):
         """test the generate_campaign method"""
 
-        mock_gemini_client.return_value.generate_text.return_value = str(
-            """```json
-        {
-            \"campaignSetting\": \"A fantasy world\",
-            \"partySize\": \"4\",
-            \"characterLevel\": \"4\",
-            \"characterLevel\": \"5\",
-            \"numberOfSessions\": \"2\",
-            \"numberOfHoursPerSession\": \"4\",
-            \"storyLine\": \"The beer has been poisoned\"
-        } 
-        ``` """
-        )
-
-        mock_replicate_client.return_value.generate_images.return_value = {
-            "prompt1": "url1"
-        }
         generator = CampaignGenerator()
-        generator.gemini_client = mock_gemini_client
-        generator.replicate_client = mock_replicate_client
-
-        base_path = Path(__file__).parent
-        generator.templates_path = (base_path / "templates").resolve()
-        generator.__init__()  # pylint: disable=C2801
 
         parameter_dict = {
-            "campaignSetting": "A fantasy world",
-            "partySize": "4",
-            "characterLevel": "5",
-            "numberOfSessions": "2",
-            "numberOfHoursPerSession": "4",
+            "campaignSetting": "Forgotten Realms",
+            "partySize": 4,
+            "characterLevel": 5,
+            "numberOfSessions": 2,
+            "numberOfHoursPerSession": 4,
             "storyLine": "The beer has been poisoned",
         }
 
@@ -75,14 +39,12 @@ class TestCampaignGenerator:
         campaign = generator.generate_campaign(parameter_dict)
 
         # Assert
-        assert campaign.json["campaignSetting"] == "A fantasy world"
-        assert campaign.json["partySize"] == "4"
-        assert campaign.json["characterLevel"] == "5"
-        assert campaign.json["numberOfSessions"] == "2"
-        assert campaign.json["numberOfHoursPerSession"] == "4"
-        assert campaign.json["storyLine"] == "The beer has been poisoned"
-
-        mock_gemini_client.return_value.generate_text.assert_called_once()
+        assert campaign.json["campaignSetting"] == parameter_dict["campaignSetting"]
+        assert campaign.json["partySize"] == parameter_dict["partySize"]
+        assert campaign.json["characterLevel"] == parameter_dict["characterLevel"]
+        assert campaign.json["numberOfSessions"] == parameter_dict["numberOfSessions"]
+        assert campaign.json["numberOfHoursPerSession"] == parameter_dict["numberOfHoursPerSession"]
+        assert campaign.json["storyLine"] == parameter_dict["storyLine"]
 
     def test_string_to_json_with_json(self):
         """test the string_to_json method"""

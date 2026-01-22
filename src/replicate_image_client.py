@@ -8,12 +8,14 @@ import asyncio
 import boto3
 import replicate
 from botocore.exceptions import ClientError
-from replicate.exceptions import ReplicateError
+from image_generation_interface import ImageGenerationInterface
+
+
 
 logger = logging.getLogger(__name__)
 
 
-class ReplicateClient:
+class ReplicateImageClient(ImageGenerationInterface):
     """This class interacts with the Replicate API"""
 
     def __init__(self):
@@ -60,7 +62,7 @@ class ReplicateClient:
                         "The request was invalid, e.g., secret is scheduled for deletion."
                     )
                 else:
-                    logger.debug("An error occurred: %s", e.response["Error"]["Code"])
+                    logger.debug("An errImageor occurred: %s", e.response["Error"]["Code"])
                 raise
 
             # Decrypts secret using the associated KMS key.
@@ -93,7 +95,7 @@ class ReplicateClient:
 
     def generate_images(self, prompts):
         """This method generates images using the replicate API"""
-        
+
         logger.debug("starting async_generate_images")
 
         image_dict = {}
@@ -102,22 +104,19 @@ class ReplicateClient:
         except* ValueError as eg:
             # Handle specifically ValueError within the group
             logger.exception(eg)
-            # You can iterate or split the exception group if needed
-            for exc in eg.exceptions:
-                logger.exception(exc)
-        except* Exception as eg:
-            # Handle other potential exceptions if necessary
-            logger.exception(eg)
+            raise
 
         logger.debug("finished async_generate_images")
         logger.debug(image_dict)
         return image_dict
 
     async def async_generate_images(self, prompts):
+        """This method generates images asycronously using the replicate API"""
+
         model_version = "bytedance/seedream-4"
         image_dict = {}
 
-        """ create images in parallel """
+        #create images in parallel
         async with asyncio.TaskGroup() as tg:
             tasks = [
                 tg.create_task(
@@ -130,43 +129,3 @@ class ReplicateClient:
         for index, result in enumerate(results):
             image_dict[prompts[index]] = result[0].url
         return image_dict
-
-    def generate_image_url(self, prompt):
-        if "FLASK_DEBUG" in os.environ:
-            return "https://picsum.photos/200/300"
-        try:
-            output = self.client.run(
-                "bytedance/seedream-4",
-                input={
-                    "size": "2K",
-                    "width": 2048,
-                    "height": 2048,
-                    "prompt": prompt,
-                    "max_images": 1,
-                    "image_input": [],
-                    "aspect_ratio": "4:3",
-                    "enhance_prompt": True,
-                    "sequential_image_generation": "disabled",
-                },
-            )
-        except ReplicateError as e:
-            logger.debug(e)
-            logger.debug(f"prompt: {prompt} ")
-
-        # To access the file URL:
-        logger.debug(output[0].url)
-        # => "http://example.com"
-
-        return output[0].url
-
-
-def main():
-    token = os.environ["REPLICATE_API_TOKEN"]
-    client = ReplicateClient(token)
-    client.generate_image_url(
-        "A top-down battle map of a subterranean grotto, with a large, dark pool of water in the center. A crude stone altar covered in black mud sits on a raised dais, glowing with a faint, purple light from a dark crystal. Tattered cages holding prisoners line one wall, and multiple dripping tunnels lead into the chamber."
-    )
-
-
-if __name__ == "__main__":
-    main()
