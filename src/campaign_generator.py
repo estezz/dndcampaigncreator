@@ -28,7 +28,7 @@ class CampaignGenerator:
     def __init__(self):
         self.campaign = Campaign()
 
-        if "FLASK_DEBUG" in os.environ:
+        if "FLASK_DEBUG" in os.environ and os.environ["FLASK_DEBUG"] == "True":
             self.image_client = MockImageClient()
             self.text_client = MockTextClient()
         else:
@@ -143,13 +143,6 @@ class CampaignGenerator:
         section_html = html.unescape(section_template.render(self.campaign.json))
 
         return section_html
-
-    def generate_image(self, prompt):
-        """This method uses the replicate client to generate an image from a prompt"""
-
-        image_url = self.image_client.generate_image_url(prompt)
-
-        return image_url
 
 
 def string_to_json(input_string):

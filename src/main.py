@@ -15,7 +15,7 @@ from flask import (
 )
 from campaign_generator import CampaignGenerator
 
-logging.basicConfig(filename="../logs/dnd.log", level=logging.DEBUG)
+logging.basicConfig(filename="./logs/dnd.log", level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 
@@ -47,8 +47,13 @@ def generate_campaign_api():
 
     campaign = campaign_generator.generate_campaign(campaign_input)
 
-    original_filename = "../logs/campaign.json"
-    name, extension = os.path.splitext(original_filename)
+    original_filename = "./logs/campaign.json"
+    name, extension = os.path.splitext(original_filenamdef generate_image(self, prompt):
+        """This method uses the replicate client to generate an image from a prompt"""
+
+        image_url = self.image_client.generate_image_url(prompt)
+
+        return image_urle)
     campaign_filename = f"{name}_{uuid.uuid4()}{extension}"
     session["campaign.id"] = campaign_filename
 

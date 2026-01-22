@@ -3,5 +3,6 @@
     "python.testing.pytestEnabled": true,
     "python.testing.pytestArgs": [
         "test"
-    ]
+    ],
+    "python.analysis.extraPaths": ["./src", "test/unit", "test/integration"]
 }

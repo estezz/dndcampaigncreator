@@ -6,7 +6,7 @@ from pathlib import Path
 class MockTextClient(TextGenerationInterface):
     """This class mocks a text generation interface"""
     
-    def generate_text_with(self, prompt, schema):
+    def generate_text(self, prompt, schema):
         """This method returns static JSON data for testing"""
         
         base_path = Path(__file__).parent
