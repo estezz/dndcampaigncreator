@@ -1,0 +1,14 @@
+<div id="magicItems" class="section" clickable="true">
+    <h2>10. Magic Items</h2>
+    <div class="grid-2">
+        {% for item in generatedMagicItems %}
+        <div class="reward-block">
+            <h3 style="text-align: left;">{{item.name}}</h4>
+                <p style="text-align: center;">{{item.description}}</p>
+                <p style="text-align: center;">
+                    <img src="{{item.image.url}}" alt="{{item.name}}" width="50%" class="center" />
+                </p>
+        </div>
+        {% endfor %}
+    </div>
+</div>

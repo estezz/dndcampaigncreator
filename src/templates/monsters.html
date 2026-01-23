@@ -1,0 +1,88 @@
+<div id="monsters" class="section" clickable="true">
+    <h2>8. Monsters</h2>
+    <div class="grid-2">
+        {% for monster in monsters %}
+
+        <div class="stat-block">
+            <hr class="tapered-rule">
+
+            <div class="creature-heading">
+                <h1>{{monster.name}}</h1>
+                <h2>{{monster.description}}</h2>
+                <img src="{{monster.image.url}}" alt="{{monster.name}}" class="center" width="80%" />
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="top-stats">
+                <div class="property-line">
+                    <h4>{{monster.stats.AC}} (AC)</h4>
+                    <p>15 (natural armor)</p>
+                </div>
+                <div class="property-line">
+                    <h4>{{monster.stats.HP}} (HP)</h4>
+                    <p>45</p>
+                </div>
+                <div class="property-line">
+                    <h4>Speed</h4>
+                    <p>{{monster.stats.Speed}} ft - {{monster.stats.Swim}} ft swim.</p>
+                </div>
+                <div class="property-line">
+                    <h4>Initiative</h4>
+                    <p>{{monster.stats.Initiative}}</p>
+                </div>
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="abilities">
+                <div>
+                    <h4>STR</h4>
+                    <p>{{monster.stats.Str}} (+{{monster.stats.Str - 10}})</p>
+                </div>
+                <div>
+                    <h4>DEX</h4>
+                    <p>{{monster.stats.Dex}} (+{{monster.stats.Dex - 10}})</p>
+                </div>
+                <div>
+                    <h4>CON</h4>
+                    <p>{{monster.stats.Con}} (+{{monster.stats.Con - 10}})</p>
+                </div>
+                <div>
+                    <h4>INT</h4>
+                    <p>{{monster.stats.Int}} (+{{monster.stats.Int - 10}})</p>
+                </div>
+                <div>
+                    <h4>WIS</h4>
+                    <p>{{monster.stats.Wis}} (+{{monster.stats.Wis - 10}})</p>
+                </div>
+                <div>
+                    <h4>CHA</h4>
+                    <p>{{monster.stats.Cha}} (+{{monster.stats.Cha - 10}})</p>
+                </div>
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="bottom-stats">
+                <div class="property-line">
+                    <h4>Challenge</h4>
+                    <p>{{monster.stats.CR}}-{{monster.stats.XP}}(XP)</p>
+                </div>
+                <div class="property-line">
+                    <h4>Proficiency Bonus</h4>
+                    <p>{{monster.stats.PB}}</p>
+                </div>
+            </div>
+            <div class="bottom-stats">
+                <div class="stat-line">
+                    <h4>Traits</h4>
+                    <p>{{monster.Traits}}</p>
+                </div>
+            </div>
+
+            <hr class="tapered-rule">
+        </div>
+        {% endfor %}
+    </div>
+</div>

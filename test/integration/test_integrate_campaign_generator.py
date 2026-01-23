@@ -73,7 +73,8 @@ class TestCampaignGenerator:  # pylint: disable=too-few-public-methods
         }
         campaign_generator = CampaignGenerator()
         campaign_generator.generate_campaign(parameter_dict=parameter_dict)
-
+        logger.info(campaign_generator.campaign.json)
+        logger.info(campaign_generator.campaign.html)
         assert campaign_generator.campaign.html is not None
         assert campaign_generator.campaign.json is not None
 

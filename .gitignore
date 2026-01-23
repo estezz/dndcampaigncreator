@@ -8,3 +8,4 @@ logs/dnd.log
 src/campaign_*.json
 logs/campaign_*.json
 .swp
+src/logs/dnd.log

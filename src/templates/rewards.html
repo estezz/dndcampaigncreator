@@ -1,0 +1,14 @@
+<div id="rewards" class="section" clickable="true">
+    <h2>9. Rewards</h2>
+    <div class="grid-2">
+        {% for reward in rewardsList %}
+        <div class="reward-block">
+            <h3 style="text-align: left; ">{{reward.name}}</h4>
+                <p style="text-align: center;">{{reward.description}}</p>
+                <p style="text-align: center;">
+                    <img src="{{reward.image.url}}" alt="{{reward.name}}" class="center" width="80%" />
+                </p>
+        </div>
+        {% endfor %}
+    </div>
+</div>

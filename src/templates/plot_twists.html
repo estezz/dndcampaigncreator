@@ -1,0 +1,9 @@
+<div id="twists" class="section" clickable="true">
+    <h2>5. Plot Twists</h2>
+    {% for plotTwist in generatedPlotTwists %}
+    <div class="twist-box">
+        <strong>{{ plotTwist.title }}</strong>
+        <p>{{ plotTwist.description }}</p>
+    </div>
+    {% endfor %}
+</div>

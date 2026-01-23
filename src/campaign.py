@@ -24,9 +24,7 @@ class PlotStep(BaseModel):
     """This class holds the state of a Plot Step"""
 
     title: str
-    description: str = Field(
-        description="HTML formatted description of this plot step.", words=200
-    )
+    description: str
 
 
 class StatBlock(BaseModel):
@@ -97,6 +95,56 @@ class PlotTwist(BaseModel):
     )
 
 
+class Skill(BaseModel):
+    """This class holds the state of a Skill"""
+
+    name: str
+    proficiency: bool
+    description: str
+    attribute: str
+
+
+class Spell(BaseModel):
+    """This class holds the state of a Spell"""
+
+    name: str
+    level: int
+    description: str
+    bonus: int
+    damage: int
+
+
+class Attack(BaseModel):
+    """This class holds the state of a Attack"""
+
+    name: str
+    level: int
+    description: str
+    bonus: int
+    damage: int
+
+
+class PlayerChracter(BaseModel):
+    """This class represents the traits  of a character"""
+
+    name: str
+    characterClass: str
+    level: int
+    image: Image
+    stats: StatBlock
+    description: str
+    background: str
+    race: str
+    alignment: str
+    personalityTraits: str
+    ideals: str
+    bonds: str
+    flaws: str
+    skills: List[Skill]
+    attacks: List[Attack]
+    spells: List[Spell]
+
+
 class CampaignSchema(BaseModel):
     """This class brings together other state classes to form a full campaign as JSON Schema"""
 
@@ -106,9 +154,7 @@ class CampaignSchema(BaseModel):
     characterLevel: int
     history: str
     atmosphere: str
-    setup: str = Field(
-        description="HTML formatted setup and background story for the module."
-    )
+    setup: str
     startingPointImage: Image
     mapImagePrompt: Image
     plotHooks: List[PlotHook]

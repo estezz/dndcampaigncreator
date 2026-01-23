@@ -1,0 +1,11 @@
+<div id="hooks" class="section" clickable="true">
+    <h2>3. Plot Hooks</h2>
+    <ol>
+        {% for plotHook in plotHooks %}
+        <li>
+            <h3>{{ plotHook.title }}</h3>
+            <p>{{ plotHook.description }}</p>
+        </li>
+        {% endfor %}
+    </ol>
+</div>

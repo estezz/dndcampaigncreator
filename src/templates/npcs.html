@@ -1,0 +1,88 @@
+<div id="npcs" class="section" clickable="true">
+    <h2>7. Main Characters</h2>
+    <div class="grid-2">
+        {% for character in mainCharacters %}
+        <div class="stat-block">
+            <hr class="tapered-rule">
+            <h3>{{character.name}}</h3>
+            <img src="{{character.image.url}}" alt="{{character.name}}" class="center" width="80%" />
+            <div class="npc-role">{{character.image.description}}</div>
+            <hr class="tapered-rule">
+            <div class="npc-role">{{character.role}}</div>
+            <hr class="tapered-rule">
+
+            <div class="top-stats">
+                <div class="property-line">
+                    <h4>{{character.stats.AC}} (AC)</h4>
+                    <p>15 (natural armor)</p>
+                </div>
+                <div class="property-line">
+                    <h4>{{character.stats.HP}} (HP)</h4>
+                    <p>45</p>
+                </div>
+                <div class="property-line">
+                    <h4>Speed</h4>
+                    <p>{{character.stats.Speed}} ft - {{character.stats.Swim}} ft swim.</p>
+                </div>
+                <div class="property-line">
+                    <h4>Initiative</h4>
+                    <p>{{character.stats.Initiative}}</p>
+                </div>Tharivol 
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="abilities">
+                <div>
+                    <h4>STR</h4>
+                    <p>{{character.stats.Str}} (+{{character.stats.Str - 10}})</p>
+                </div>
+                <div>
+                    <h4>DEX</h4>
+                    <p>{{character.stats.Dex}} (+{{character.stats.Dex - 10}})</p>
+                </div>
+                <div>
+                    <h4>CON</h4>
+                    <p>{{character.stats.Con}} (+{{character.stats.Con - 10}})</p>
+                </div>
+                <div>
+                    <h4>INT</h4>
+                    <p>{{character.stats.Int}} (+{{character.stats.Int - 10}})</p>
+                </div>
+                <div>
+                    <h4>WIS</h4>
+                    <p>{{character.stats.Wis}} (+{{character.stats.Wis - 10}})</p>
+                </div>
+                <div>
+                    <h4>CHA</h4>
+                    <p>{{character.stats.Cha}} (+{{character.stats.Cha - 10}})</p>
+                </div>
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="bottom-stats">
+                <div class="property-line">
+                    <h4>Challenge</h4>
+                    <p>{{character.stats.CR}}-{{character.stats.XP}}(XP)</p>
+                </div>
+                <div class="property-line">
+                    <h4>Proficiency Bonus</h4>
+                    <p>{{character.stats.PB}}</p>
+                </div>
+            </div>
+            <div class="bottom-stats">
+                <div class="stat-line">
+                    <h4>Traits</h4>
+                    <p>{{character.Traits}}</p>
+                </div>
+            </div>
+
+            <p><strong>Goal:</strong> {{character.goal}}</p>
+            <p><strong>Quirk:</strong> {{character.quirk}}</p>
+
+            <hr class="tapered-rule">
+        </div>
+        {% endfor %}
+    </div>
+</div>

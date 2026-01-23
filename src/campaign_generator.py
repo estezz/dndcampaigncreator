@@ -28,7 +28,7 @@ class CampaignGenerator:
     def __init__(self):
         self.campaign = Campaign()
 
-        if "FLASK_DEBUG" in os.environ and os.environ["FLASK_DEBUG"] == "True":
+        if "FLASK_DEBUG" in os.environ and os.environ["FLASK_DEBUG"] == "1":
             self.image_client = MockImageClient()
             self.text_client = MockTextClient()
         else:
@@ -163,6 +163,7 @@ def replace_item(obj, key, replace_value):
     """This method finds a key in a dictionary and replaces
     the value with the supplied replace_value"""
     for k, v in obj.items():
+
         if isinstance(v, dict):
             obj[k] = replace_item(v, key, replace_value)
     if key in obj:

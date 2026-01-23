@@ -1,0 +1,11 @@
+<div id="mainplot" class="section" clickable="true">
+    <h2>4. Main Plot Steps</h2>
+    <ol>
+        {% for plotStep in mainPlotSteps %}
+        <li>
+            <h3>{{ plotStep.title }}</h3>
+            <p>{{ plotStep.description }}</p>
+        </li>
+        {% endfor %}
+    </ol>
+</div>
