@@ -165,6 +165,10 @@ class CampaignSchema(BaseModel):
     rewardsList: List[Reward]
     generatedMagicItems: List[MagicItem]
     generatedPlotTwists: List[PlotTwist]
+    characters: List[PlayerChracter]
+
+
+
 
 
 class Campaign:
