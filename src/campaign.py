@@ -123,8 +123,24 @@ class Attack(BaseModel):
     bonus: int
     damage: int
 
+class Equipment(BaseModel):
+    """This class represents the equipment a character has"""
+    name: str
+    bonus: int
+    damage: int
 
-class PlayerChracter(BaseModel):
+class Money(BaseModel):
+    """This class holds the money of a character"""
+    goldPieces: int
+    silverPieces: int
+    copperPieces: int
+
+class FeaturesAndTraits(BaseModel):
+    """This class holds the features and traits of a character"""
+    name: str
+    description: str
+
+class PlayerCharacter(BaseModel):
     """This class represents the traits  of a character"""
 
     name: str
@@ -143,6 +159,13 @@ class PlayerChracter(BaseModel):
     skills: List[Skill]
     attacks: List[Attack]
     spells: List[Spell]
+    equipment: List[Equipment]
+    features: List[FeaturesAndTraits]
+    proficienciesArmor: List[str]
+    proficienciesWeapons: List[str]
+    proficienciesTools: List[str]
+    proficienciesLanguages: List[str]
+    money: Money
 
 
 class CampaignSchema(BaseModel):
@@ -165,7 +188,7 @@ class CampaignSchema(BaseModel):
     rewardsList: List[Reward]
     generatedMagicItems: List[MagicItem]
     generatedPlotTwists: List[PlotTwist]
-    characters: List[PlayerChracter]
+    playerCharacters: List[PlayerCharacter]
 
 
 

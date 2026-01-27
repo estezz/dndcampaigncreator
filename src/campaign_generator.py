@@ -97,21 +97,24 @@ class CampaignGenerator:
                 )
             elif isinstance(value, list):
                 for item in value:
-                    self.collect_images_prompts(
-                        dictionary=item, images_prompts=images_prompts
-                    )
+                    if isinstance(item, dict):
+                        self.collect_images_prompts(
+                            dictionary=item, images_prompts=images_prompts
+                        )
             if "Image" in key or "image" in key:
                 images_prompts.append(value["prompt"])
 
     def add_images(self, dictionary, image_dict):
         """add images to campaign  json"""
 
+
         for key, value in dictionary.items():
             if isinstance(value, dict):
                 self.add_images(dictionary=value, image_dict=image_dict)
             elif isinstance(value, list):
                 for item in value:
-                    self.add_images(dictionary=item, image_dict=image_dict)
+                    if isinstance(item, dict):
+                        self.add_images(dictionary=item, image_dict=image_dict)
             if "Image" in key or "image" in key:
                 value["url"] = image_dict[value["prompt"]]
 

@@ -5,7 +5,7 @@ pytestdebug.log
 dnd.tar.gz
 terraform/.terraform
 logs/dnd.log
-src/campaign_*.json
+src/logs/campaign_*.json
 logs/campaign_*.json
 .swp
 src/logs/dnd.log

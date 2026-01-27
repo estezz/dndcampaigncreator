@@ -1,288 +1,238 @@
 {
-  "title": "Thar's Shadow: The Iron Crown",
-  "campaignSetting": "Forgotten Realms",
-  "partySize": 4,
-  "characterLevel": 5,
-  "numberOfSessions": 2,
-  "numberOfHoursPerSession": 4,
-  "storyLine": "The beer has been poisoned",
-  "history": "Centuries ago, the brilliant but arrogant Netherese Archwizard Karsus attempted to usurp the goddess Mystryl's power, an act that ripped the Weave asunder and nearly destroyed all magic. Though his main endeavor failed catastrophically, Karsus had prepared several 'anchors' \u2013 experimental artifacts designed to stabilize the Weave in his immediate vicinity during his ascension. One such artifact, a potent yet unstable device dubbed the Iron Crown, was thought lost to time and planar collapse. However, recent geological tremors in the desolate, monster-ridden mood-lands of The Thar have brought the Crown back to the surface. Its rediscovery has not gone unnoticed. The Zhentarim, the infamous Black Network, seek the Iron Crown to shackle a powerful dragon to their will, intending to add a fearsome new weapon to their arsenal. Simultaneously, the dreaded Cult of the Dragon, ever obsessed with undeath and draconic power, covets the artifact to empower their rituals, hoping to raise a formidable dracolich. The players, caught unaware, find themselves thrust into the dangerous crossfire of these two powerful, sinister factions, with their survival hanging by a thread.",
-  "atmosphere": "The campaign is steeped in an atmosphere of desolate tension and creeping dread. The Thar itself is a harsh, unforgiving wasteland, echoing with ancient, forgotten magic and inhabited by desperate creatures. The air is thick with the paranoia of being hunted, as both the Zhentarim and Cult of the Dragon employ ruthless tactics and spies. Moments of quiet exploration are punctuated by sudden, violent skirmishes. Players will feel like small fish in a very large, dangerous pond, constantly having to make difficult choices for their own survival, often pitting one evil against another.",
-  "setup": "<p>You find yourselves on the fringes of civilization, perhaps in a dusty frontier town like Voonlar or a trading post teetering on the edge of the desolation known as The Thar. Recent rumors, hushed and fearful, speak of strange movements in the ancient, blighted lands to the east. Caravans have gone missing, isolated homesteads lie mysteriously abandoned, and unsettling omens paint the sky.</p><p>The Thar is a place few willingly venture, a land scarred by ancient magic and populated by monstrous beasts and desperate brigands. Yet, something has stirred its depths. Unbeknownst to you, the re-emergence of an ancient Netherese artifact, the Iron Crown, has set two formidable powers on a collision course. The Zhentarim, ever hungry for power and control, aim to harness its magic to enslave a dragon. The Cult of the Dragon, devoted to the worship of evil dragons and the creation of dracoliches, seeks to twist its power for their own nefarious rituals.</p><p>As adventurers seeking coin, glory, or perhaps just a quiet life, you are about to be swept into a conflict far larger than yourselves. A desperate plea for help, a chance encounter with a frantic survivor, or perhaps an offer of easy gold will pull you into the Thar\u2019s deadly embrace. Your initial goal is simple: survive. But as you uncover the truth of the Iron Crown, your choices could alter the fate of entire regions, or condemn them to draconic tyranny.</p> ",
-  "startingPointImage": {
-    "url": "https://replicate.delivery/xezq/LLthbFwOJxrKG5UhnbqM8xO6nyap37WXooP3Ks7QZXaUGSdF/tmpagl4x2bh.jpg",
-    "description": "A dusty, ramshackle frontier town at the edge of a desolate wasteland, with jagged, ominous mountains in the distance under a foreboding sky.",
-    "prompt": "A desolate, dusty frontier town, 'Voonlar', at the edge of a vast, rocky wasteland known as The Thar. Ramshackle wooden buildings, a few fortified structures, and weary travelers. Jagged, dark mountains loom in the distance under a foreboding, overcast sky. Fantasy art, digital painting."
-  },
-  "mapImagePrompt": {
-    "url": "https://replicate.delivery/xezq/NeULBpsyxD3pN6Bvapj5teicBbqTY9uxweNiWkNVRDfslhUXB/tmpffi7ahf8.jpg",
-    "description": "A stylized map of the Thar region, showing its desolate terrain, jagged peaks, a few ancient ruins, and pathways used by factions.",
-    "prompt": "A detailed, hand-drawn map of the desolate Thar region in Forgotten Realms. Show jagged, dark mountains, a vast rocky wasteland, ancient crumbling ruins, treacherous ravines, and hints of a few hidden trails or faction outposts. Include a compass rose and a scale. Top-down view, parchment style."
-  },
-  "plotHooks": [
-    {
-      "title": "The Missing Caravan",
-      "description": "<html><body><p>A frantic merchant in Voonlar offers a significant reward for information about his caravan, which disappeared en route to the Thar's edge. The caravan was carrying valuable trade goods, but also, unbeknownst to the merchant, a covert Zhentarim envoy carrying reconnaissance reports about the Iron Crown's potential location. Investigating the wreckage or tracks leads players to their first encounter with either Cult of the Dragon scouts or desperate, mutated creatures of the Thar.</p> "
+    "title": "The Curse of Blackwood Manor",
+    "setting": "Gothic Horror / Dark Fantasy",
+    "partySize": 4,
+    "characterLevel": 3,
+    "history": "Blackwood Manor was once the seat of a noble family known for their benevolence. Fifty years ago, during the Night of the Red Moon, the entire family vanished. Since then, a creeping fog has surrounded the estate, and villagers who venture too close return with stories of weeping statues and shadows that move on their own.",
+    "atmosphere": "Oppressive, foggy, silent except for the creaking of old wood and distant, unexplained whispers. The air smells of damp earth and decay.",
+    "setup": "The party has been hired by the last living heir, Julianne Blackwood, to reclaim the deed to the manor from the family vault so she can sell the cursed land. They begin at the rusted iron gates of the estate.",
+    "startingPointImage": {
+      "url": "https://example.com/images/blackwood_gates.jpg",
+      "description": "Rusted iron gates entwined with thorny vines, standing before a fog-shrouded path.",
+      "prompt": "Gothic iron gates, rusted, misty forest background, dark fantasy style, digital painting, gloomy lighting"
     },
-    {
-      "title": "A Whispered Warning",
-      "description": "<html><body><p>While resting in a tavern, a nervous, hooded figure (a low-ranking Zhentarim agent who has had a change of heart, or a paranoid scholar) discreetly slips the party a cryptic note. The note warns of 'ancient evil stirring in the Thar' and mentions 'the Crown that draws shadows'. It also contains a crude map to a nearby, minor Zhentarim supply cache, implying something significant is being moved. The agent vanishes before they can be questioned, leaving the party with a choice: pursue the warning or dismiss it.</p> "
+    "mapImagePrompt": {
+      "url": "https://example.com/images/manor_map.jpg",
+      "description": "A top-down map of a three-story victorian manor and surrounding overgrown gardens.",
+      "prompt": "Dungeons and Dragons battle map, victorian mansion floor plan, overgrown garden, grid overlay, parchment texture"
     },
-    {
-      "title": "Skirmish on the Blight Road",
-      "description": "<html><body><p>The party stumbles upon the aftermath of a brutal skirmish along a lonely road leading towards the Thar. Several bodies, clearly identifiable as Zhentarim thugs and Cult of the Dragon fanatics, litter the ground. Amidst the carnage, a heavily damaged cart holds a few strange, arcane instruments and a partially burned ledger. The ledger details a race to acquire 'Karsus's final gift' in the 'desolate heart of Thar' and speaks of 'draconic power unbounded'. A survivor, barely clinging to life, might utter a single, chilling word: 'Crown'.</p> "
-    }
-  ],
-  "mainPlotSteps": [
-    {
-      "title": "Session 1: The Whispers of Ancient Power",
-      "description": "<html><body><p>The adventurers are introduced to the dangerous landscape of the Thar and the brewing conflict. They begin in a frontier town (e.g., Voonlar) or on its outskirts, drawn by one of the plot hooks. Their initial investigation leads them to the very edge of the Thar. They encounter evidence of both Zhentarim and Cult of the Dragon activity, perhaps a skirmish aftermath, a captured prisoner, or a hidden message. They learn the bare minimum: two powerful factions are seeking something significant within the Thar, something ancient and magical. They might have their first combat encounter with a small scouting party from either faction, gaining a sense of the danger ahead and recovering a minor clue (e.g., a faction symbol, a piece of a map, a specific name).</p> "
-    },
-    {
-      "title": "Session 2: Into the Heart of Desolation",
-      "description": "<html><body><p>Following the clues from Session 1, the party ventures deeper into the Thar. The environment itself becomes a challenge: treacherous terrain, scarce resources, and encounters with local, hostile wildlife mutated by the land's ancient magic (e.g., giant spiders, stirges, a desperate band of gnolls). They must navigate the dangers and avoid or overcome patrols from both the Zhentarim and the Cult of the Dragon. The players will discover more concrete evidence about the Iron Crown \u2013 its name, its supposed purpose as a Netherese artifact, and that both factions have a significant interest in it. They might find a temporary outpost or a small ruin used by one of the factions, potentially leading to a more direct confrontation or a tense stealth mission to acquire crucial intel, perhaps even rescuing a captive who knows more.</p> "
-    },
-    {
-      "title": "Session 3: Faction Footholds and Ancient Secrets",
-      "description": "<html><body><p>The party's journey leads them to a more significant location within the Thar \u2013 either a substantial Zhentarim staging post or a Cult of the Dragon shrine/excavation site. This location will be well-guarded, requiring a tactical approach, be it stealth, diplomacy (if possible), or direct assault. Here, they will uncover the specific plans of at least one faction for the Iron Crown: the Zhentarim's desire to enslave a dragon, or the Cult of the Dragon's ambition to create a dracolich. They might also find fragments of Netherese lore that hint at the Crown's true nature as an 'anchor' and its inherent instability. This session will involve a more challenging combat encounter against a mix of faction members and possibly a unique Tharian creature guarding the site. The goal is to obtain enough information to pinpoint the Iron Crown's actual resting place.</p> "
-    },
-    {
-      "title": "Session 4: The Crown's Crucible",
-      "description": "<html><body><p>Armed with crucial information, the players make their way to the ancient Netherese ruin where the Iron Crown is located. This site is likely a crumbling, magically charged complex, possibly underground or hidden within a cavern system. Upon arrival, they discover that both the Zhentarim and the Cult of the Dragon have converged on the location and are likely engaged in a brutal battle for control of the Crown. The players must navigate this multi-sided conflict, deciding whether to side with one faction (temporarily), attempt to steal the Crown for themselves, or perhaps even try to destroy it. The final confrontation will be challenging, involving multiple enemies and the environmental hazards of a unstable magical site. The outcome depends entirely on the players' choices: will they survive the crossfire, prevent the Crown from falling into evil hands, or simply escape with their lives?</p> "
-    }
-  ],
-  "mainCharacters": [
-    {
-      "name": "Sergeant Kaelen 'Ironhand'",
-      "image": {
-        "url": "https://replicate.delivery/xezq/hc6kWooAAkbcLNWfezs3vlIUL1VTTUzszuzhKTNqlebNzQqrA/tmprvu8y58g.jpg",
-        "description": "A grizzled, middle-aged human male, wearing functional black Zhentarim armor, with a distinctive scarred face and a perpetually scowling expression. He has a prosthetic iron hand.",
-        "prompt": "Grizzled, battle-hardened human male, middle-aged, wearing practical dark leather and plate armor adorned with subtle Zhentarim insignias. He has a prominent scar across his left eye and a grim, determined expression. His left hand is a detailed, articulated iron gauntlet. Fantasy character portrait, realistic, serious."
+    "plotHooks": [
+      {
+        "title": "The Heir's Request",
+        "description": "<p>Julianne Blackwood offers 500 gold pieces for the retrieval of the deed, but she refuses to step foot on the property herself.</p>"
       },
-      "stats": {
-        "AC": 16,
-        "Initiative": 1,
-        "HP": 30,
-        "Speed": 30,
-        "Swim": 0,
-        "Str": 14,
-        "Dex": 12,
-        "Con": 13,
-        "Int": 10,
-        "Wis": 11,
-        "Cha": 9,
-        "CR": 1,
-        "XP": 200,
-        "PB": 2
-      },
-      "role": "Zhentarim Field Commander",
-      "goal": "To secure the Iron Crown for the Black Network and deliver it to his superiors, ensuring his own promotion and continued survival.",
-      "quirk": "Constantly polishes or inspects his prosthetic iron hand, especially when nervous or planning. Speaks in short, gruff sentences.",
-      "description": "Sergeant Kaelen 'Ironhand' is a pragmatic and ruthless Zhentarim operative, hardened by years of brutal work. He's not inherently evil, but his loyalty to the Black Network and his own self-preservation override most moral qualms. He values efficiency and results, and while he won't hesitate to eliminate threats, he's also open to temporary alliances if they serve his goals. He respects competence and despises incompetence, even among his own ranks. He sees the Iron Crown as a tool to gain power, not a magical curiosity."
-    },
-    {
-      "name": "Vraithna Shadowscale",
-      "image": {
-        "url": "https://replicate.delivery/xezq/NZIlo7eWNbXVCKbVQ7YMe8TX7ZioY1XFfOfJ0H5NvQwfNDpuC/tmp6_f8i_u_.jpg",
-        "description": "A gaunt, intense female human cultist, robed in dark, scaled leathers, with draconic tattoos visible on her neck and arms, and an unsettlingly zealous glint in her eyes.",
-        "prompt": "Gaunt, intensely focused female human, early 30s. Dressed in dark, ceremonial robes and scaled leather armor. Prominent, intricate draconic tattoos crawl up her neck and arms. Her eyes gleam with a zealous, almost manic devotion. She carries a gnarled staff topped with a dragon's tooth. Cult of the Dragon aesthetic, dark fantasy, digital painting."
-      },
-      "stats": {
-        "AC": 14,
-        "Initiative": 2,
-        "HP": 27,
-        "Speed": 30,
-        "Swim": 0,
-        "Str": 10,
-        "Dex": 14,
-        "Con": 12,
-        "Int": 13,
-        "Wis": 15,
-        "Cha": 11,
-        "CR": 1,
-        "XP": 200,
-        "PB": 2
-      },
-      "role": "Cult of the Dragon Zealot/Cleric",
-      "goal": "To acquire the Iron Crown and use its power to fulfill the dracolich prophecy, believing it will elevate her within the Cult.",
-      "quirk": "Often whispers to herself in Draconic, sometimes hissing softly like a snake. Has an intense, unblinking stare that can be unnerving.",
-      "description": "Vraithna Shadowscale is a fanatical cleric of the Cult of the Dragon, utterly devoted to the transformation of powerful dragons into dracoliches. She views the Iron Crown as a divine instrument, sent to them by the Dragon Gods, to accelerate their sacred work. She is ruthless and utterly committed, willing to sacrifice her own life and those of her followers for the Cult's goals. She is charismatic in a chilling way, capable of inspiring fear and devotion in her subordinates. Her knowledge of ancient draconic lore and rituals is considerable."
-    },
-    {
-      "name": "Old Man Hemlock",
-      "image": {
-        "url": "https://replicate.delivery/xezq/b0CioVHWy24iBZpBb3Eczd6g9IJ9qEf8gaWqXz0OvmL9Mk6KA/tmptvxc3gre.jpg",
-        "description": "An ancient, wizened human sage, with long white hair and beard, spectacles perched on his nose, poring over a tattered, glowing tome in a dimly lit, dusty study.",
-        "prompt": "An ancient, wizened human male sage, with a long, unkempt white beard and hair. He wears simple, worn scholar's robes and spectacles. His eyes are keen despite his age, and he's hunched over a desk covered in ancient scrolls and a glowing, intricately bound tome. Dimly lit, dusty study. Fantasy art, wise old man."
-      },
-      "stats": {
-        "AC": 10,
-        "Initiative": 0,
-        "HP": 18,
-        "Speed": 30,
-        "Swim": 0,
-        "Str": 8,
-        "Dex": 10,
-        "Con": 9,
-        "Int": 16,
-        "Wis": 14,
-        "Cha": 12,
-        "CR": 0,
-        "XP": 10,
-        "PB": 2
-      },
-      "role": "Reclusive Scholar/Information Broker",
-      "goal": "To prevent the Iron Crown's power from being unleashed or misused, understanding its catastrophic potential, and to record its true history.",
-      "quirk": "Fidgets constantly with a small, smooth river stone. Often mutters ancient Netherese or Draconic phrases under his breath without realizing it.",
-      "description": "Old Man Hemlock is a reclusive, eccentric scholar who has spent decades deciphering ancient texts, stumbling upon forgotten Netherese lore, and particularly the story of Karsus and his anchors. He understands the true danger of the Iron Crown's unstable magic better than anyone in the region. He\u2019s terrified of both the Zhentarim and the Cult, and initially reluctant to get involved, but his deep-seated fear of history repeating itself might compel him to offer cryptic advice or vital information to those who seem to be on the side of caution."
-    }
-  ],
-  "monsters": [
-    {
-      "name": "Zhentarim Thug",
-      "image": {
-        "url": "https://replicate.delivery/xezq/jOx4Kmr7exRzOCih7ibhppfHSfRzvMn6ROOVT02bDywH0QqrA/tmpf36j5u64.jpg",
-        "description": "A brutish human male in dark, simple armor with a crude Zhentarim symbol, wielding a rusty scimitar.",
-        "prompt": "A burly human male, dressed in dark, functional leather armor with a simple, menacing Zhentarim symbol. He has a sneering expression and wields a well-used scimitar. Gritty fantasy art, low-level antagonist."
-      },
-      "stats": {
-        "AC": 11,
-        "Initiative": 0,
-        "HP": 11,
-        "Speed": 30,
-        "Swim": 0,
-        "Str": 13,
-        "Dex": 11,
-        "Con": 12,
-        "Int": 10,
-        "Wis": 10,
-        "Cha": 10,
-        "CR": 0,
-        "XP": 10,
-        "PB": 2
-      },
-      "Traits": "Pack Tactics: The thug has advantage on an attack roll against a creature if at least one of the thug's allies is within 5 feet of the creature and the ally isn't incapacitated. Actions: Multiattack. The thug makes two melee attacks. Scimitar. Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) slashing damage.",
-      "description": "These are the rank-and-file enforcers of the Zhentarim, crude but effective. They operate in small groups, relying on intimidation and numerical superiority. Their loyalty is to coin and fear, making them prone to fleeing if a fight turns against them, unless a higher-ranking officer is present."
-    },
-    {
-      "name": "Cult of the Dragon Acolyte",
-      "image": {
-        "url": "https://replicate.delivery/xezq/WDbW8zcaN7oFGhohhrDNWRR0yUiriiluZmmuHWmhrTljGSdF/tmpd64z2_wb.jpg",
-        "description": "A human female in simple, dark robes, clutching a ceremonial dagger, with a fanatical look in her eyes.",
-        "prompt": "A young human female, dressed in simple, dark, cultist robes. She holds a ceremonial dagger in one hand and her eyes glow with an unsettling fanaticism. Subtle draconic features or tattoos. Dark fantasy art, sinister."
-      },
-      "stats": {
-        "AC": 10,
-        "Initiative": 1,
-        "HP": 9,
-        "Speed": 30,
-        "Swim": 0,
-        "Str": 10,
-        "Dex": 12,
-        "Con": 10,
-        "Int": 11,
-        "Wis": 13,
-        "Cha": 10,
-        "CR": 0,
-        "XP": 10,
-        "PB": 2
-      },
-      "Traits": "Spellcasting: The acolyte is a 1st-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 11, +3 to hit with spell attacks). It has the following cleric spells prepared: Cantrips (at will): light, sacred flame, thaumaturgy. 1st level (2 slots): cure wounds, guiding bolt, sanctuary. Actions: Dagger. Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) piercing damage.",
-      "description": "Acolytes are the lowest rung of the Cult of the Dragon, but no less zealous. They are willing to lay down their lives for their draconic masters and the promise of a world ruled by dracoliches. They often serve as guards, ritual participants, and messengers, and some have learned rudimentary divine magic."
-    },
-    {
-      "name": "Thar Giant Spider",
-      "image": {
-        "url": "https://replicate.delivery/xezq/N9ei5UGgTqUJIKSyzEizo9a80CZc4diL8GogUmOxzSQMNk6KA/tmpr3dtdg21.jpg",
-        "description": "A large, hairy spider with venomous fangs, camouflaged against rocky, desolate terrain.",
-        "prompt": "A monstrously large, hairy spider, mottled grey and brown, camouflaged perfectly against jagged, desolate rock formations in the Thar. Its multiple eyes glow faintly, and its fangs drip with venom. Dark, realistic fantasy creature art."
-      },
-      "stats": {
-        "AC": 12,
-        "Initiative": 3,
-        "HP": 26,
-        "Speed": 30,
-        "Swim": 0,
-        "Str": 14,
-        "Dex": 16,
-        "Con": 12,
-        "Int": 2,
-        "Wis": 10,
-        "Cha": 4,
-        "CR": 1,
-        "XP": 200,
-        "PB": 2
-      },
-      "Traits": "Spider Climb: The spider can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check. Web Sense: While in contact with a web, the spider knows the exact location of any other creature in contact with the same web. Web Walker: The spider ignores movement restrictions caused by webbing. Actions: Bite. Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 7 (1d8 + 3) piercing damage, and the target must make a DC 11 Constitution saving throw, taking 9 (2d8) poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points, and is paralyzed while poisoned in this way. Web (Recharge 5-6). Ranged Weapon Attack: +5 to hit, range 30/60 ft., one creature. Hit: The target is restrained by webbing. As an action, the restrained target can make a DC 12 Strength check, bursting the webbing on a success. The webbing can also be attacked and destroyed (AC 10; 5 HP; vulnerability to fire damage; immunity to bludgeoning, poison, and psychic damage).",
-      "description": "Giant spiders are a common menace in the desolate reaches of the Thar. These particular subspecies are larger and more aggressive, their venom slightly more potent, a result of the raw, wild magic seeping into the land. They are opportunists, preying on lost travelers, unwary beasts, and even isolated patrols of the warring factions."
-    }
-  ],
-  "rewardsImagePrompt": {
-    "url": "https://replicate.delivery/xezq/dzmbBl9fpAwzDCvpeE1yfyrbdOSOCoI6DPSFfGJ7FpEJqhUXB/tmpvy715j6p.jpg",
-    "description": "A collection of gold coins, a small, worn leather pouch, a few shimmering potions, and a mysterious, ancient amulet glowing faintly, all laid out on a rough, dark cloth.",
-    "prompt": "A treasure hoard suitable for low-level adventurers: a pile of tarnished gold and silver coins, a small leather pouch filled with gems, two glowing potions of healing, and an intricately carved, ancient amulet that emits a faint, ethereal glow, all resting on a dark, coarse fabric. Realistic, fantasy still life."
-  },
-  "rewardsList": [
-    {
-      "name": "Reputation and Renown",
-      "description": "<p>Successfully navigating the dangers of the Thar and thwarting (or at least surviving) the plots of the Zhentarim and the Cult of the Dragon earns the party significant renown. They might be seen as heroes by the common folk near the Thar, or as valuable assets (or dangerous nuisances) by more powerful factions. This could lead to future quests, better prices in certain towns, or even offers of patronage.</p>",
-      "image": {
-        "url": "https://replicate.delivery/xezq/Wx0BeIiI9dxFFCdpQauCw2IqEUYKi3sB5m6cIze3yEsraI1VA/tmpyd12sbgj.jpg",
-        "description": "An aged parchment scroll with a wax seal, depicting a knight's crest, symbolizing earned reputation.",
-        "prompt": "An aged parchment scroll, rolled and tied with a ribbon, bearing a noble-looking wax seal with a stylized lion crest. It lies on a wooden table. Symbolic of reputation and official recognition. Digital art."
+      {
+        "title": "The Missing Children",
+        "description": "<p>Village locals mention that two children went playing near the manor yesterday and haven't returned.</p>"
       }
-    },
-    {
-      "name": "Thar's Bounty",
-      "description": "<html><body><p>Beyond the immediate coin, the players may find themselves in possession of valuable materials unique to the Thar \u2013 rare minerals, potent herbs, or monster parts that fetch a high price from alchemists and artisans. This could be a recurring source of income if they choose to revisit the region carefully.</p> ",
-      "image": {
-        "url": "https://replicate.delivery/xezq/SCb2kpP9rYpNKpihh0OCTAnRThqpFgY9Mo5F2Bv29TitGSdF/tmpqawoa0ld.jpg",
-        "description": "A collection of rough, glowing crystals, peculiar plant leaves, and a monster fang, representing valuable Tharian resources.",
-        "prompt": "A small collection of unique Tharian resources: a handful of rough, faintly glowing purple crystals, several leathery, dark green leaves with faint veins, and a single, sharp monster fang. Laid out on a patch of dry, cracked earth. Detailed, fantasy resources."
-      }
-    },
-    {
-      "name": "Experience and Growth",
-      "description": "<html><body><p>For a party of 2nd level, successfully completing this module provides enough experience points to advance to 3rd level, gaining new abilities and increasing their power. The harsh lessons learned in the Thar will also contribute to their character development, making them more resilient and cunning.</p> ",
-      "image": {
-        "url": "https://replicate.delivery/xezq/qWaGeIy0TqTiXad770o0jx9fapYT3BKNegRfuGsSlsUIshUXB/tmp9dq5k1yx.jpg",
-        "description": "An open scroll with arcane symbols and glowing text, signifying earned experience and leveling up.",
-        "prompt": "An open, ancient-looking scroll unrolled on a stone surface. Intricate arcane symbols and glowing magical text seem to emanate from its surface, symbolizing gained experience and character progression. Fantasy art, magical scroll."
-      }
-    }
-  ],
-  "generatedMagicItems": [
-    {
-      "name": "Karsus's Lesser Stabilizer (Amulet)",
-      "image": {
-        "url": "https://replicate.delivery/xezq/lgILdMVCqWoxM1xWTq5ip7szzLxdP18ykhZv3qmubU3yGSdF/tmpxe_0egh0.jpg",
-        "description": "A small, tarnished silver amulet shaped like a stylized eye, with a faint, pulsing blue glow at its center.",
-        "prompt": "A small, tarnished silver amulet, roughly the size of a coin, shaped like a stylized, minimalist eye. At its center, a tiny, faint blue light pulses gently. It hangs on a simple leather cord. Netherese artifact, subtle magic, detailed."
+    ],
+    "mainPlotSteps": [
+      {
+        "title": "Breaching the Gates",
+        "description": "The party must navigate the trapped garden maze to reach the front door."
       },
-      "description": "<html><body><p>This small, simple amulet is a fragment of Karsus's lesser experimental magic, designed to create miniature zones of Weave stability. While it cannot prevent catastrophic magical failures, it offers a modicum of protection against lesser arcane disturbances.</p><p><b>Properties:</b> While wearing this amulet, you have advantage on Constitution saving throws that you make to maintain your concentration on a spell. Additionally, as a bonus action, you can expend 1 charge to gain resistance to force damage until the end of your next turn. The amulet has 3 charges and regains 1d3 expended charges daily at dawn.</p> "
-    },
-    {
-      "name": "Scimitar of the Shifting Sands",
-      "image": {
-        "url": "https://replicate.delivery/xezq/2CuV87PpWqKPGh9lwD3D0eEgeWfqkyLvUs0RtRk9QEqs2QqrA/tmp3arusa87.jpg",
-        "description": "A curved scimitar with a blade that seems to shimmer and blur like heat haze over sand, its hilt wrapped in worn desert leather.",
-        "prompt": "A finely crafted scimitar with a slightly curved blade that seems to perpetually shimmer and blur, resembling heat haze over desert sands. The hilt is wrapped in worn, yet sturdy, desert-colored leather. Subtle magical aura. Fantasy weapon art, detailed."
+      {
+        "title": "The Foyer Ghost",
+        "description": "Upon entering, they encounter the spirit of the butler who demands a password or a duel."
       },
-      "description": "<html><body><p>This scimitar was likely wielded by a veteran Zhentarim operative who frequented the Thar, imbued with minor defensive magic to navigate the treacherous landscape. It feels light and balanced, almost eager to strike.</p><p><b>Properties:</b> You gain a +1 bonus to attack and damage rolls made with this magic weapon. Additionally, once per short or long rest, you can use your reaction when you are targeted by a ranged attack to cause the blade to shimmer violently, imposing disadvantage on the attack roll. The blade seems to distort the air around you for a fleeting moment.</p> "
-    }
-  ],
-  "generatedPlotTwists": [
-    {
-      "title": "The Crown's True Nature",
-      "description": "<html><body><p>The Iron Crown isn't just an anchor; it's a sentient, parasitic artifact. It subtly manipulates the minds of those who come too close, driving them to claim it, feed its power, and spread chaos. Its ultimate goal is to re-ignite a fraction of Karsus's original, catastrophic spell, not to become a god, but to unleash raw, uncontrolled magic upon the world, believing this to be its true purpose. The Zhentarim and Cult of the Dragon are merely pawns in its ancient, slow-burning scheme.</p> "
+      {
+        "title": "The Crypt",
+        "description": "The deed is located in the crypts beneath the house, guarded by the reanimated ancestors."
+      }
+    ],
+    "mainCharacters": [
+      {
+        "name": "Julianne Blackwood",
+        "image": {
+          "url": "https://example.com/images/julianne.jpg",
+          "description": "A nervous young woman in traveling clothes clutching a locket.",
+          "prompt": "Portrait of a worried noblewoman, blonde hair, travel gear, holding a locket, realistic style"
+        },
+        "stats": {
+          "AC": 10,
+          "Initiative": 0,
+          "HP": 8,
+          "Speed": 30,
+          "Swim": 0,
+          "Str": 8,
+          "Dex": 10,
+          "Con": 10,
+          "Int": 14,
+          "Wis": 12,
+          "Cha": 14,
+          "CR": 0,
+          "XP": 0,
+          "PB": 2
+        },
+        "role": "Quest Giver",
+        "goal": "Sell the manor to pay off her debts.",
+        "quirk": "Constantly checks behind her shoulder.",
+        "description": "The last surviving member of the Blackwood line, desperate to sever ties with her family's dark past."
+      }
+    ],
+    "monsters": [
+      {
+        "name": "Spectral Guardian",
+        "image": {
+          "url": "https://example.com/images/specter.jpg",
+          "description": "A translucent figure in rusted armor floating above the ground.",
+          "prompt": "Ghostly knight, translucent blue, rusted armor, glowing eyes, dark dungeon background"
+        },
+        "stats": {
+          "AC": 13,
+          "Initiative": 2,
+          "HP": 45,
+          "Speed": 0,
+          "Swim": 0,
+          "Str": 1,
+          "Dex": 14,
+          "Con": 11,
+          "Int": 10,
+          "Wis": 10,
+          "Cha": 11,
+          "CR": 3,
+          "XP": 700,
+          "PB": 2
+        },
+        "Traits": "Incorporeal Movement, Sunlight Sensitivity",
+        "description": "The restless spirit of a house guard, bound to protect the manor even in death."
+      }
+    ],
+    "rewardsImagePrompt": {
+      "url": "https://example.com/images/rewards.jpg",
+      "description": "An open chest filled with gold coins and a glowing blue gem.",
+      "prompt": "Treasure chest, open, gold coins, glowing blue sapphire, dark wood floor, dramatic lighting"
     },
-    {
-      "title": "A Third Faction's Arrival",
-      "description": "<html><body><p>Just as the Zhentarim and the Cult of the Dragon are about to clash over the Iron Crown, a third, unexpected party arrives: a small, elite group of Red Wizards of Thay, or perhaps a clandestine agent of the Harpers. They reveal that they have been tracking the Crown's emergence, recognizing its unique Netherese signature, and aim to either secure it for their own magical research (Thay) or destroy it before it falls into truly dangerous hands (Harpers). This introduces a new layer of complexity, potential allies, and enemies, forcing the players to re-evaluate their alliances in the climactic battle.</p> "
-    },
-    {
-      "title": "The Dragon's Choice",
-      "description": "<html><body><p>One of the dragons that the Zhentarim intended to enslave or the Cult of the Dragon intended to turn into a dracolich is not entirely unwilling. Perhaps it's a younger, ambitious dragon seeking power, or an older, cynical one hoping to manipulate the factions for its own ends. Instead of a mindless slave or undead horror, the dragon has its own agenda and, if approached carefully (or foolishly), might even attempt to strike a deal with the players or one of the factions, adding a truly unpredictable element to the final confrontation.</p> "
-    }
-  ]
-}
+    "rewardsList": [
+      {
+        "name": "Family Signet Ring",
+        "description": "<p>A gold ring bearing the Blackwood crest. Worth 100gp.</p>",
+        "image": {
+          "url": "https://example.com/images/ring.jpg",
+          "description": "A heavy gold ring with a crest.",
+          "prompt": "Gold signet ring, macro shot, intricate crest design"
+        }
+      }
+    ],
+    "generatedMagicItems": [
+      {
+        "name": "Lantern of Revealing",
+        "image": {
+          "url": "https://example.com/images/lantern.jpg",
+          "description": "A brass lantern that burns with a white flame.",
+          "prompt": "Brass oil lantern, white magical flame, darkness surrounding"
+        },
+        "description": "<p>While lit, this lantern sheds bright light in a 30-foot radius and reveals invisible creatures and objects.</p>"
+      }
+    ],
+    "generatedPlotTwists": [
+      {
+        "title": "The Heir is Possessed",
+        "description": "<p>Julianne is actually possessed by the spirit of the ancestor who cursed the manor originally; she wants the deed to legally bind the land to the demon lord she serves.</p>"
+      }
+    ],
+    "playerCharacters": [
+      {
+        "name": "Garret Ironheart",
+        "characterClass": "Fighter",
+        "level": 3,
+        "image": {
+          "url": "https://example.com/images/garret.jpg",
+          "description": "A human fighter in chainmail holding a shield and sword.",
+          "prompt": "Human male fighter, chainmail armor, shield, longsword, heroic pose, fantasy art"
+        },
+        "stats": {
+          "AC": 18,
+          "Initiative": 1,
+          "HP": 28,
+          "Speed": 30,
+          "Swim": 15,
+          "Str": 16,
+          "Dex": 12,
+          "Con": 16,
+          "Int": 10,
+          "Wis": 11,
+          "Cha": 13,
+          "CR": 0,
+          "XP": 900,
+          "PB": 2
+        },
+        "description": "A former city guard looking for adventure and coin to send back to his family.",
+        "background": "Soldier",
+        "race": "Human",
+        "alignment": "Neutral Good",
+        "personalityTraits": "I'm always polite and respectful.",
+        "ideals": "Greater Good. Our lot is to lay down our lives in defense of others.",
+        "bonds": "I fight for those who cannot fight for themselves.",
+        "flaws": "I have little respect for anyone who is not a proven warrior.",
+        "skills": [
+          {
+            "name": "Athletics",
+            "proficiency": true,
+            "description": "Ability to climb, jump, and swim.",
+            "attribute": "Str"
+          },
+          {
+            "name": "Intimidation",
+            "proficiency": true,
+            "description": "Ability to influence others through threat.",
+            "attribute": "Cha"
+          }
+        ],
+        "attacks": [
+          {
+            "name": "Longsword",
+            "level": 0,
+            "description": "Melee Weapon Attack",
+            "bonus": 5,
+            "damage": 8
+          }
+        ],
+        "spells": [],
+        "equipment": [
+          {
+            "name": "Chainmail",
+            "bonus": 0,
+            "damage": 0
+          },
+          {
+            "name": "Shield",
+            "bonus": 2,
+            "damage": 0
+          }
+        ],
+        "features": [
+          {
+            "name": "Second Wind",
+            "description": "You have a limited well of stamina that you can draw on to protect yourself from harm."
+          },
+          {
+            "name": "Action Surge",
+            "description": "You can push yourself beyond your normal limits for a moment."
+          }
+        ],
+        "proficienciesArmor": [
+          "Light Armor",
+          "Medium Armor",
+          "Heavy Armor",
+          "Shields"
+        ],
+        "proficienciesWeapons": [
+          "Simple Weapons",
+          "Martial Weapons"
+        ],
+        "proficienciesTools": [
+          "Playing Card Set"
+        ],
+        "proficienciesLanguages": [
+          "Common",
+          "Dwarvish"
+        ],
+        "money": {
+          "goldPieces": 15,
+          "silverPieces": 3,
+          "copperPieces": 4
+        }
+      }
+    ]
+  }

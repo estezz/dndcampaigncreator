@@ -1,0 +1,2231 @@
+<!DOCTYPE html>
+<container id="content-to-download">
+    <html>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>The Ale-Fever Blight of Oakhaven</title>
+            <style>
+                
+:root {
+    --bg-parchment: #fdf6e3;
+    --bg-dark: #1a1a1a;
+    --text-main: #333;
+    --header-red: #8b0000;
+    --accent-gold: #c5a059;
+    --stat-block-bg: #f2eecb;
+}
+
+body {
+    font-family: 'Book Antiqua', 'Palatino Linotype', serif;
+    background-color: var(--bg-parchment);
+    color: var(--text-main);
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    background-color: var(--bg-parchment);
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 50px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.7);
+    border: 1px solid #d4c4a0;
+}
+
+/* Navigation / TOC */
+.toc {
+    background: rgba(0,0,0,0.05);
+    padding: 20px;
+    border: 1px solid var(--accent-gold);
+    margin-bottom: 40px;
+}
+.toc h3 { margin-top: 0; border: none; }
+.toc ul { column-count: 2; }
+.toc a { text-decoration: none; color: var(--header-red); font-weight: bold; }
+.toc a:hover { text-decoration: underline; }
+
+/* Typography */
+.title {
+    color: var(--header-red);
+    border-bottom: 2px solid var(--accent-gold);
+    padding-bottom: 5px;
+    text-align: center; text-transform: uppercase; letter-spacing: 2px; font-size: 2.5em;
+}
+
+/* Typography */
+h1, h2, h3 {
+    color: var(--header-red);
+    border-bottom: 2px solid var(--accent-gold);
+    padding-bottom: 5px;
+}
+h1 { text-align: center; text-transform: uppercase; letter-spacing: 2px; font-size: 2.5em; }
+
+/* Layout Utilities */
+.section { margin-bottom: 50px; scroll-margin-top: 20px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+/* Plot Twist Box */
+.twist-box {
+    border: 2px dashed var(--header-red);
+    background-color: #fff0f0;
+    padding: 15px;
+    margin: 10px 0;
+}
+.twist-box strong { color: var(--header-red); text-transform: uppercase; }
+
+/* Map Section */
+.map-container {
+    width: 100%;
+    height: 400px;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px double var(--accent-gold);
+    margin: 20px 0;
+    color: #555;
+    font-style: italic;
+}
+.map-container img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* NPC Cards */
+.npc-card {
+    border: 1px solid var(--accent-gold);
+    padding: 15px;
+    background: white;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+.npc-role { font-size: 0.9em; color: #666; font-style: italic; }
+
+/* Monster Stat Block */
+.stat-block {
+    background-color: var(--stat-block-bg);
+    border: 2px solid #c9ad6a;
+    padding: 15px;
+    font-family: sans-serif;
+    margin-bottom: 20px;
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
+}
+.stat-block h3 { border: none; margin: 0; font-family: serif; font-variant: small-caps; font-size: 1.5em; color: var(--header-red); }
+.stat-block hr { border: 0; height: 2px; background: var(--header-red); margin: 10px 0; }
+.stat-line { margin: 5px 0; }
+
+/* Loot Table */
+table.loot-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+table.loot-table th, table.loot-table td {
+    border: 1px solid var(--accent-gold);
+    padding: 8px;
+    text-align: left;
+}
+table.loot-table th { background: rgba(197, 160, 89, 0.2); }
+/* --- Main Container --- */
+.stat-block {
+    background: var(--bg-color);
+    max-width: fit-content;
+    padding: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    border: 1px solid #d4c4a9;
+    box-sizing: border-box;
+}
+
+/* --- Typography --- */
+.stat-block h1 {
+    font-family: var(--font-header);
+    color: var(--header-color);
+    font-size: 24px;
+    margin: 5px 0 0 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-block h2 {
+    font-style: italic;
+    font-size: 12px;
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.stat-block h4 {
+    display: inline;
+    font-weight: bold;
+    color: var(--header-color);
+    margin: 0;
+}
+
+.stat-block p {
+    margin: 2px 0;
+    font-size: 14px;
+    line-height: 1.4em;
+    color: var(--header-color);
+}
+
+.property-line p {
+    display: inline;
+    color: #000;
+}
+
+/* --- Separators (The Tapered Line) --- */
+.tapered-rule {
+    display: block;
+    height: 2px;
+    border: none;
+    margin: 10px 0;
+    background: linear-gradient(90deg, transparent 0%, var(--separator-color) 50%, transparent 100%);
+}
+
+/* --- Ability Score Grid --- */
+.abilities {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    text-align: center;
+    color: var(--header-color);
+    margin: 10px 0;
+}
+
+.abilities div h4 {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 12px;
+}
+
+.abilities div p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    max-height: 800px ;
+  }
+
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 1; 
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px;
+    text-align: center;
+  }
+
+  /* Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .close:hover { color: black; }
+  
+  textarea { width: 90%; height: 50px; margin-top: 10px; }
+
+  .sheet {
+    background: white;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* --- TYPOGRAPHY --- */
+.label {
+    text-transform: uppercase;
+    font-size: 10px;
+    color: #777;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.data {
+    font-family: var(--f-hand);
+    font-size: 14px;
+    color: #000;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 2px;
+    min-height: 20px;
+}
+
+.data-lg {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* --- HEADER --- */
+header {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid var(--c-grey);
+    margin-bottom: 20px;
+}
+
+.char-name {
+    width: 30%;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.char-name .data {
+    border: none;
+    font-size: 24px;
+    font-family: var(--f-title);
+}
+
+.header-stats {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* --- LAYOUT GRID --- */
+.main-grid {
+    display: grid;
+    grid-template-columns: 100px 1fr 1fr;
+    gap: 20px;
+}
+
+/* --- ATTRIBUTES (Left Column) --- */
+.attr-box {
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 10px;
+    background: #fafafa;
+}
+
+.attr-mod {
+    font-size: 24px;
+    font-family: var(--f-hand);
+    font-weight: bold;
+    display: block;
+    margin: 5px 0;
+}
+
+.attr-score {
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding: 2px 10px;
+    background: white;
+    font-family: var(--f-hand);
+    font-size: 12px;
+}
+
+/* --- SKILLS --- */
+.skills-list {
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+.skill-row {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    padding: 3px 0;
+    align-items: baseline;
+}
+
+.skill-prof {
+    width: 15px;
+    font-weight: bold;
+}
+
+.skill-mod {
+    width: 25px;
+    text-align: center;
+    font-family: var(--f-hand);
+    margin-right: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.skill-name {
+    flex: 1;
+}
+
+.skill-attr {
+    color: #999;
+    font-size: 10px;
+}
+
+/* --- COMBAT (Center Column) --- */
+.combat-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.shield-box {
+    border: 2px solid #333;
+    border-radius: 50% 50% 5px 5px;
+    /* Shield shape roughly */
+    width: 60px;
+    height: 70px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-square {
+    border: 2px solid #333;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.stat-val {
+    font-size: 22px;
+    font-family: var(--f-hand);
+    font-weight: bold;
+}
+
+.stat-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.hp-container {
+    border: 1px solid #aaa;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.attacks-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.attacks-table th {
+    text-align: left;
+    font-size: 10px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #333;
+    padding: 2px;
+}
+
+.attacks-table td {
+    font-family: var(--f-hand);
+    font-size: 13px;
+    padding: 4px 2px;
+    border-bottom: 1px solid #eee;
+}
+
+/* --- FEATURES (Right Column) --- */
+.panel {
+    border: 1px solid #aaa;
+    padding: 10px;
+    border-radius: 5px;
+    height: 100%;
+    background: #fafafa;
+}
+
+.panel h3 {
+    margin: 0 0 10px 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.feature-item {
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.feature-name {
+    font-weight: bold;
+    font-family: var(--f-hand);
+}
+
+.feature-desc {
+    font-family: var(--f-label);
+    color: #555;
+    font-size: 12px;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        flex-direction: column;
+    }
+
+    .char-name {
+        width: 100%;
+    }
+}
+            </style>
+        </head>
+        <body>
+                <header>
+    <div class="title">The Ale-Fever Blight of Oakhaven</div>
+    <p style="text-align: center; font-weight: bold; font-style: italic; font-size: 20px">Target Level: 1-5 | Setting:
+        Forgotten Realms</p>
+</header>
+<button id="download-button" class="dragon-btn">
+    <span class="dragon-scales"></span>
+    <span class="btn-text">Download as HTML</span>
+</button>
+<br />
+<br />
+<div class="toc">
+    <h3>Campaign Contents</h3>
+    <ul>
+        <li><a href="#setup">1. Setup & Background</a></li>
+        <li><a href="#start">2. Starting Point</a></li>
+        <li><a href="#hooks">3. Plot Hooks</a></li>
+        <li><a href="#mainplot">4. Main Plot Steps</a></li>
+        <li><a href="#twists">5. Plot Twists</a></li>
+        <li><a href="#map">6. Regional Map</a></li>
+        <li><a href="#npcs">7. Main Characters</a></li>
+        <li><a href="#monsters">8. Monsters</a></li>
+        <li><a href="#rewards">9. Rewards</a></li>
+    </ul>
+</div>
+
+<div id="setup" class="section" clickable="true">
+    <h2>1. Setup & Background</h2>
+    <p><strong>Setting:</strong> The bustling, picturesque town of Oakhaven, renowned for its annual Autumn Ale Festival. Nestled beside the ancient, whispering Eldoria Forest and surrounded by rich farmlands, Oakhaven is a hub of commerce and joviality, particularly at this time of year. </p>
+    <p><strong>History:</strong> Oakhaven's history is steeped in the tradition of brewing, a craft perfected over centuries by families like the Stouthearts, owners of the esteemed Golden Grain Brewery. Local legends tell of a pact made long ago with the spirits of the Eldoria Forest to ensure fertile soil and pure spring water for brewing. In recent times, however, an unsettling aura has begun to creep from the forest's depths—strange fungal growths, unusually aggressive wildlife, and a pervasive, chilling mist that seems to sap the joy from the land. Old Man Hemlock, a reclusive herbalist, has been vocal about an impending blight, but his warnings have largely been dismissed as senile ramblings amidst the festive preparations. </p>
+    <p><strong>Atmosphere:</strong> The campaign begins with a vibrant, festive atmosphere, full of mirth and the scent of hops, which rapidly descends into a chilling blend of mystery, paranoia, and body horror. Elements of folk tale dread and creeping environmental decay will underscore the investigation, leading to a climax infused with ecological corruption and arcane desperation. </p>
+    <p><strong>Setup:</strong> The player characters find themselves in Oakhaven for the celebrated Autumn Ale Festival, drawn by promises of the finest brews, lively music, and boisterous company. Perhaps they are adventurers seeking work, weary travelers looking for respite, or simply connoisseurs of fine ale. As the festival reaches its peak, merriment turns to chaos. Festival-goers begin to fall violently ill after consuming the Golden Grain Ale—clutching their stomachs, their skin growing pale and mottled with strange, vein-like patterns, and their minds succumbing to a disoriented stupor. Panic spreads like wildfire through the market square, and the local constabulary, led by the earnest but overwhelmed Constable Elara Vane, finds itself utterly unprepared for an ailment of this scale. </p>
+</div>
+
+<div id="start" class="section" clickable="true">
+    <h2>2. Starting Point</h2>
+    <img src="https://replicate.delivery/xezq/kgK3eyuAqdy2TCwi3ifgLAvJcHYaM9RtLwi4osQeqF1TN4AsA/tmpxw5kpp1i.jpg" alt="A vibrant fantasy market square filled with people enjoying an ale festival. Stalls overflow with goods, musicians play, and laughter fills the air. In the foreground, a few revelers are starting to look unwell, clutching their stomachs." class="center" />
+    <p></p>
+</div>
+
+<div id="hooks" class="section" clickable="true">
+    <h2>3. Plot Hooks</h2>
+    <ol>
+        
+        <li>
+            <h3>A Friend's Distress</h3>
+            <p><h3>A Friend's Distress</h3><p>One of the player characters' companions, or perhaps an NPC they've befriended at the festival, collapses after taking a hearty gulp of the Golden Grain Ale. Their symptoms are immediate and alarming, forcing the PCs into action to save their friend and find the cause.</p></p>
+        </li>
+        
+        <li>
+            <h3>Call for Heroes</h3>
+            <p><h3>Call for Heroes</h3><p>Constable Elara Vane, overwhelmed and out of her depth, makes a desperate plea to any capable adventurers present. She offers a significant bounty—200 gold pieces and the gratitude of Oakhaven—to anyone who can uncover the source of the poison and bring the culprit to justice.</p></p>
+        </li>
+        
+        <li>
+            <h3>The Merchant's Dilemma</h3>
+            <p><h3>The Merchant's Dilemma</h3><p>A wealthy merchant, whose entire stock of specialty festival pastries has been ruined by the sudden lack of customers, offers a smaller, but still tempting, reward (100 gold pieces) for the restoration of order and safety in Oakhaven, seeing the PCs as potential problem-solvers.</p></p>
+        </li>
+        
+    </ol>
+</div>
+
+<div id="mainplot" class="section" clickable="true">
+    <h2>4. Main Plot Steps</h2>
+    <ol>
+        
+        <li>
+            <h3>The Festival of Fear</h3>
+            <p>The PCs witness the unfolding crisis at the Autumn Ale Festival. Initial investigations involve examining the sick, speaking with panicked citizens, and potentially questioning the distraught Brewmaster Borin Stoutheart at the Golden Grain Brewery. They might find clues like peculiar residue in ale barrels or unusual fungal spores on victims.</p>
+        </li>
+        
+        <li>
+            <h3>Tracing the Tainted Trail</h3>
+            <p>Clues lead the party to suspect either a disgruntled former employee, a rival brewer, or a specific ingredient. Following up on these leads will guide them out of Oakhaven, likely towards the edge of the Eldoria Forest where a key ingredient (special hops, water from a specific spring) for the Golden Grain Ale is harvested, or where a rival brewer's secret stash might be.</p>
+        </li>
+        
+        <li>
+            <h3>Whispers of the Wood</h3>
+            <p>Venturing into the Eldoria Forest, the party encounters disturbing signs of the blight's influence: unnaturally pale or aggressive forest animals, patches of glowing, alien fungi, and perhaps even some of the poisoned townspeople who have wandered off and begun to undergo a chilling transformation. They might find Old Man Hemlock's secluded cabin, where he offers cryptic warnings and vital information about ancient forest spirits or forgotten pacts.</p>
+        </li>
+        
+        <li>
+            <h3>The Mycelial Mire</h3>
+            <p>The trail culminates in a deeply corrupted section of the forest—perhaps a hidden grotto, an ancient hollow, or a previously pristine glade now choked with malevolent, pulsing fungi. Here, the PCs discover the true source of the blight: a twisted fey creature, or a cultist driven mad by an ancient, nascent mycelial intelligence, using the ale as a vector to spread its influence throughout Oakhaven.</p>
+        </li>
+        
+        <li>
+            <h3>Rooting Out the Corruption</h3>
+            <p>The PCs must confront the mastermind behind the blight and its mutated minions. This climactic battle will determine the fate of Oakhaven. Success means not only defeating the immediate threat but also finding a way to cleanse the poisoned town and perhaps even reverse the transformation of some of the victims, though a full cure might require further adventures.</p>
+        </li>
+        
+    </ol>
+</div>
+
+<div id="twists" class="section" clickable="true">
+    <h2>5. Plot Twists</h2>
+    
+    <div class="twist-box">
+        <strong>The 'Poison' is a Cure</strong>
+        <p><h3>The 'Poison' is a Cure</h3><p>The blight is not truly a poison, but a desperate, misunderstood attempt by an ancient fungal intelligence (or perhaps the corrupted dryad) to 'purify' Oakhaven. It sees the town's excessive consumption and careless harvesting as a threat to the forest, and the ale's transformation is meant to integrate the townspeople into a new, harmonious, albeit fungal-dominated, ecosystem. Stopping the 'poison' might actually condemn the forest to a slower, more painful death from over-exploitation, or simply delay an inevitable ecological shift.</p></p>
+    </div>
+    
+    <div class="twist-box">
+        <strong>A Beloved Elder's Secret</strong>
+        <p><h3>A Beloved Elder's Secret</h3><p>One of Oakhaven's most respected and seemingly benevolent town elders, perhaps a member of the town council or even a priest, is secretly behind the blight. They are not malevolent, but misguided, believing the fungal transformation offers a path to immortality, collective consciousness, or a 'higher state of being' for the entire community. They might have been influenced by whispers from the Mycolich-Touched Dryad or an ancient text, leading them to believe this is Oakhaven's true salvation.</p></p>
+    </div>
+    
+    <div class="twist-box">
+        <strong>The Antidote's Guardian</strong>
+        <p><h3>The Antidote's Guardian</h3><p>The only true antidote or method to reverse the blight requires a rare, mythical ingredient found deep within the Eldoria Forest—a 'Sunpetal Bloom' or 'Moon-Dew Mushroom'. This ingredient is not only incredibly difficult to locate but is also fiercely guarded by a powerful, ancient forest spirit or a territorial beast that views all intruders with suspicion, regardless of their intentions. The party must negotiate, trick, or defeat this guardian to obtain the cure, adding another layer of challenge beyond simply stopping the source of the blight.</p></p>
+    </div>
+    
+</div>
+
+<div id="regional_map" class="section" clickable="true">
+    <h2>6. Regional Map</h2>
+    <div class="map-container">
+        <img src="https://replicate.delivery/xezq/wZgSw2RFmO45IJyDZPOSecoLjHfR3bPs7KEHzs4lHNwvGcAWA/tmp5e85m_qr.jpg"" alt=" " class="center" width="100%" />
+    </div>
+    <p></p>
+</div>
+
+<div id="npcs" class="section" clickable="true">
+    <h2>7. Main Characters</h2>
+    <div class="grid-2">
+        
+        <div class="stat-block">
+            <hr class="tapered-rule">
+            <h3>Brewmaster Borin Stoutheart</h3>
+            <img src="https://replicate.delivery/xezq/AsX9fb4jE3WbO64Cv9iMdeiVv8T8mQb5hqQntCNT9ollGcAWA/tmpg7hmp9vp.jpg" alt="Brewmaster Borin Stoutheart" class="center" width="80%" />
+            <div class="npc-role">A burly, grizzled dwarf with a long, braided beard, wearing a leather apron and looking distraught.</div>
+            <hr class="tapered-rule">
+            <div class="npc-role">Head Brewer, owner of Golden Grain Brewery</div>
+            <hr class="tapered-rule">
+
+            <div class="top-stats">
+                <div class="property-line">
+                    <h4>10 (AC)</h4>
+                    <p>15 (natural armor)</p>
+                </div>
+                <div class="property-line">
+                    <h4>15 (HP)</h4>
+                    <p>45</p>
+                </div>
+                <div class="property-line">
+                    <h4>Speed</h4>
+                    <p>25 ft - 0 ft swim.</p>
+                </div>
+                <div class="property-line">
+                    <h4>Initiative</h4>
+                    <p>0</p>
+                </div>Tharivol 
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="abilities">
+                <div>
+                    <h4>STR</h4>
+                    <p>12 (+2)</p>
+                </div>
+                <div>
+                    <h4>DEX</h4>
+                    <p>10 (+0)</p>
+                </div>
+                <div>
+                    <h4>CON</h4>
+                    <p>14 (+4)</p>
+                </div>
+                <div>
+                    <h4>INT</h4>
+                    <p>13 (+3)</p>
+                </div>
+                <div>
+                    <h4>WIS</h4>
+                    <p>11 (+1)</p>
+                </div>
+                <div>
+                    <h4>CHA</h4>
+                    <p>10 (+0)</p>
+                </div>
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="bottom-stats">
+                <div class="property-line">
+                    <h4>Challenge</h4>
+                    <p>0-0(XP)</p>
+                </div>
+                <div class="property-line">
+                    <h4>Proficiency Bonus</h4>
+                    <p>2</p>
+                </div>
+            </div>
+            <div class="bottom-stats">
+                <div class="stat-line">
+                    <h4>Traits</h4>
+                    <p></p>
+                </div>
+            </div>
+
+            <p><strong>Goal:</strong> Clear his brewery's name, find a cure for the poisoned townspeople, and restore Oakhaven's reputation.</p>
+            <p><strong>Quirk:</strong> Speaks with a booming voice, even when whispering; constantly fiddles with his beard.</p>
+
+            <hr class="tapered-rule">
+        </div>
+        
+        <div class="stat-block">
+            <hr class="tapered-rule">
+            <h3>Constable Elara Vane</h3>
+            <img src="https://replicate.delivery/xezq/VycGP8OnhOYdOxnFqMlHVkSrLI0ANvfXKzHCYDZfQoBjGcAWA/tmp7w8onwg_.jpg" alt="Constable Elara Vane" class="center" width="80%" />
+            <div class="npc-role">A young, determined human woman in simple town guard armor, looking overwhelmed.</div>
+            <hr class="tapered-rule">
+            <div class="npc-role">Head of Oakhaven's Constabulary</div>
+            <hr class="tapered-rule">
+
+            <div class="top-stats">
+                <div class="property-line">
+                    <h4>14 (AC)</h4>
+                    <p>15 (natural armor)</p>
+                </div>
+                <div class="property-line">
+                    <h4>22 (HP)</h4>
+                    <p>45</p>
+                </div>
+                <div class="property-line">
+                    <h4>Speed</h4>
+                    <p>30 ft - 0 ft swim.</p>
+                </div>
+                <div class="property-line">
+                    <h4>Initiative</h4>
+                    <p>1</p>
+                </div>Tharivol 
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="abilities">
+                <div>
+                    <h4>STR</h4>
+                    <p>13 (+3)</p>
+                </div>
+                <div>
+                    <h4>DEX</h4>
+                    <p>12 (+2)</p>
+                </div>
+                <div>
+                    <h4>CON</h4>
+                    <p>11 (+1)</p>
+                </div>
+                <div>
+                    <h4>INT</h4>
+                    <p>10 (+0)</p>
+                </div>
+                <div>
+                    <h4>WIS</h4>
+                    <p>12 (+2)</p>
+                </div>
+                <div>
+                    <h4>CHA</h4>
+                    <p>10 (+0)</p>
+                </div>
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="bottom-stats">
+                <div class="property-line">
+                    <h4>Challenge</h4>
+                    <p>1-200(XP)</p>
+                </div>
+                <div class="property-line">
+                    <h4>Proficiency Bonus</h4>
+                    <p>2</p>
+                </div>
+            </div>
+            <div class="bottom-stats">
+                <div class="stat-line">
+                    <h4>Traits</h4>
+                    <p></p>
+                </div>
+            </div>
+
+            <p><strong>Goal:</strong> Restore order, protect the citizens, and identify the culprit behind the poisoning.</p>
+            <p><strong>Quirk:</strong> Adjusts her helmet constantly when stressed; prone to quoting town bylaws.</p>
+
+            <hr class="tapered-rule">
+        </div>
+        
+        <div class="stat-block">
+            <hr class="tapered-rule">
+            <h3>Old Man Hemlock</h3>
+            <img src="https://replicate.delivery/xezq/m64Y4ukr4R5PA1Lvsv9Zoi31xEDQMe8KeXFfHHeLYP7OawBYB/tmprb6qd23y.jpg" alt="Old Man Hemlock" class="center" width="80%" />
+            <div class="npc-role">A wizened old human herbalist with a long white beard, holding strange roots.</div>
+            <hr class="tapered-rule">
+            <div class="npc-role">Reclusive Herbalist and Forest Lorekeeper</div>
+            <hr class="tapered-rule">
+
+            <div class="top-stats">
+                <div class="property-line">
+                    <h4>10 (AC)</h4>
+                    <p>15 (natural armor)</p>
+                </div>
+                <div class="property-line">
+                    <h4>10 (HP)</h4>
+                    <p>45</p>
+                </div>
+                <div class="property-line">
+                    <h4>Speed</h4>
+                    <p>20 ft - 0 ft swim.</p>
+                </div>
+                <div class="property-line">
+                    <h4>Initiative</h4>
+                    <p>-1</p>
+                </div>Tharivol 
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="abilities">
+                <div>
+                    <h4>STR</h4>
+                    <p>8 (+-2)</p>
+                </div>
+                <div>
+                    <h4>DEX</h4>
+                    <p>9 (+-1)</p>
+                </div>
+                <div>
+                    <h4>CON</h4>
+                    <p>10 (+0)</p>
+                </div>
+                <div>
+                    <h4>INT</h4>
+                    <p>15 (+5)</p>
+                </div>
+                <div>
+                    <h4>WIS</h4>
+                    <p>16 (+6)</p>
+                </div>
+                <div>
+                    <h4>CHA</h4>
+                    <p>12 (+2)</p>
+                </div>
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="bottom-stats">
+                <div class="property-line">
+                    <h4>Challenge</h4>
+                    <p>0-0(XP)</p>
+                </div>
+                <div class="property-line">
+                    <h4>Proficiency Bonus</h4>
+                    <p>2</p>
+                </div>
+            </div>
+            <div class="bottom-stats">
+                <div class="stat-line">
+                    <h4>Traits</h4>
+                    <p></p>
+                </div>
+            </div>
+
+            <p><strong>Goal:</strong> Warn Oakhaven of the encroaching blight, guide adventurers to its source, and protect the balance of the forest.</p>
+            <p><strong>Quirk:</strong> Speaks in riddles and proverbs; carries an assortment of foul-smelling herbs in his pockets.</p>
+
+            <hr class="tapered-rule">
+        </div>
+        
+    </div>
+</div>
+
+<div id="monsters" class="section" clickable="true">
+    <h2>8. Monsters</h2>
+    <div class="grid-2">
+        
+
+        <div class="stat-block">
+            <hr class="tapered-rule">
+
+            <div class="creature-heading">
+                <h1>Mycelial Sporeling</h1>
+                <h2>These small, mobile fungi are the early stages of the blight's spread. They shamble awkwardly, emitting a faint, sickly glow and a cloud of mind-altering spores. They are often found guarding areas of heavy fungal growth or accompanying larger corrupted creatures. Though weak individually, their numbers and ability to induce delirium make them a persistent threat.</h2>
+                <img src="https://replicate.delivery/xezq/QFaj8kXOQOIOLVWSEo2bFgsW5NxXI5d0yAsbG1p4V7roBHgF/tmpvr19df7v.jpg" alt="Mycelial Sporeling" class="center" width="80%" />
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="top-stats">
+                <div class="property-line">
+                    <h4>12 (AC)</h4>
+                    <p>15 (natural armor)</p>
+                </div>
+                <div class="property-line">
+                    <h4>25 (HP)</h4>
+                    <p>45</p>
+                </div>
+                <div class="property-line">
+                    <h4>Speed</h4>
+                    <p>20 ft - 0 ft swim.</p>
+                </div>
+                <div class="property-line">
+                    <h4>Initiative</h4>
+                    <p>1</p>
+                </div>
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="abilities">
+                <div>
+                    <h4>STR</h4>
+                    <p>10 (+0)</p>
+                </div>
+                <div>
+                    <h4>DEX</h4>
+                    <p>12 (+2)</p>
+                </div>
+                <div>
+                    <h4>CON</h4>
+                    <p>14 (+4)</p>
+                </div>
+                <div>
+                    <h4>INT</h4>
+                    <p>6 (+-4)</p>
+                </div>
+                <div>
+                    <h4>WIS</h4>
+                    <p>10 (+0)</p>
+                </div>
+                <div>
+                    <h4>CHA</h4>
+                    <p>5 (+-5)</p>
+                </div>
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="bottom-stats">
+                <div class="property-line">
+                    <h4>Challenge</h4>
+                    <p>1-200(XP)</p>
+                </div>
+                <div class="property-line">
+                    <h4>Proficiency Bonus</h4>
+                    <p>2</p>
+                </div>
+            </div>
+            <div class="bottom-stats">
+                <div class="stat-line">
+                    <h4>Traits</h4>
+                    <p><b>Spores of Delirium (Recharge 5-6).</b> The sporeling releases a cloud of hallucinogenic spores in a 10-foot radius. Each creature in the area must succeed on a DC 12 Constitution saving throw or be poisoned for 1 minute. While poisoned this way, a creature takes 1d4 psychic damage at the start of its turn and has disadvantage on Wisdom saving throws.</p>
+                </div>
+            </div>
+
+            <hr class="tapered-rule">
+        </div>
+        
+
+        <div class="stat-block">
+            <hr class="tapered-rule">
+
+            <div class="creature-heading">
+                <h1>Blighted Boar</h1>
+                <h2>Once common forest animals, these boars have been twisted by the blight. Their hides are encrusted with virulent fungi, and their minds driven to aggressive madness. They charge without fear, spreading the blight's influence through their very presence and physical attacks. They are guardians of the corrupted forest, attacking anything that ventures too close to the source of the infection.</h2>
+                <img src="https://replicate.delivery/xezq/oAlBblZcdBYPBlq6O1MgPQ1zefO9LdpZWIW0omyBdKniGcAWA/tmp9n1hawfx.jpg" alt="Blighted Boar" class="center" width="80%" />
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="top-stats">
+                <div class="property-line">
+                    <h4>13 (AC)</h4>
+                    <p>15 (natural armor)</p>
+                </div>
+                <div class="property-line">
+                    <h4>45 (HP)</h4>
+                    <p>45</p>
+                </div>
+                <div class="property-line">
+                    <h4>Speed</h4>
+                    <p>40 ft - 0 ft swim.</p>
+                </div>
+                <div class="property-line">
+                    <h4>Initiative</h4>
+                    <p>2</p>
+                </div>
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="abilities">
+                <div>
+                    <h4>STR</h4>
+                    <p>16 (+6)</p>
+                </div>
+                <div>
+                    <h4>DEX</h4>
+                    <p>14 (+4)</p>
+                </div>
+                <div>
+                    <h4>CON</h4>
+                    <p>15 (+5)</p>
+                </div>
+                <div>
+                    <h4>INT</h4>
+                    <p>3 (+-7)</p>
+                </div>
+                <div>
+                    <h4>WIS</h4>
+                    <p>10 (+0)</p>
+                </div>
+                <div>
+                    <h4>CHA</h4>
+                    <p>6 (+-4)</p>
+                </div>
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="bottom-stats">
+                <div class="property-line">
+                    <h4>Challenge</h4>
+                    <p>2-450(XP)</p>
+                </div>
+                <div class="property-line">
+                    <h4>Proficiency Bonus</h4>
+                    <p>2</p>
+                </div>
+            </div>
+            <div class="bottom-stats">
+                <div class="stat-line">
+                    <h4>Traits</h4>
+                    <p><b>Charge.</b> If the boar moves at least 20 feet straight toward a target and then hits it with a tusk attack on the same turn, the target takes an extra 1d6 piercing damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone.<b>Fungal Aura.</b> Any creature that starts its turn within 5 feet of the Blighted Boar takes 1d4 poison damage.</p>
+                </div>
+            </div>
+
+            <hr class="tapered-rule">
+        </div>
+        
+
+        <div class="stat-block">
+            <hr class="tapered-rule">
+
+            <div class="creature-heading">
+                <h1>The Mycolich-Touched Dryad</h1>
+                <h2>Once a benevolent guardian of the Eldoria Forest, this dryad has been tragically twisted by the insidious mycelial blight. Her beauty is marred by fungal growths, and her natural grace replaced by a sinister, controlling presence. She serves as the primary vector for the blight, using her fey powers to spread the corruption and defend the heart of the fungal network. She is driven by a corrupted sense of protecting the forest, believing the blight is a necessary evolution.</h2>
+                <img src="https://replicate.delivery/xezq/bvnffbzjCeFT3IcP19isbYa4gRT034WeiTOEB2feDu7JpBHgF/tmplp36s7_v.jpg" alt="The Mycolich-Touched Dryad" class="center" width="80%" />
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="top-stats">
+                <div class="property-line">
+                    <h4>15 (AC)</h4>
+                    <p>15 (natural armor)</p>
+                </div>
+                <div class="property-line">
+                    <h4>105 (HP)</h4>
+                    <p>45</p>
+                </div>
+                <div class="property-line">
+                    <h4>Speed</h4>
+                    <p>30 ft - 0 ft swim.</p>
+                </div>
+                <div class="property-line">
+                    <h4>Initiative</h4>
+                    <p>2</p>
+                </div>
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="abilities">
+                <div>
+                    <h4>STR</h4>
+                    <p>10 (+0)</p>
+                </div>
+                <div>
+                    <h4>DEX</h4>
+                    <p>14 (+4)</p>
+                </div>
+                <div>
+                    <h4>CON</h4>
+                    <p>16 (+6)</p>
+                </div>
+                <div>
+                    <h4>INT</h4>
+                    <p>14 (+4)</p>
+                </div>
+                <div>
+                    <h4>WIS</h4>
+                    <p>18 (+8)</p>
+                </div>
+                <div>
+                    <h4>CHA</h4>
+                    <p>18 (+8)</p>
+                </div>
+            </div>
+
+            <hr class="tapered-rule">
+
+            <div class="bottom-stats">
+                <div class="property-line">
+                    <h4>Challenge</h4>
+                    <p>7-2900(XP)</p>
+                </div>
+                <div class="property-line">
+                    <h4>Proficiency Bonus</h4>
+                    <p>3</p>
+                </div>
+            </div>
+            <div class="bottom-stats">
+                <div class="stat-line">
+                    <h4>Traits</h4>
+                    <p><b>Fey Ancestry.</b> The dryad has advantage on saving throws against being charmed, and magic can't put the dryad to sleep.<b>Innate Spellcasting (Wisdom).</b> The dryad's innate spellcasting ability is Wisdom (spell save DC 15). She can innately cast the following spells, requiring no components:At will: <i>druidcraft, shillelagh</i>3/day each: <i>barkskin, entangle, goodberry</i>1/day each: <i>blight, pass without trace</i><b>Tree Stride.</b> Once per turn, the dryad can use 10 feet of her movement to step magically into one living tree within 5 feet of her and emerge from a second living tree within 60 feet of the first tree, appearing in an unoccupied space within 5 feet of the second tree. Both trees must be Large or larger.<b>Spore Burst (Recharge 4-6).</b> As a bonus action, the dryad releases a burst of potent spores. Each creature within 10 feet must make a DC 15 Constitution saving throw. On a failed save, a creature takes 3d8 poison damage and is poisoned for 1 minute. On a successful save, it takes half as much damage and is not poisoned.</p>
+                </div>
+            </div>
+
+            <hr class="tapered-rule">
+        </div>
+        
+    </div>
+</div>
+
+<div id="rewards" class="section" clickable="true">
+    <h2>9. Rewards</h2>
+    <div class="grid-2">
+        
+        <div class="reward-block">
+            <h3 style="text-align: left; ">Generous Bounty</h4>
+                <p style="text-align: center;"><h3>Generous Bounty</h3><p>Constable Vane, true to her word, awards the party <b>200 gold pieces</b> for successfully uncovering and stopping the blight. Additionally, Brewmaster Borin Stoutheart offers a lifetime supply of unpoisoned Golden Grain Ale to the heroes of Oakhaven.</p></p>
+                <p style="text-align: center;">
+                    <img src="https://replicate.delivery/xezq/kDft9n2tSJxPKyzQuD5ZLyIJHT7WXQZPRwljDuWkcfMjGcAWA/tmpauuh2u__.jpg" alt="Generous Bounty" class="center" width="80%" />
+                </p>
+        </div>
+        
+        <div class="reward-block">
+            <h3 style="text-align: left; ">Herbalist's Gratitude</h4>
+                <p style="text-align: center;"><h3>Herbalist's Gratitude</h3><p>Old Man Hemlock, grateful for the party's intervention, offers a unique herbal concoction. The party receives <b>3 Potions of Greater Healing</b> and a rare <b>Elixir of Blight Resistance</b>, which grants advantage on saving throws against poison and disease for 24 hours.</p></p>
+                <p style="text-align: center;">
+                    <img src="https://replicate.delivery/xezq/yraEEYfbyPSCWqeyoZduRL1staklIeezfuEYBbz9VZHA1gDwC/tmp957pqll2.jpg" alt="Herbalist's Gratitude" class="center" width="80%" />
+                </p>
+        </div>
+        
+    </div>
+</div>
+
+<div id="magicItems" class="section" clickable="true">
+    <h2>10. Magic Items</h2>
+    <div class="grid-2">
+        
+        <div class="reward-block">
+            <h3 style="text-align: left;">Stein of Sustenance</h4>
+                <p style="text-align: center;"><h3>Stein of Sustenance</h3><p><i>Wondrous item, uncommon</i></p><p>This sturdy dwarven stein is carved from dark, polished stone and banded with gleaming copper. Once per day, as an action, you can fill this stein with fresh, clean water. If you drink the water, you regain 1d4+1 hit points and are cured of the poisoned condition.</p></p>
+                <p style="text-align: center;">
+                    <img src="https://replicate.delivery/xezq/edDpzI2I5k1pBK9Z0SGYYqfnzw93VV2GIUEBaxVTv4HwGcAWA/tmp9xqmw5ns.jpg" alt="Stein of Sustenance" width="50%" class="center" />
+                </p>
+        </div>
+        
+        <div class="reward-block">
+            <h3 style="text-align: left;">Spore-Kissed Cloak</h4>
+                <p style="text-align: center;"><h3>Spore-Kissed Cloak</h3><p><i>Wondrous item, rare (requires attunement)</i></p><p>This dark, unassuming cloak is woven with strange, luminescent fungal threads. While wearing this cloak, you gain a +1 bonus to AC and you have advantage on Dexterity (Stealth) checks made in natural environments (forests, caves, swamps). Additionally, you gain resistance to poison damage while attuned to this item.</p></p>
+                <p style="text-align: center;">
+                    <img src="https://replicate.delivery/xezq/HcOplSCBEqYeYCUwdeC2b6YcW8eKVLmKooKYaHNzA8eKawBYB/tmp46cvcuxg.jpg" alt="Spore-Kissed Cloak" width="50%" class="center" />
+                </p>
+        </div>
+        
+    </div>
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <form id="editForm">
+            <input type="text" id="elementID" for="elementID" />
+            <label for="prompt">Describe what you want:</label>
+            <input type="text" id="prompt" name="prompt">
+            <button id="submitEdit" >Submit Edit</button>
+        </form>        
+    </div>
+</div>
+
+<title>D&D 5e Character View</title>
+
+
+    <div class="sheet">
+
+        <header>
+            <div class="char-name">
+                <span class="label">Name</span>
+                <div class="data">Kaelen Stonehand</div>
+            </div>
+            <div class="header-stats">
+                <div>
+                    <span class="label">Class & Level</span>
+                    <div class="data"> (5)</div>
+                </div>
+                <div>
+                    <span class="label">Background</span>
+                    <div class="data">Soldier</div>
+                </div>
+                <div>
+                    <span class="label">Race</span>
+                    <div class="data">Human</div>
+                </div>
+                <div>
+                    <span class="label">Alignment</span>
+                    <div class="data">Lawful Good</div>
+                </div>
+                <div>
+                    <span class="label">XP</span>
+                    <div class="data"></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-grid">
+
+            <div class="col-left">
+
+                <div class="attr-box">
+                    <span class="label">Strength</span>
+                    <span class="attr-mod">-1</span>
+                    <span class="attr-score">16 (+6)</span>
+                </div>
+                <div class="attr-box">
+                    <span class="label">Dexterity</span>
+                    <span class="attr-mod">0</span>
+                    <span class="attr-score">10</span>
+                </div>
+                <div class="attr-box">
+                    <span class="label">Constitution</span>
+                    <span class="attr-mod">4</span>
+                    <span class="attr-score">14</span>
+                </div>
+                <div class="attr-box">
+                    <span class="label">Intelligence</span>
+                    <span class="attr-mod">-2</span>
+                    <span class="attr-score">8</span>
+                </div>
+                <div class="attr-box">
+                    <span class="label">Wisdom</span>campaign.Skill
+                    <span class="attr-mod">2</span>
+                    <span class="attr-score">12</span>
+                </div>
+                <div class="attr-box">
+                    <span class="label">Charisma</span>
+                    <span class="attr-mod">4</span>
+                    <span class="attr-score">14</span>
+                </div>
+
+                <div class="skills-list">
+                    
+                    <div class="skill-row">
+                        <span class="skill-prof"></span>                        
+                        <span class="skill-name">Athletics</span>
+                        <span class="skill-desc">Proficient in climbing, jumping, and swimming.</span>
+                        <span class="skill-attr">Str</span>
+                    </div>
+                    
+                    <div class="skill-row">
+                        <span class="skill-prof"></span>                        
+                        <span class="skill-name">Intimidation</span>
+                        <span class="skill-desc">Able to verbally threaten others.</span>
+                        <span class="skill-attr">Cha</span>
+                    </div>
+                    
+                    <div class="skill-row">
+                        <span class="skill-prof"></span>                        
+                        <span class="skill-name">Perception</span>
+                        <span class="skill-desc">Alert to nearby sounds and sights.</span>
+                        <span class="skill-attr">Wis</span>
+                    </div>
+                    
+                    <div class="skill-row">
+                        <span class="skill-prof"></span>                        
+                        <span class="skill-name">Religion</span>
+                        <span class="skill-desc">Knowledge of deities and religious rites.</span>
+                        <span class="skill-attr">Int</span>
+                    </div>
+                    
+                </div> 
+            </div>
+
+            <div class="col-center">
+
+                <div class="combat-row">
+                    <div class="shield-box">
+                        <span class="stat-label">Armor Class</span>
+                        <span class="stat-val">18</span>
+                    </div>
+                    <div class="box-square">
+                        <span class="stat-label">Initiative</span>
+                        <span class="stat-val">0</span>
+                    </div>
+                    <div class="box-square">
+                        <span class="stat-label">Speed</span>
+                        <span class="stat-val">30</span>
+                    </div>
+                </div>
+
+                <div class="hp-container">
+                    <div
+                        style="display: flex; justify-content: space-between; border-bottom: 1px solid #ccc; margin-bottom: 5px;">
+                        <span class="label">Max Hit Points</span>
+                        <span class="data"></span>
+                    </div>
+                    <span class="label">Current Hit Points</span>
+                    <div class="data data-lg" style="height: 40px; padding-top: 5px;">47</div>
+                </div>
+
+                <h3 style="font-size: 12px; text-transform: uppercase; border-bottom: 2px solid #333;">Spellcasting</h3>
+                <table class="attacks-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Level</th>
+                            <th>Description</th>
+                            <th>Bonus</th>
+                            <th>Damage/Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+
+                <h3 style="font-size: 12px; text-transform: uppercase; border-bottom: 2px solid #333;">Attacks</h3>
+                <table class="attacks-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Bonus</th>
+                            <th>Damage/Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td>Longsword</td>                            
+                            <td>Melee weapon attack, versatile (1d10 if two-handed).</td>
+                            <td>6</td>
+                            <td>8</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+
+                <div style="margin-top: 20px;">
+                    <span class="label">Equipment</span>
+                    <table class="attacks-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Bonus</th>
+                                <th>Damage/Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                    <div style="display: flex; gap: 15px; margin-top: 10px;">
+                        <div><span class="label">GP</span> <span class="data"></span></div>
+                        <div><span class="label">SP</span> <span class="data"></span></div>
+                        <div><span class="label">CP</span> <span class="data"></span></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-right">
+                <div class="panel">
+                    <h3>Features & Traits</h3>
+
+                    <div class="feature-item">
+                        <div class="feature-name">Sneak Attack</div>
+                        <div class="feature-desc">Once per turn, deal extra 2d6 damage to one creature you hit with
+                            advantage (or if ally is within 5ft).</div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-name">Cunning Action</div>
+                        <div class="feature-desc">Bonus action to Dash, Disengage, or Hide.</div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-name">Roguish Archetype: Thief</div>
+                        <div class="feature-desc">Fast Hands: Use bonus action for Sleight of Hand, Thieves' Tools, or
+                            Use Object.</div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-name">Darkvision</div>
+                        <div class="feature-desc">Can see in dim light within 60ft as if bright light, and darkness as
+                            dim light.</div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-name">Fey Ancestry</div>
+                        <div class="feature-desc">Advantage on saves vs charmed, magic can't put you to sleep.</div>
+                    </div>
+
+                </div>
+
+                <div class="panel" style="margin-top: 10px; height: auto;">
+                    <h3>Proficiencies</h3>
+                    <div class="feature-desc">
+                        <strong>Armor:</strong> Light armor<br>
+                        <strong>Weapons:</strong> Simple weapons, hand crossbows, longswords, rapiers, shortswords<br>
+                        <strong>Tools:</strong> Thieves' tools<br>
+                        <strong>Languages:</strong> Common, Elvish, Thieves' Cant
+                    </div>
+                </div>
+            </div>
+
+    <div class="sheet">
+
+        <header>
+            <div class="char-name">
+                <span class="label">Name</span>
+                <div class="data">Lyra Swiftshadow</div>
+            </div>
+            <div class="header-stats">
+                <div>
+                    <span class="label">Class & Level</span>
+                    <div class="data"> (5)</div>
+                </div>
+                <div>
+                    <span class="label">Background</span>
+                    <div class="data">Urchin</div>
+                </div>
+                <div>
+                    <span class="label">Race</span>
+                    <div class="data">Wood Elf</div>
+                </div>
+                <div>
+                    <span class="label">Alignment</span>
+                    <div class="data">Chaotic Good</div>
+                </div>
+                <div>
+                    <span class="label">XP</span>
+                    <div class="data"></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-grid">
+
+            <div class="col-left">
+
+                <div class="attr-box">
+                    <span class="label">Strength</span>
+                    <span class="attr-mod">-1</span>
+                    <span class="attr-score">8 (+-2)</span>
+                </div>
+                <div class="attr-box">
+                    <span class="label">Dexterity</span>
+                    <span class="attr-mod">6</span>
+                    <span class="attr-score">16</span>
+                </div>
+                <div class="attr-box">
+                    <span class="label">Constitution</span>
+                    <span class="attr-mod">3</span>
+                    <span class="attr-score">13</span>
+                </div>
+                <div class="attr-box">
+                    <span class="label">Intelligence</span>
+                    <span class="attr-mod">4</span>
+                    <span class="attr-score">14</span>
+                </div>
+                <div class="attr-box">
+                    <span class="label">Wisdom</span>campaign.Skill
+                    <span class="attr-mod">2</span>
+                    <span class="attr-score">12</span>
+                </div>
+                <div class="attr-box">
+                    <span class="label">Charisma</span>
+                    <span class="attr-mod">0</span>
+                    <span class="attr-score">10</span>
+                </div>
+
+                <div class="skills-list">
+                    
+                    <div class="skill-row">
+                        <span class="skill-prof"></span>                        
+                        <span class="skill-name">Acrobatics</span>
+                        <span class="skill-desc">Proficient in balance and agility checks.</span>
+                        <span class="skill-attr">Dex</span>
+                    </div>
+                    
+                    <div class="skill-row">
+                        <span class="skill-prof"></span>                        
+                        <span class="skill-name">Stealth</span>
+                        <span class="skill-desc">Expert in hiding and moving silently.</span>
+                        <span class="skill-attr">Dex</span>
+                    </div>
+                    
+                    <div class="skill-row">
+                        <span class="skill-prof"></span>                        
+                        <span class="skill-name">Investigation</span>
+                        <span class="skill-desc">Adept at finding clues and solving puzzles.</span>
+                        <span class="skill-attr">Int</span>
+                    </div>
+                    
+                    <div class="skill-row">
+                        <span class="skill-prof"></span>                        
+                        <span class="skill-name">Sleight of Hand</span>
+                        <span class="skill-desc">Skilled at picking pockets and manipulating small objects.</span>
+                        <span class="skill-attr">Dex</span>
+                    </div>
+                    
+                </div> 
+            </div>
+
+            <div class="col-center">
+
+                <div class="combat-row">
+                    <div class="shield-box">
+                        <span class="stat-label">Armor Class</span>
+                        <span class="stat-val">15</span>
+                    </div>
+                    <div class="box-square">
+                        <span class="stat-label">Initiative</span>
+                        <span class="stat-val">3</span>
+                    </div>
+                    <div class="box-square">
+                        <span class="stat-label">Speed</span>
+                        <span class="stat-val">30</span>
+                    </div>
+                </div>
+
+                <div class="hp-container">
+                    <div
+                        style="display: flex; justify-content: space-between; border-bottom: 1px solid #ccc; margin-bottom: 5px;">
+                        <span class="label">Max Hit Points</span>
+                        <span class="data"></span>
+                    </div>
+                    <span class="label">Current Hit Points</span>
+                    <div class="data data-lg" style="height: 40px; padding-top: 5px;">38</div>
+                </div>
+
+                <h3 style="font-size: 12px; text-transform: uppercase; border-bottom: 2px solid #333;">Spellcasting</h3>
+                <table class="attacks-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Level</th>
+                            <th>Description</th>
+                            <th>Bonus</th>
+                            <th>Damage/Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+
+                <h3 style="font-size: 12px; text-transform: uppercase; border-bottom: 2px solid #333;">Attacks</h3>
+                <table class="attacks-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Bonus</th>
+                            <th>Damage/Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td>Shortsword</td>                            
+                            <td>Melee weapon attack, finesse.</td>
+                            <td>6</td>
+                            <td>6</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Dagger</td>                            
+                            <td>Melee or ranged weapon attack, finesse, thrown (range 20/60).</td>
+                            <td>6</td>
+                            <td>5</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+
+                <div style="margin-top: 20px;">
+                    <span class="label">Equipment</span>
+                    <table class="attacks-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Bonus</th>
+                                <th>Damage/Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                    <div style="display: flex; gap: 15px; margin-top: 10px;">
+                        <div><span class="label">GP</span> <span class="data"></span></div>
+                        <div><span class="label">SP</span> <span class="data"></span></div>
+                        <div><span class="label">CP</span> <span class="data"></span></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-right">
+                <div class="panel">
+                    <h3>Features & Traits</h3>
+
+                    <div class="feature-item">
+                        <div class="feature-name">Sneak Attack</div>
+                        <div class="feature-desc">Once per turn, deal extra 2d6 damage to one creature you hit with
+                            advantage (or if ally is within 5ft).</div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-name">Cunning Action</div>
+                        <div class="feature-desc">Bonus action to Dash, Disengage, or Hide.</div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-name">Roguish Archetype: Thief</div>
+                        <div class="feature-desc">Fast Hands: Use bonus action for Sleight of Hand, Thieves' Tools, or
+                            Use Object.</div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-name">Darkvision</div>
+                        <div class="feature-desc">Can see in dim light within 60ft as if bright light, and darkness as
+                            dim light.</div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-name">Fey Ancestry</div>
+                        <div class="feature-desc">Advantage on saves vs charmed, magic can't put you to sleep.</div>
+                    </div>
+
+                </div>
+
+                <div class="panel" style="margin-top: 10px; height: auto;">
+                    <h3>Proficiencies</h3>
+                    <div class="feature-desc">
+                        <strong>Armor:</strong> Light armor<br>
+                        <strong>Weapons:</strong> Simple weapons, hand crossbows, longswords, rapiers, shortswords<br>
+                        <strong>Tools:</strong> Thieves' tools<br>
+                        <strong>Languages:</strong> Common, Elvish, Thieves' Cant
+                    </div>
+                </div>
+            </div>
+
+    <div class="sheet">
+
+        <header>
+            <div class="char-name">
+                <span class="label">Name</span>
+                <div class="data">Gareth Spellweaver</div>
+            </div>
+            <div class="header-stats">
+                <div>
+                    <span class="label">Class & Level</span>
+                    <div class="data"> (5)</div>
+                </div>
+                <div>
+                    <span class="label">Background</span>
+                    <div class="data">Sage</div>
+                </div>
+                <div>
+                    <span class="label">Race</span>
+                    <div class="data">Human</div>
+                </div>
+                <div>
+                    <span class="label">Alignment</span>
+                    <div class="data">Neutral Good</div>
+                </div>
+                <div>
+                    <span class="label">XP</span>
+                    <div class="data"></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-grid">
+
+            <div class="col-left">
+
+                <div class="attr-box">
+                    <span class="label">Strength</span>
+                    <span class="attr-mod">-1</span>
+                    <span class="attr-score">9 (+-1)</span>
+                </div>
+                <div class="attr-box">
+                    <span class="label">Dexterity</span>
+                    <span class="attr-mod">2</span>
+                    <span class="attr-score">12</span>
+                </div>
+                <div class="attr-box">
+                    <span class="label">Constitution</span>
+                    <span class="attr-mod">3</span>
+                    <span class="attr-score">13</span>
+                </div>
+                <div class="attr-box">
+                    <span class="label">Intelligence</span>
+                    <span class="attr-mod">7</span>
+                    <span class="attr-score">17</span>
+                </div>
+                <div class="attr-box">
+                    <span class="label">Wisdom</span>campaign.Skill
+                    <span class="attr-mod">4</span>
+                    <span class="attr-score">14</span>
+                </div>
+                <div class="attr-box">
+                    <span class="label">Charisma</span>
+                    <span class="attr-mod">0</span>
+                    <span class="attr-score">10</span>
+                </div>
+
+                <div class="skills-list">
+                    
+                    <div class="skill-row">
+                        <span class="skill-prof"></span>                        
+                        <span class="skill-name">Arcana</span>
+                        <span class="skill-desc">Knowledge of spells, magic items, and magical traditions.</span>
+                        <span class="skill-attr">Int</span>
+                    </div>
+                    
+                    <div class="skill-row">
+                        <span class="skill-prof"></span>                        
+                        <span class="skill-name">History</span>
+                        <span class="skill-desc">Knowledge of past events, cultures, and empires.</span>
+                        <span class="skill-attr">Int</span>
+                    </div>
+                    
+                    <div class="skill-row">
+                        <span class="skill-prof"></span>                        
+                        <span class="skill-name">Investigation</span>
+                        <span class="skill-desc">Adept at finding clues and solving puzzles.</span>
+                        <span class="skill-attr">Int</span>
+                    </div>
+                    
+                    <div class="skill-row">
+                        <span class="skill-prof"></span>                        
+                        <span class="skill-name">Medicine</span>
+                        <span class="skill-desc">Ability to diagnose and treat illnesses.</span>
+                        <span class="skill-attr">Wis</span>
+                    </div>
+                    
+                </div> 
+            </div>
+
+            <div class="col-center">
+
+                <div class="combat-row">
+                    <div class="shield-box">
+                        <span class="stat-label">Armor Class</span>
+                        <span class="stat-val">12</span>
+                    </div>
+                    <div class="box-square">
+                        <span class="stat-label">Initiative</span>
+                        <span class="stat-val">1</span>
+                    </div>
+                    <div class="box-square">
+                        <span class="stat-label">Speed</span>
+                        <span class="stat-val">30</span>
+                    </div>
+                </div>
+
+                <div class="hp-container">
+                    <div
+                        style="display: flex; justify-content: space-between; border-bottom: 1px solid #ccc; margin-bottom: 5px;">
+                        <span class="label">Max Hit Points</span>
+                        <span class="data"></span>
+                    </div>
+                    <span class="label">Current Hit Points</span>
+                    <div class="data data-lg" style="height: 40px; padding-top: 5px;">33</div>
+                </div>
+
+                <h3 style="font-size: 12px; text-transform: uppercase; border-bottom: 2px solid #333;">Spellcasting</h3>
+                <table class="attacks-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Level</th>
+                            <th>Description</th>
+                            <th>Bonus</th>
+                            <th>Damage/Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td>Fireball</td>
+                            <td>3</td>
+                            <td>A burst of fire that explodes at a chosen point within range. Each creature in a 20-foot radius sphere must make a Dexterity saving throw. A target takes 8d6 fire damage on a failed save, or half as much damage on a successful one.</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Misty Step</td>
+                            <td>2</td>
+                            <td>Briefly teleport up to 30 feet to an unoccupied space you can see. This is a bonus action.</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Magic Missile</td>
+                            <td>1</td>
+                            <td>Three glowing darts of magical force strike one or more creatures of your choice. Each dart deals 1d4 + 1 force damage.</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+
+                <h3 style="font-size: 12px; text-transform: uppercase; border-bottom: 2px solid #333;">Attacks</h3>
+                <table class="attacks-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Bonus</th>
+                            <th>Damage/Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td>Dagger</td>                            
+                            <td>Melee or ranged weapon attack, finesse, thrown (range 20/60).</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+
+                <div style="margin-top: 20px;">
+                    <span class="label">Equipment</span>
+                    <table class="attacks-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Bonus</th>
+                                <th>Damage/Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                    <div style="display: flex; gap: 15px; margin-top: 10px;">
+                        <div><span class="label">GP</span> <span class="data"></span></div>
+                        <div><span class="label">SP</span> <span class="data"></span></div>
+                        <div><span class="label">CP</span> <span class="data"></span></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-right">
+                <div class="panel">
+                    <h3>Features & Traits</h3>
+
+                    <div class="feature-item">
+                        <div class="feature-name">Sneak Attack</div>
+                        <div class="feature-desc">Once per turn, deal extra 2d6 damage to one creature you hit with
+                            advantage (or if ally is within 5ft).</div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-name">Cunning Action</div>
+                        <div class="feature-desc">Bonus action to Dash, Disengage, or Hide.</div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-name">Roguish Archetype: Thief</div>
+                        <div class="feature-desc">Fast Hands: Use bonus action for Sleight of Hand, Thieves' Tools, or
+                            Use Object.</div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-name">Darkvision</div>
+                        <div class="feature-desc">Can see in dim light within 60ft as if bright light, and darkness as
+                            dim light.</div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-name">Fey Ancestry</div>
+                        <div class="feature-desc">Advantage on saves vs charmed, magic can't put you to sleep.</div>
+                    </div>
+
+                </div>
+
+                <div class="panel" style="margin-top: 10px; height: auto;">
+                    <h3>Proficiencies</h3>
+                    <div class="feature-desc">
+                        <strong>Armor:</strong> Light armor<br>
+                        <strong>Weapons:</strong> Simple weapons, hand crossbows, longswords, rapiers, shortswords<br>
+                        <strong>Tools:</strong> Thieves' tools<br>
+                        <strong>Languages:</strong> Common, Elvish, Thieves' Cant
+                    </div>
+                </div>
+            </div>
+
+    <div class="sheet">
+
+        <header>
+            <div class="char-name">
+                <span class="label">Name</span>
+                <div class="data">Bjorn Ironhide</div>
+            </div>
+            <div class="header-stats">
+                <div>
+                    <span class="label">Class & Level</span>
+                    <div class="data"> (5)</div>
+                </div>
+                <div>
+                    <span class="label">Background</span>
+                    <div class="data">Outlander</div>
+                </div>
+                <div>
+                    <span class="label">Race</span>
+                    <div class="data">Half-Orc</div>
+                </div>
+                <div>
+                    <span class="label">Alignment</span>
+                    <div class="data">Chaotic Neutral</div>
+                </div>
+                <div>
+                    <span class="label">XP</span>
+                    <div class="data"></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-grid">
+
+            <div class="col-left">
+
+                <div class="attr-box">
+                    <span class="label">Strength</span>
+                    <span class="attr-mod">-1</span>
+                    <span class="attr-score">18 (+8)</span>
+                </div>
+                <div class="attr-box">
+                    <span class="label">Dexterity</span>
+                    <span class="attr-mod">2</span>
+                    <span class="attr-score">12</span>
+                </div>
+                <div class="attr-box">
+                    <span class="label">Constitution</span>
+                    <span class="attr-mod">6</span>
+                    <span class="attr-score">16</span>
+                </div>
+                <div class="attr-box">
+                    <span class="label">Intelligence</span>
+                    <span class="attr-mod">-2</span>
+                    <span class="attr-score">8</span>
+                </div>
+                <div class="attr-box">
+                    <span class="label">Wisdom</span>campaign.Skill
+                    <span class="attr-mod">0</span>
+                    <span class="attr-score">10</span>
+                </div>
+                <div class="attr-box">
+                    <span class="label">Charisma</span>
+                    <span class="attr-mod">0</span>
+                    <span class="attr-score">10</span>
+                </div>
+
+                <div class="skills-list">
+                    
+                    <div class="skill-row">
+                        <span class="skill-prof"></span>                        
+                        <span class="skill-name">Athletics</span>
+                        <span class="skill-desc">Proficient in climbing, jumping, and swimming.</span>
+                        <span class="skill-attr">Str</span>
+                    </div>
+                    
+                    <div class="skill-row">
+                        <span class="skill-prof"></span>                        
+                        <span class="skill-name">Intimidation</span>
+                        <span class="skill-desc">Able to verbally threaten others.</span>
+                        <span class="skill-attr">Cha</span>
+                    </div>
+                    
+                    <div class="skill-row">
+                        <span class="skill-prof"></span>                        
+                        <span class="skill-name">Survival</span>
+                        <span class="skill-desc">Knowledge of wilderness tracking, foraging, and navigation.</span>
+                        <span class="skill-attr">Wis</span>
+                    </div>
+                    
+                </div> 
+            </div>
+
+            <div class="col-center">
+
+                <div class="combat-row">
+                    <div class="shield-box">
+                        <span class="stat-label">Armor Class</span>
+                        <span class="stat-val">14</span>
+                    </div>
+                    <div class="box-square">
+                        <span class="stat-label">Initiative</span>
+                        <span class="stat-val">1</span>
+                    </div>
+                    <div class="box-square">
+                        <span class="stat-label">Speed</span>
+                        <span class="stat-val">40</span>
+                    </div>
+                </div>
+
+                <div class="hp-container">
+                    <div
+                        style="display: flex; justify-content: space-between; border-bottom: 1px solid #ccc; margin-bottom: 5px;">
+                        <span class="label">Max Hit Points</span>
+                        <span class="data"></span>
+                    </div>
+                    <span class="label">Current Hit Points</span>
+                    <div class="data data-lg" style="height: 40px; padding-top: 5px;">58</div>
+                </div>
+
+                <h3 style="font-size: 12px; text-transform: uppercase; border-bottom: 2px solid #333;">Spellcasting</h3>
+                <table class="attacks-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Level</th>
+                            <th>Description</th>
+                            <th>Bonus</th>
+                            <th>Damage/Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+
+                <h3 style="font-size: 12px; text-transform: uppercase; border-bottom: 2px solid #333;">Attacks</h3>
+                <table class="attacks-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Bonus</th>
+                            <th>Damage/Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td>Greataxe</td>                            
+                            <td>Melee weapon attack, heavy, two-handed.</td>
+                            <td>7</td>
+                            <td>11</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+
+                <div style="margin-top: 20px;">
+                    <span class="label">Equipment</span>
+                    <table class="attacks-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Bonus</th>
+                                <th>Damage/Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                    <div style="display: flex; gap: 15px; margin-top: 10px;">
+                        <div><span class="label">GP</span> <span class="data"></span></div>
+                        <div><span class="label">SP</span> <span class="data"></span></div>
+                        <div><span class="label">CP</span> <span class="data"></span></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-right">
+                <div class="panel">
+                    <h3>Features & Traits</h3>
+
+                    <div class="feature-item">
+                        <div class="feature-name">Sneak Attack</div>
+                        <div class="feature-desc">Once per turn, deal extra 2d6 damage to one creature you hit with
+                            advantage (or if ally is within 5ft).</div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-name">Cunning Action</div>
+                        <div class="feature-desc">Bonus action to Dash, Disengage, or Hide.</div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-name">Roguish Archetype: Thief</div>
+                        <div class="feature-desc">Fast Hands: Use bonus action for Sleight of Hand, Thieves' Tools, or
+                            Use Object.</div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-name">Darkvision</div>
+                        <div class="feature-desc">Can see in dim light within 60ft as if bright light, and darkness as
+                            dim light.</div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-name">Fey Ancestry</div>
+                        <div class="feature-desc">Advantage on saves vs charmed, magic can't put you to sleep.</div>
+                    </div>
+
+                </div>
+
+                <div class="panel" style="margin-top: 10px; height: auto;">
+                    <h3>Proficiencies</h3>
+                    <div class="feature-desc">
+                        <strong>Armor:</strong> Light armor<br>
+                        <strong>Weapons:</strong> Simple weapons, hand crossbows, longswords, rapiers, shortswords<br>
+                        <strong>Tools:</strong> Thieves' tools<br>
+                        <strong>Languages:</strong> Common, Elvish, Thieves' Cant
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+                <script>
+                    document.getElementById("download-button").addEventListener('click', function () {
+    // 1. Get the content of the target element
+    const content = document.getElementById('content-to-download').innerHTML;
+
+    // 2. Create a blob from the HTML content
+    const blob = new Blob([content], { type: 'text/html' });
+
+    // 3. Create a temporary anchor element
+    const a = document.createElement('a');
+    a.download = "The Ale-Fever Blight of Oakhaven.html"; // Set the filename
+    a.href = URL.createObjectURL(blob);
+
+    // 4. Trigger the download
+    a.click();
+
+    // 5. Clean up
+    URL.revokeObjectURL(a.href);
+});
+
+// Get DOM elements
+const modal = document.getElementById("myModal");
+const editForm = document.getElementById("editForm")
+const elementID = document.getElementById("elementID");
+const submitEditBtn = document.getElementById("submitEdit");
+const triggerBtns = document.getElementsByClassName("open-popup");
+
+// Open modal on button click
+document.querySelectorAll('[clickable]').forEach(item => {
+    item.onclick = function () {
+        modal.style.display = "block";
+        // Display the ID of the clicked button
+        elementID.value = this.id;
+    }
+});
+
+submitEditBtn.addEventListener ('click', async function (event) {
+    event.preventDefault();
+
+    const jsonData = {
+        "elementID" : elementID.value,
+        "prompt" : document.getElementById("prompt").value,
+    }
+    const jsonString = JSON.stringify(jsonData);
+
+    try {
+        const response = await fetch('/api/edit/campaign', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'text/html'
+            },
+            body: jsonString
+        });
+
+        if (!response.ok) {
+            const errorMessage = await response.text();
+            throw new Error(errorMessage);
+        }
+
+        const responseData = await response.text();
+        document.getElementById(elementID.value).innerHTML = responseData
+        
+        modal.style.display = "none";
+
+    } catch (error) {
+        console.error('Error submitting form:', error);
+        output.innerHTML = `An error occurred: ${error.message}`;
+    } finally {
+       
+    }
+});
+
+// Close modal if user clicks outside of it
+// window.onclick = function (event) {
+//     if (event.target == modal) {
+//         modal.style.display = "none";
+//     }
+// }
+
+      
+                    </script>
+            
+        </body>
+    
+    </html>
+</container>

@@ -232,3 +232,265 @@ table.loot-table th { background: rgba(197, 160, 89, 0.2); }
   .close:hover { color: black; }
   
   textarea { width: 90%; height: 50px; margin-top: 10px; }
+
+  .sheet {
+    background: white;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* --- TYPOGRAPHY --- */
+.label {
+    text-transform: uppercase;
+    font-size: 10px;
+    color: #777;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.data {
+    font-family: var(--f-hand);
+    font-size: 14px;
+    color: #000;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 2px;
+    min-height: 20px;
+}
+
+.data-lg {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* --- HEADER --- */
+header {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid var(--c-grey);
+    margin-bottom: 20px;
+}
+
+.char-name {
+    width: 30%;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.description {
+    border: none;
+    font-size: 14px;
+    font-family: var(--f-title);
+}
+
+.data {
+    border: none;
+    font-size: 24px;
+    font-family: var(--f-title);
+}
+
+.header-stats {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* --- LAYOUT GRID --- */
+.main-grid {
+    display: grid;
+    grid-template-columns: 100px 1fr 1fr;
+    gap: 20px;
+}
+
+/* --- ATTRIBUTES (Left Column) --- */
+.attr-box {
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 10px;
+    background: #fafafa;
+}
+
+.attr-score {
+    font-size: 24px;
+    font-family: var(--f-hand);
+    font-weight: bold;
+    display: block;
+    margin: 5px 0;
+}
+
+.attr-mod {
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding: 2px 10px;
+    background: white;
+    font-family: var(--f-hand);
+    font-size: 12px;
+}
+
+/* --- SKILLS --- */
+.skills-list {
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+.skill-row {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    padding: 3px 0;
+    align-items: baseline;
+}
+
+.skill-prof {
+    width: 15px;
+    font-weight: bold;
+}
+
+.skill-mod {
+    width: 25px;
+    text-align: center;
+    font-family: var(--f-hand);
+    margin-right: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.skill-name {
+    flex: 1;
+}
+
+.skill-attr {
+    color: #999;
+    font-size: 10px;
+}
+
+/* --- COMBAT (Center Column) --- */
+.combat-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.shield-box {
+    border: 2px solid #333;
+    border-radius: 50% 50% 5px 5px;
+    /* Shield shape roughly */
+    width: 60px;
+    height: 70px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-square {
+    border: 2px solid #333;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.stat-val {
+    font-size: 22px;
+    font-family: var(--f-hand);
+    font-weight: bold;
+}
+
+.stat-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.hp-container {
+    border: 1px solid #aaa;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.attacks-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.attacks-table th {
+    text-align: left;
+    font-size: 10px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #333;
+    padding: 2px;
+}
+
+.attacks-table td {
+    font-family: var(--f-hand);
+    font-size: 13px;
+    padding: 4px 2px;
+    border-bottom: 1px solid #eee;
+}
+
+/* --- FEATURES (Right Column) --- */
+.panel {
+    border: 1px solid #aaa;
+    padding: 10px;
+    border-radius: 5px;
+    height: 100%;
+    background: #fafafa;
+}
+
+.panel h3 {
+    margin: 0 0 10px 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.feature-item {
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.feature-name {
+    font-weight: bold;
+    font-family: var(--f-hand);
+}
+
+.feature-desc {
+    font-family: var(--f-label);
+    color: #555;
+    font-size: 12px;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        flex-direction: column;
+    }
+
+    .char-name {
+        width: 100%;
+    }
+}

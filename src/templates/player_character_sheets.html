@@ -1,0 +1,227 @@
+<title>D&ampD 5e Character View</title>
+
+{% for character in playerCharacters %}
+<div class="sheet">
+
+    <header>
+        <div class="char-name">
+            <span class="label">Name</span>
+            <div class="data">{{character.name}}</div>
+            <div class="data">
+                <span class="label">Description</span>
+                <div class="description">{{character.description}}</div>
+            </div>
+        </div>
+        <div class="header-stats">
+            <div>
+                <span class="label">Class &amp Level</span>
+                <div class="data">{{character.characterClass}} ({{character.level}})</div>
+            </div>
+            <div>
+                <span class="label">Background</span>
+                <div class="data">{{character.background}}</div>
+            </div>
+            <div>
+                <span class="label">Race</span>
+                <div class="data">{{character.race}}</div>
+            </div>
+            <div>
+                <span class="label">Alignment</span>
+                <div class="data">{{character.alignment}}</div>
+            </div>
+            <div>
+                <span class="label">XP</span>
+                <div class="data">{{character.XP}}</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-grid">
+
+        <div class="col-left">
+
+            <div class="attr-box">
+                <span class="label">Strength</span>
+                <span class="attr-score">{{character.stats.Str}}</span>
+                <span class="attr-mod">{{character.stats.Str - 10}}</span>
+            </div>
+            <div class="attr-box">
+                <span class="label">Dexterity</span>
+                <span class="attr-score">{{character.stats.Dex}}</span>
+                <span class="attr-mod">{{character.stats.Dex - 10}}</span>
+            </div>
+            <div class="attr-box">
+                <span class="label">Constitution</span>
+                <span class="attr-score">{{character.stats.Con}}</span>
+                <span class="attr-mod">{{character.stats.Con - 10}}</span>
+            </div>
+            <div class="attr-box">
+                <span class="label">Intelligence</span>
+                <span class="attr-score">{{character.stats.Int}}</span>
+                <span class="attr-mod">{{character.stats.Int - 10}}</span>
+            </div>
+            <div class="attr-box">
+                <span class="label">Wisdom</span>
+                <span class="attr-score">{{character.stats.Wis}}</span>
+                <span class="attr-mod">{{character.stats.Wis - 10}}</span>
+            </div>
+            <div class="attr-box">
+                <span class="label">Charisma</span>
+                <span class="attr-score">{{character.stats.Cha}}</span>
+                <span class="attr-mod">{{character.stats.Cha - 10 }}</span>
+            </div>
+
+            <div class="skills-list">
+                {% for skill in character.skills %}
+                <div class="skill-row">
+                    <span class="skill-prof">{{skill.proficency}}</span>
+                    <span class="skill-name">{{skill.name}}</span>
+                    <span class="skill-desc">{{skill.description}}</span>
+                    <span class="skill-attr">{{skill.attribute}}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="col-center">
+
+            <div class="combat-row">
+                <div class="shield-box">
+                    <span class="stat-label">Armor Class</span>
+                    <span class="stat-val">{{character.stats.AC}}</span>
+                </div>
+                <div class="box-square">
+                    <span class="stat-label">Initiative</span>
+                    <span class="stat-val">{{character.stats.Initiative}}</span>
+                </div>
+                <div class="box-square">
+                    <span class="stat-label">Speed</span>
+                    <span class="stat-val">{{character.stats.Speed}}</span>
+                </div>
+            </div>
+
+            <div class="hp-container">
+                <div
+                    style="display: flex; justify-content: space-between; border-bottom: 1px solid #ccc; margin-bottom: 5px;">
+                    <span class="label">Max Hit Points</span>
+                    <span class="data">{{character.stats.HP}}</span>
+                </div>
+                <span class="label">Current Hit Points</span>
+                <div class="data data-lg" style="height: 40px; padding-top: 5px;">{{character.stats.HP}}</div>
+            </div>
+
+            <h3 style="font-size: 12px; text-transform: uppercase; border-bottom: 2px solid #333;">Spellcasting</h3>
+            <table class="attacks-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Level</th>
+                        <th>Description</th>
+                        <th>Bonus</th>
+                        <th>Damage/Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for spell in character.spells %}
+                    <tr>
+                        <td>{{spell.name}}</td>
+                        <td>{{spell.level}}</td>
+                        <td>{{spell.description}}</td>
+                        <td>{{spell.bonus}}</td>
+                        <td>{{spell.damage}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <h3 style="font-size: 12px; text-transform: uppercase; border-bottom: 2px solid #333;">Attacks</h3>
+            <table class="attacks-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Bonus</th>
+                        <th>Damage/Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for attack in character.attacks %}
+                    <tr>
+                        <td>{{attack.name}}</td>
+                        <td>{{attack.description}}</td>
+                        <td>{{attack.bonus}}</td>
+                        <td>{{attack.damage}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div style="margin-top: 20px;">
+                <span class="label">Equipment</span>
+                <table class="attacks-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Bonus</th>
+                            <th>Damage/Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for eguipment in character.equipment %}
+                        <tr>
+                            <td>{{eguipment.name}}</td>
+                            <td>{{eguipment.bonus}}</td>
+                            <td>{{eguipment.damage}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div style="display: flex; gap: 15px; margin-top: 10px;">
+                    <div><span class="label">GP</span> <span class="data">{{character.money.goldPieces}}</span></div>
+                    <div><span class="label">SP</span> <span class="data">{{character.money.silverPieces}}</span></div>
+                    <div><span class="label">CP</span> <span class="data">{{character.money.copperPieces}}</span></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-right">
+            <div class="panel">
+                <h3>Features &amp Traits</h3>
+                {%for feature in character.features %}
+                <div class="feature-item">
+                    <div class="feature-name">{{feature.name}}</div>
+                    <div class="feature-desc">{{feature.description}}</div>
+                </div>
+                {% endfor %}
+                <h3>Proficiencies</h3>
+                <div class="feature-desc">
+                    <strong>Armor:</strong> {{ character.proficienciesArmor | join(', ') }}<br>
+                    <strong>Weapons:</strong> {{ character.proficienciesWeapons | join(', ')}}<br>
+                    <strong>Tools:</strong> {{ character.proficienciesTools | join(', ')}}<br>
+                    <strong>Languages:</strong> {{ character.proficienciesLanguages | join(', ')}}<br>
+                </div>
+                <h3>Personality</h3>
+                <div class="feature-desc">
+                    <div class="feature-name">
+                        <strong>Personality Traits</strong>
+                        <span>{{character.personalityTraits}}</span>
+                    </div>
+                    <div class="feature-name">
+                        <strong>Ideals</strong>
+                        <span>{{character.ideals}}</span>
+                    </div>
+                    <div class="feature-name">
+                        <strong>Bonds</strong>
+                        <span>{{character.bonds}}</span>
+                    </div>
+                    <div class="feature-name">
+                        <strong>Flaws</strong>
+                        <span>{{character.flaws}}</span>
+                    </div>
+            </div>
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
