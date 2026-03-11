@@ -13,6 +13,7 @@ from campaign import Campaign
 from replicate_image_client import ReplicateImageClient
 from mock_text_client import MockTextClient
 from mock_image_client import MockImageClient
+from runware_image_client import RunwareImageClient
 import campaign_generator as campaign_generator_utils
 
 
@@ -32,7 +33,7 @@ class CampaignGenerator:
             self.image_client = MockImageClient()
             self.text_client = MockTextClient()
         else:
-            self.image_client = ReplicateImageClient()
+            self.image_client = RunwareImageClient()
             self.text_client = GeminiTextClient()
 
         # Set up the Jinja2 environment to load templates from the current directory
@@ -102,11 +103,14 @@ class CampaignGenerator:
                             dictionary=item, images_prompts=images_prompts
                         )
             if "Image" in key or "image" in key:
-                images_prompts.append(value["prompt"])
+                prompt_context = str(dictionary)
+
+                images_prompts.append(
+                    {"prompt": value["prompt"], "context": prompt_context}
+                )
 
     def add_images(self, dictionary, image_dict):
         """add images to campaign  json"""
-
 
         for key, value in dictionary.items():
             if isinstance(value, dict):
@@ -116,6 +120,10 @@ class CampaignGenerator:
                     if isinstance(item, dict):
                         self.add_images(dictionary=item, image_dict=image_dict)
             if "Image" in key or "image" in key:
+                if value["prompt"] not in image_dict:
+                    logger.error(f"prompt {value['prompt']} not in image_dict")
+                    value["url"] = ""
+                    continue
                 value["url"] = image_dict[value["prompt"]]
 
     def edit_campaign_text(self, prompt, element_id, campaign_json):

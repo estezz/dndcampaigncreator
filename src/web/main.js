@@ -1,6 +1,6 @@
 const form = document.getElementById('adventure-form');
-const spinner = document.getElementById('spinner');
 const output = document.querySelector('.output');
+const spinner = document.getElementById('spinner');
 
 form.addEventListener('submit', async function (event) {
     event.preventDefault();

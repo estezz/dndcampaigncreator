@@ -2,6 +2,7 @@
 
 import json
 import logging
+import os
 from google import genai
 import boto3
 from botocore.exceptions import ClientError
@@ -23,6 +24,9 @@ class GeminiTextClient(TextGenerationInterface): #pylint: disable=too-few-public
     def _get_api_key(self):
         secret_name = "GEMINI_API_KEY"
         region_name = "us-east-2"
+
+        if secret_name in os.environ:
+            return os.environ[secret_name]
 
         # Create a Secrets Manager client
         session = boto3.session.Session()

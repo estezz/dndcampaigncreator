@@ -54,9 +54,12 @@ class TestCampaignTemplates:
         template = env.get_template("player_character_sheets.html")
 
         # Join the base path with the filename
-        file_path = (base_path / ".." / "resources" / "character_wizard.json").resolve()
-        with open(file_path, mode="r", encoding="utf-8") as f:
+        json_file_path = (base_path / ".." / "resources" / "character_wizard.json").resolve()
+        with open(json_file_path, mode="r", encoding="utf-8") as f:
             context = json.load(f)
 
         rendered_content = template.render(context)
-        logger.info(rendered_content)
+
+        output_file_path = (base_path / "player.html")
+        with open(file=output_file_path, mode='w', encoding='utf-8') as pl:
+            pl.write(rendered_content)

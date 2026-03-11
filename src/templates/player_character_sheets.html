@@ -1,7 +1,7 @@
 <title>D&ampD 5e Character View</title>
 
-{% for character in playerCharacters %}
 <div class="sheet">
+    {% for character in playerCharacters %}
 
     <header>
         <div class="char-name">
@@ -219,9 +219,10 @@
                         <strong>Flaws</strong>
                         <span>{{character.flaws}}</span>
                     </div>
+                </div>
             </div>
-        </div>
 
+        </div>
     </div>
     {% endfor %}
 </div>

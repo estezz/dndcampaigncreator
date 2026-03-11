@@ -16,4 +16,5 @@ pydantic
 boto3
 asyncio
 moto
+runware
 

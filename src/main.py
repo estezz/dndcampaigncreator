@@ -4,6 +4,7 @@ import os
 import json
 import uuid
 import logging
+from dotenv import load_dotenv
 from flask import (
     Flask,
     jsonify,
@@ -14,6 +15,8 @@ from flask import (
     session,
 )
 from campaign_generator import CampaignGenerator
+
+load_dotenv()
 
 logging.basicConfig(filename="./logs/dnd.log", level=logging.DEBUG)
 logger = logging.getLogger(__name__)
