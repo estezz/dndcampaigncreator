@@ -31,7 +31,7 @@ class RunwareImageClient(ImageGenerationInterface):
         logger.debug(image_dict)
         return image_dict
 
-    async def async_generate_images(self, prompts):
+    async def async_generate_images(self, input_dict):
         # Initialize the SDK
         api_key = os.environ["RUNWARE_API_KEY"]
 
@@ -40,7 +40,7 @@ class RunwareImageClient(ImageGenerationInterface):
 
         # 2. Create a list of tasks (coroutines) for each prompt
         tasks = []
-        for prompt_dict in prompts:
+        for prompt_dict in input_dict:
             prompt = prompt_dict["prompt"]
             context = prompt_dict["context"]
 
@@ -63,7 +63,7 @@ class RunwareImageClient(ImageGenerationInterface):
         # 4. Process the results
         image_dict = {}
         for index, result in enumerate(results):
-            image_dict[prompts[index]] = result[0].imageURL
+            image_dict[input_dict[index]['prompt']] = result[0].imageURL
 
         # 5. Close the connection
         await runware.disconnect()

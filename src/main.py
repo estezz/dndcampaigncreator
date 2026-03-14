@@ -4,6 +4,8 @@ import os
 import json
 import uuid
 import logging
+from pathlib import Path
+from datetime import timedelta
 from dotenv import load_dotenv
 from flask import (
     Flask,
@@ -17,13 +19,53 @@ from flask import (
 from campaign_generator import CampaignGenerator
 
 load_dotenv()
+log_dir = "./logs"
 
-logging.basicConfig(filename="./logs/dnd.log", level=logging.DEBUG)
+logging.basicConfig(filename=f"{log_dir}/dnd.log", level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 
-app = Flask(__name__, template_folder="templates")
-app.secret_key = os.urandom(24)
+from flask import Flask
+
+
+def clean_log_dir():
+    dir_path = Path(log_dir)
+    prefix = "campaign_"
+
+    files_to_delete = []
+    for item in dir_path.iterdir():
+        # Check if it's a file and if its name starts with the prefix
+        if item.is_file() and item.name.startswith(prefix):
+            files_to_delete.append(item)
+
+    # --- Deletion ---
+    for file_path in files_to_delete:
+        try:
+            file_path.unlink()
+            logger.debug(f"Deleted: {file_path}")
+        except OSError as e:
+            logger.error(f"Error deleting {file_path}: {e}")
+
+
+def create_app():
+    clean_log_dir()
+
+    app = Flask(__name__, template_folder="templates")
+    app.secret_key = os.urandom(24)
+    app.permanent_session_lifetime = timedelta(
+        minutes=5
+    )  # Set session timeout to 5 minutes
+
+    with app.app_context():
+        # Code to run at startup goes here
+        print("Function running at application startup within the app context.")
+        # Example: initialize database
+        # init_db()
+
+    return app
+
+
+app = create_app()
 
 
 @app.route("/")
@@ -50,7 +92,7 @@ def generate_campaign_api():
 
     campaign = campaign_generator.generate_campaign(campaign_input)
 
-    original_filename = "./logs/campaign.json"
+    original_filename = f"{log_dir}/campaign.json"
     name, extension = os.path.splitext(original_filename)
     campaign_filename = f"{name}_{uuid.uuid4()}{extension}"
     session["campaign.id"] = campaign_filename
