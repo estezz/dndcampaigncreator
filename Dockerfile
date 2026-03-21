@@ -9,4 +9,8 @@ COPY . .
 
 EXPOSE 8080
 
-CMD ["python3", "src/main.py"]
+RUN mkdir -p /app/logs/
+
+CMD ["gunicorn","--chdir", "/app/src/", "--bind", "0.0.0.0:8080", "main:app"]
+
+
