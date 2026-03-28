@@ -9,4 +9,4 @@ src/logs/campaign_*.json
 logs/campaign_*.json
 .swp
 src/logs/dnd.log
-index.html
+index.html*
