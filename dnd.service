@@ -6,7 +6,7 @@ After=docker.service
 [Service]
 TimeoutStartSec=0
 Restart=always
-ExecStart=/usr/bin/docker run --env-file=/home/leo/dev/dndcampaigncreator/.env  -p 8080:8080 dndcampaigncreator:latest
+ExecStart=/usr/bin/docker run --env-file=/home/leo/dev/dndcampaigncreator/.env  -p 8000:8000 dndcampaigncreator:latest
 
 [Install]
 WantedBy=default.target
